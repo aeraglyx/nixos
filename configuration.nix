@@ -78,15 +78,15 @@
         xwayland.enable = true;
     };
 
-    # environment.sessionVariables = {
-    #   WLR_NO_HARDWARE_CURSORS = "1";
-    #   NIXOS_OXONE_WL = "1";
-    # };
-    #
-    # hardware = {
-    #   opengl.enable = true;
-    #   nvidia.modesetting.enable = true;
-    # };
+    environment.sessionVariables = {
+        WLR_NO_HARDWARE_CURSORS = "1";
+        NIXOS_OXONE_WL = "1";
+    };
+
+    hardware = {
+        graphics.enable = true;
+        nvidia.modesetting.enable = true;
+    };
 
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
@@ -105,13 +105,17 @@
         waybar
         rofi-wayland
         hyprpaper
+        swaynotificationcenter
         wl-clipboard
         cliphist
+        playerctl
+        catppuccin-cursors.mochaLight
 
         tmux
         kitty
         neovim
         helix
+        starship
 
         clang-tools
         pyright
@@ -121,7 +125,9 @@
         lua-language-server
 
         qmk
-        # spotify
+        spotify
+        vesktop
+        parsec-bin
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";
