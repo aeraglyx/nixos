@@ -6,8 +6,17 @@
             ./hardware-configuration.nix
         ];
 
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+    };
+
     boot.loader.systemd-boot.enable = true;
+    boot.loader.systemd-boot.configurationLimit = 8;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.blacklistedKernelModules = [ "nouveau" ];
 
     networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -34,31 +43,50 @@
     };
 
     # Enable the X11 windowing system.
-    services.xserver.enable = true;
+    # services.xserver.enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.videoDrivers = ["nvidia"];
 
-    # Configure keymap in X11
-    services.xserver.xkb = {
-        layout = "us";
-        variant = "";
+    # # Enable the GNOME Desktop Environment.
+    # services.xserver.displayManager.gdm.enable = true;
+    # services.xserver.desktopManager.gnome.enable = true;
+    #
+    # # Configure keymap in X11
+    # services.xserver.xkb = {
+    #     layout = "us";
+    #     variant = "";
+    # };
+
+    services.greetd = {
+        enable = true;
+        settings = rec {
+            initial_session = {
+                command = "Hyprland";
+                user = "aeraglyx";
+            };
+            default_session = initial_session;
+        };
     };
+
+    services.udev.enable = true;
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
+    security = {
+        rtkit.enable = true;
+        polkit.enable = true;
+        # pam.services.hyprlock = {};
+    };
+
     # Enable sound with pipewire.
-    hardware.pulseaudio.enable = false;
-    security.rtkit.enable = true;
     services.pipewire = {
         enable = true;
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
         # If you want to use JACK applications, uncomment this
-        # jack.enable = true;
+        jack.enable = true;
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
         # media-session.enable = true;
@@ -74,8 +102,8 @@
 
     programs.hyprland = {
         enable = true;
-        # nvidiaPatches = true;
         xwayland.enable = true;
+        # withUWSM = true;
     };
 
     environment.sessionVariables = {
@@ -84,8 +112,16 @@
     };
 
     hardware = {
+        pulseaudio.enable = false;
         graphics.enable = true;
-        nvidia.modesetting.enable = true;
+        nvidia = {
+            modesetting.enable = true;
+            powerManagement.enable = false;
+            powerManagement.finegrained = false;
+            open = false;
+            nvidiaSettings = false;
+            package = config.boot.kernelPackages.nvidiaPackages.stable;
+        };
     };
 
     xdg.portal.enable = true;
@@ -101,10 +137,16 @@
         fzf
         lazygit
         ripgrep
+        python313
 
         waybar
         rofi-wayland
         hyprpaper
+        hyprlock
+        hypridle
+        hyprsunset
+        hyprpicker
+        hyprcursor
         swaynotificationcenter
         wl-clipboard
         cliphist
@@ -128,6 +170,8 @@
         spotify
         vesktop
         parsec-bin
+        # blender
+        cudatoolkit
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";
