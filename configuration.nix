@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... } @ inputs:
 
 {
     imports =
@@ -6,7 +6,11 @@
             ./hardware-configuration.nix
         ];
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+        experimental-features = [ "nix-command" "flakes" ];
+        substituters = ["https://hyprland.cachix.org"];
+        trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
     nix.gc = {
         automatic = true;
         dates = "weekly";
@@ -104,6 +108,8 @@
         enable = true;
         xwayland.enable = true;
         # withUWSM = true;
+        package = inputs.pkgs-hypr.hyprland;
+        portalPackage = inputs.pkgs-hypr.xdg-desktop-portal-hyprland;
     };
 
     environment.sessionVariables = {
@@ -156,7 +162,7 @@
         tmux
         kitty
         neovim
-        helix
+        # helix
         starship
 
         clang-tools
@@ -169,9 +175,10 @@
         qmk
         spotify
         vesktop
-        parsec-bin
+        # parsec-bin
+        pkgs-unstable.parsec-bin
         # blender
-        cudatoolkit
+        # cudatoolkit
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";
