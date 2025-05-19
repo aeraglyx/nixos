@@ -8,9 +8,9 @@
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
-        substituters = ["https://hyprland.cachix.org"];
-        trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+        warn-dirty = false;
     };
+
     nix.gc = {
         automatic = true;
         dates = "weekly";
@@ -18,7 +18,7 @@
     };
 
     boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.configurationLimit = 8;
+    boot.loader.systemd-boot.configurationLimit = 4;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.blacklistedKernelModules = [ "nouveau" ];
 
@@ -89,12 +89,14 @@
         alsa.enable = true;
         alsa.support32Bit = true;
         pulse.enable = true;
-        # If you want to use JACK applications, uncomment this
         jack.enable = true;
         # use the example session manager (no others are packaged yet so this is enabled by default,
         # no need to redefine it in your config for now)
         # media-session.enable = true;
     };
+
+    services.mullvad-vpn.enable = true;
+    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
     users.users.aeraglyx = {
         isNormalUser = true;
@@ -108,8 +110,8 @@
         enable = true;
         xwayland.enable = true;
         # withUWSM = true;
-        package = inputs.pkgs-hypr.hyprland;
-        portalPackage = inputs.pkgs-hypr.xdg-desktop-portal-hyprland;
+        package = inputs.pkgs-unstable.hyprland;
+        portalPackage = inputs.pkgs-unstable.xdg-desktop-portal-hyprland;
     };
 
     environment.sessionVariables = {
@@ -122,7 +124,7 @@
         graphics.enable = true;
         nvidia = {
             modesetting.enable = true;
-            powerManagement.enable = false;
+            powerManagement.enable = true;
             powerManagement.finegrained = false;
             open = false;
             nvidiaSettings = false;
@@ -132,6 +134,11 @@
 
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    xdg.mime.defaultApplications = {
+        "inode/directory" = "nautilus.desktop";
+        "x-scheme-handler/discord" = "vesktop.desktop";
+    };
 
     programs.firefox.enable = true;
 
@@ -143,7 +150,7 @@
         fzf
         lazygit
         ripgrep
-        python313
+        python314
 
         waybar
         rofi-wayland
@@ -154,14 +161,17 @@
         hyprpicker
         hyprcursor
         swaynotificationcenter
+        dunst
+        mako
         wl-clipboard
         cliphist
         playerctl
+        nautilus
         catppuccin-cursors.mochaLight
 
         tmux
         kitty
-        neovim
+        pkgs-unstable.neovim
         # helix
         starship
 
@@ -173,11 +183,11 @@
         lua-language-server
 
         qmk
-        spotify
+        pkgs-unstable.spotify
         vesktop
-        # parsec-bin
         pkgs-unstable.parsec-bin
-        # blender
+        pkgs-unstable.blender
+        pkgs-unstable.tor-browser-bundle-bin
         # cudatoolkit
     ];
 
