@@ -1,10 +1,9 @@
 { config, pkgs, pkgs-unstable, ... } @ inputs:
 
 {
-    imports =
-        [
-            ./hardware-configuration.nix
-        ];
+    imports = [
+        ./hardware-configuration.nix
+    ];
 
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
@@ -18,18 +17,24 @@
     };
 
     boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.configurationLimit = 4;
+    boot.loader.systemd-boot.configurationLimit = 3;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.blacklistedKernelModules = [ "nouveau" ];
 
-    networking.hostName = "nixos"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking.hostName = "nixos";
+    # networking.wireless.enable = true;
+    # networking.networkmanager.enable = true;
+
+    networking.firewall.enable = true;
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+
+    services.mullvad-vpn.enable = true;
+    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    networking.networkmanager.enable = true;
 
     time.timeZone = "Europe/Prague";
 
@@ -50,16 +55,11 @@
     # services.xserver.enable = true;
 
     services.xserver.videoDrivers = ["nvidia"];
+    # services.xserver.updateDbusEnvironment = true;
 
     # # Enable the GNOME Desktop Environment.
     # services.xserver.displayManager.gdm.enable = true;
     # services.xserver.desktopManager.gnome.enable = true;
-    #
-    # # Configure keymap in X11
-    # services.xserver.xkb = {
-    #     layout = "us";
-    #     variant = "";
-    # };
 
     services.greetd = {
         enable = true;
@@ -74,16 +74,19 @@
 
     services.udev.enable = true;
 
+    # services.devmon.enable = true;
+    services.gvfs.enable = true; 
+    services.udisks2.enable = true;
+
     # Enable CUPS to print documents.
     services.printing.enable = true;
 
     security = {
         rtkit.enable = true;
         polkit.enable = true;
-        # pam.services.hyprlock = {};
+        pam.services.hyprlock = {};
     };
 
-    # Enable sound with pipewire.
     services.pipewire = {
         enable = true;
         alsa.enable = true;
@@ -94,9 +97,6 @@
         # no need to redefine it in your config for now)
         # media-session.enable = true;
     };
-
-    services.mullvad-vpn.enable = true;
-    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
     users.users.aeraglyx = {
         isNormalUser = true;
@@ -152,28 +152,35 @@
         ripgrep
         python314
 
-        waybar
-        rofi-wayland
-        hyprpaper
-        hyprlock
-        hypridle
-        hyprsunset
-        hyprpicker
-        hyprcursor
-        swaynotificationcenter
-        dunst
-        mako
+        usbutils
+        udiskie
+        udisks2
+
+        pkgs-unstable.waybar
+        pkgs-unstable.rofi-wayland
+        pkgs-unstable.hyprpaper
+        pkgs-unstable.hyprlock
+        pkgs-unstable.hypridle
+        pkgs-unstable.hyprsunset
+        pkgs-unstable.hyprpicker
+        pkgs-unstable.hyprcursor
+        pkgs-unstable.catppuccin-cursors.mochaLight
+
+        libnotify
+        pkgs-unstable.swaynotificationcenter
+        pkgs-unstable.dunst
+        pkgs-unstable.mako
+
         wl-clipboard
         cliphist
         playerctl
-        nautilus
-        catppuccin-cursors.mochaLight
+        pkgs-unstable.nautilus
 
-        tmux
-        kitty
+        pkgs-unstable.tmux
+        pkgs-unstable.kitty
         pkgs-unstable.neovim
+        pkgs-unstable.starship
         # helix
-        starship
 
         clang-tools
         pyright
@@ -182,12 +189,13 @@
         nil
         lua-language-server
 
-        qmk
+        pkgs-unstable.qmk
         pkgs-unstable.spotify
-        vesktop
+        pkgs-unstable.vesktop
         pkgs-unstable.parsec-bin
         pkgs-unstable.blender
         pkgs-unstable.tor-browser-bundle-bin
+        pkgs-unstable.chromium
         # cudatoolkit
     ];
 
@@ -201,25 +209,6 @@
         fira-code
         font-awesome
     ];
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-    #
-    # List services that you want to enable:
-    #
-    # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
-    #
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
 
     system.stateVersion = "24.11";
 
