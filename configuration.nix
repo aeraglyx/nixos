@@ -87,6 +87,7 @@
         pam.services.hyprlock = {};
     };
 
+    services.pulseaudio.enable = false;
     services.pipewire = {
         enable = true;
         alsa.enable = true;
@@ -120,7 +121,6 @@
     };
 
     hardware = {
-        pulseaudio.enable = false;
         graphics.enable = true;
         nvidia = {
             modesetting.enable = true;
@@ -223,15 +223,10 @@
     environment.variables.VISUAL = "nvim";
 
     fonts.packages = with pkgs; [
-        # TODO refactor after 25.05
-        # nerd-fonts.caskaydia-cove  # or mono for no ligatures
-        (nerdfonts.override { fonts = [ "FiraCode" ]; })
-        fira-code
-        font-awesome
-        maple-mono
-        cascadia-code
-        iosevka
-        _0xproto
+        nerd-fonts.fira-code
+        nerd-fonts.caskaydia-cove  # -cove or -mono
+        nerd-fonts._0xproto
+        nerd-fonts.iosevka
     ];
 
     system.stateVersion = "24.11";
