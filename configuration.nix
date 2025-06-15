@@ -150,7 +150,21 @@
         fzf
         lazygit
         ripgrep
-        python314
+        # python314
+        (pkgs.python314.withPackages (ps: [
+            (ps.buildPythonPackage {
+                pname = "fake-bpy-module";
+                version = "20250613";
+                # src = ps.fetchPypi {
+                src = pkgs.fetchurl {
+                    url = "https://files.pythonhosted.org/packages/source/f/fake-bpy-module/fake_bpy_module-20250613.tar.gz";
+                    # inherit pname version;
+                    sha256 = "sha256-/ZMG3ixkhmZZstfOD/1aUeU1zq9Zc/hRCpVmTJVryTw=";
+                };
+                doCheck = false;
+                pythonImportsCheck = [ "bpy" ];
+            })
+        ]))
 
         usbutils
         udiskie
@@ -175,18 +189,21 @@
         cliphist
         playerctl
         pkgs-unstable.nautilus
+        (flameshot.override { enableWlrSupport = true; })
 
         pkgs-unstable.tmux
         pkgs-unstable.kitty
+        pkgs-unstable.alacritty
         pkgs-unstable.neovim
         pkgs-unstable.starship
-        # helix
 
         clang-tools
-        pyright
         gcc13
         gnumake
-        nil
+        pkgs-unstable.pyright
+        pkgs-unstable.basedpyright
+        # nil
+        pkgs-unstable.nixd
         lua-language-server
 
         pkgs-unstable.qmk
@@ -197,6 +214,8 @@
         pkgs-unstable.tor-browser-bundle-bin
         pkgs-unstable.chromium
         # cudatoolkit
+
+        pkgs-unstable.fastfetch
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";
@@ -205,9 +224,14 @@
 
     fonts.packages = with pkgs; [
         # TODO refactor after 25.05
+        # nerd-fonts.caskaydia-cove  # or mono for no ligatures
         (nerdfonts.override { fonts = [ "FiraCode" ]; })
         fira-code
         font-awesome
+        maple-mono
+        cascadia-code
+        iosevka
+        _0xproto
     ];
 
     system.stateVersion = "24.11";
