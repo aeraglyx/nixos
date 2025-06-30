@@ -8,6 +8,8 @@
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
+        cores = 8;
+        max-jobs = 16;
     };
 
     nix.gc = {
@@ -16,25 +18,23 @@
         options = "--delete-older-than 7d";
     };
 
+    swapDevices = [{
+        device = "/swapfile";
+        size = 16 * 1024; # MB
+    }];
+
     boot.loader.systemd-boot.enable = true;
     boot.loader.systemd-boot.configurationLimit = 3;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.blacklistedKernelModules = [ "nouveau" ];
 
     networking.hostName = "nixos";
+    networking.firewall.enable = true;
     # networking.wireless.enable = true;
     # networking.networkmanager.enable = true;
 
-    networking.firewall.enable = true;
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     time.timeZone = "Europe/Prague";
 
@@ -51,15 +51,7 @@
         LC_TIME = "en_US.UTF-8";
     };
 
-    # Enable the X11 windowing system.
-    # services.xserver.enable = true;
-
     services.xserver.videoDrivers = ["nvidia"];
-    # services.xserver.updateDbusEnvironment = true;
-
-    # # Enable the GNOME Desktop Environment.
-    # services.xserver.displayManager.gdm.enable = true;
-    # services.xserver.desktopManager.gnome.enable = true;
 
     services.greetd = {
         enable = true;
@@ -73,12 +65,9 @@
     };
 
     services.udev.enable = true;
-
-    # services.devmon.enable = true;
     services.gvfs.enable = true; 
     services.udisks2.enable = true;
 
-    # Enable CUPS to print documents.
     services.printing.enable = true;
 
     security = {
@@ -99,6 +88,8 @@
         # media-session.enable = true;
     };
 
+    services.power-profiles-daemon.enable = true;
+
     users.users.aeraglyx = {
         isNormalUser = true;
         description = "aeraglyx";
@@ -106,6 +97,7 @@
     };
 
     nixpkgs.config.allowUnfree = true;
+    # nixpkgs.config.nvidia.acceptLicense = true;
 
     programs.hyprland = {
         enable = true;
@@ -190,6 +182,10 @@
         playerctl
         pkgs-unstable.nautilus
         (flameshot.override { enableWlrSupport = true; })
+        pkgs-unstable.gpu-screen-recorder
+        pkgs-unstable.gpu-screen-recorder-gtk
+        # TODO: switch to gpu-screen-recorder-ui when available?
+        pkgs-unstable.vlc
 
         pkgs-unstable.tmux
         pkgs-unstable.kitty
@@ -199,10 +195,10 @@
 
         clang-tools
         gcc13
+        gcc-arm-embedded-13
         gnumake
         pkgs-unstable.pyright
         pkgs-unstable.basedpyright
-        # nil
         pkgs-unstable.nixd
         lua-language-server
 
@@ -210,7 +206,10 @@
         pkgs-unstable.spotify
         pkgs-unstable.vesktop
         pkgs-unstable.parsec-bin
-        pkgs-unstable.blender
+        # TODO: blender-bin ?
+        (pkgs-unstable.blender.override {
+            cudaSupport = true;
+        })
         pkgs-unstable.tor-browser-bundle-bin
         pkgs-unstable.chromium
         # cudatoolkit
@@ -227,6 +226,7 @@
         nerd-fonts.caskaydia-cove  # -cove or -mono
         nerd-fonts._0xproto
         nerd-fonts.iosevka
+        font-awesome
     ];
 
     system.stateVersion = "24.11";
