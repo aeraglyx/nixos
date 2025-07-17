@@ -1,3 +1,4 @@
+# { config, pkgs, pkgs-unstable, custom-pkgs, ... } @ inputs:
 { config, pkgs, pkgs-unstable, ... } @ inputs:
 
 {
@@ -8,8 +9,8 @@
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
-        cores = 8;
-        max-jobs = 16;
+        cores = 6;
+        max-jobs = 12;
     };
 
     nix.gc = {
@@ -33,8 +34,8 @@
     # networking.wireless.enable = true;
     # networking.networkmanager.enable = true;
 
-    services.mullvad-vpn.enable = true;
-    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
+    # services.mullvad-vpn.enable = true;
+    # services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
     time.timeZone = "Europe/Prague";
 
@@ -64,7 +65,7 @@
         };
     };
 
-    services.udev.enable = true;
+    # services.udev.enable = true;
     services.gvfs.enable = true; 
     services.udisks2.enable = true;
 
@@ -103,8 +104,8 @@
         enable = true;
         xwayland.enable = true;
         # withUWSM = true;
-        package = inputs.pkgs-unstable.hyprland;
-        portalPackage = inputs.pkgs-unstable.xdg-desktop-portal-hyprland;
+        package = pkgs-unstable.hyprland;
+        portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
     };
 
     environment.sessionVariables = {
@@ -140,23 +141,13 @@
         wget
         unzip
         fzf
-        lazygit
         ripgrep
-        # python314
-        (pkgs.python314.withPackages (ps: [
-            (ps.buildPythonPackage {
-                pname = "fake-bpy-module";
-                version = "20250613";
-                # src = ps.fetchPypi {
-                src = pkgs.fetchurl {
-                    url = "https://files.pythonhosted.org/packages/source/f/fake-bpy-module/fake_bpy_module-20250613.tar.gz";
-                    # inherit pname version;
-                    sha256 = "sha256-/ZMG3ixkhmZZstfOD/1aUeU1zq9Zc/hRCpVmTJVryTw=";
-                };
-                doCheck = false;
-                pythonImportsCheck = [ "bpy" ];
-            })
-        ]))
+        python313
+        # (pkgs.python311.withPackages (ps: with ps; [
+        #     custom-pkgs.fake-bpy-module
+        #     pip
+        #     pyside6
+        # ]))
 
         usbutils
         udiskie
@@ -181,17 +172,21 @@
         cliphist
         playerctl
         pkgs-unstable.nautilus
-        (flameshot.override { enableWlrSupport = true; })
+        (pkgs-unstable.flameshot.override { enableWlrSupport = true; })
         pkgs-unstable.gpu-screen-recorder
-        pkgs-unstable.gpu-screen-recorder-gtk
         # TODO: switch to gpu-screen-recorder-ui when available?
         pkgs-unstable.vlc
+        pkgs-unstable.ffmpeg
+        # pkgs-unstable.davinci-resolve
 
-        pkgs-unstable.tmux
-        pkgs-unstable.kitty
         pkgs-unstable.alacritty
+        pkgs-unstable.ghostty
+        # pkgs-unstable.kitty
+        pkgs-unstable.tmux
         pkgs-unstable.neovim
+        pkgs-unstable.lazygit
         pkgs-unstable.starship
+        pkgs-unstable.fastfetch
 
         clang-tools
         gcc13
@@ -202,19 +197,18 @@
         pkgs-unstable.nixd
         lua-language-server
 
-        pkgs-unstable.qmk
+        # pkgs-unstable.qmk
         pkgs-unstable.spotify
         pkgs-unstable.vesktop
         pkgs-unstable.parsec-bin
         # TODO: blender-bin ?
         (pkgs-unstable.blender.override {
-            cudaSupport = true;
+            cudaSupport = false;
         })
         pkgs-unstable.tor-browser-bundle-bin
         pkgs-unstable.chromium
-        # cudatoolkit
 
-        pkgs-unstable.fastfetch
+        # inputs.vesc_tool
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";
@@ -224,8 +218,8 @@
     fonts.packages = with pkgs; [
         nerd-fonts.fira-code
         nerd-fonts.caskaydia-cove  # -cove or -mono
-        nerd-fonts._0xproto
-        nerd-fonts.iosevka
+        # nerd-fonts._0xproto
+        # nerd-fonts.iosevka
         font-awesome
     ];
 
