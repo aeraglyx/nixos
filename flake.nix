@@ -23,16 +23,26 @@
             custom-pkgs = import ./custom-pkgs.nix { inherit pkgs; };
         in {
         nixosConfigurations = {
-            nixos = lib.nixosSystem {
+            main = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;
                     inherit vesc_tool;
                     # inherit custom-pkgs;
                 };
                 modules = [
-                    ./configuration.nix
+                    ./hosts/common.nix
+                    ./hosts/main/configuration.nix
                 ];
             };
+            # work = lib.nixosSystem {
+            #     specialArgs = {
+            #         inherit pkgs-unstable;
+            #     };
+            #     modules = [
+            #         ./hosts/common.nix
+            #         ./hosts/work/configuration.nix
+            #     ];
+            # };
         };
         devShells.${system} = {
             blender = pkgs.mkShell {
