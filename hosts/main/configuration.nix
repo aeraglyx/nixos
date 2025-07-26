@@ -10,10 +10,14 @@
         size = 16 * 1024; # MB
     }];
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.configurationLimit = 3;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.blacklistedKernelModules = [ "nouveau" ];
+    boot = {
+        loader = {
+            systemd-boot.enable = true;
+            systemd-boot.configurationLimit = 3;
+            efi.canTouchEfiVariables = true;
+        };
+        blacklistedKernelModules = [ "nouveau" ];
+    };
 
     networking.hostName = "main";
     networking.firewall.enable = true;
