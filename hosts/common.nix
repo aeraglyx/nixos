@@ -11,7 +11,7 @@
     nix.gc = {
         automatic = true;
         dates = "daily";
-        options = "--delete-older-than 2d";
+        options = "--delete-older-than 7d";
     };
 
     time.timeZone = "Europe/Prague";
@@ -34,7 +34,7 @@
         extraGroups = [ "networkmanager" "wheel" ];
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs-unstable; [
         git
         stow
         wget
@@ -43,16 +43,16 @@
         ripgrep
         python313
 
-        pkgs-unstable.alacritty
-        pkgs-unstable.ghostty
-        pkgs-unstable.tmux
-        pkgs-unstable.neovim
-        pkgs-unstable.lazygit
-        pkgs-unstable.starship
-        pkgs-unstable.fastfetch
+        alacritty
+        ghostty
+        tmux
+        neovim
+        lazygit
+        starship
+        fastfetch
 
-        pkgs-unstable.nixd
-        pkgs-unstable.lua-language-server
+        nixd
+        lua-language-server
     ];
 
     environment.variables.SUDO_EDITOR = "nvim";

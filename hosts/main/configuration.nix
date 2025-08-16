@@ -7,7 +7,7 @@
 
     swapDevices = [{
         device = "/swapfile";
-        size = 16 * 1024; # MB
+        size = 16 * 1024;  # MB
     }];
 
     boot = {
@@ -40,7 +40,6 @@
         };
     };
 
-    # services.udev.enable = true;
     services.gvfs.enable = true;
     services.udisks2.enable = true;
 
@@ -119,14 +118,15 @@
         udiskie
         udisks2
 
-        waybar
-        rofi-wayland
         hyprpaper
         hyprlock
         hypridle
         hyprsunset
         hyprpicker
         hyprcursor
+
+        waybar
+        rofi-wayland
         catppuccin-cursors.mochaLight
 
         libnotify
@@ -142,6 +142,9 @@
         (flameshot.override { enableWlrSupport = true; })
         gpu-screen-recorder
         ffmpeg
+
+        blender_4_5
+        # (blender.override { cudaSupport = true; })
         # davinci-resolve
 
         clang-tools
@@ -151,17 +154,14 @@
         pyright
         basedpyright
 
-        # qmk
         spotify
         discord
         vesktop
         parsec-bin
-        (blender.override {
-            cudaSupport = true;
-        })
         tor-browser-bundle-bin
         chromium
 
+        # qmk
         # inputs.vesc_tool
     ];
 
