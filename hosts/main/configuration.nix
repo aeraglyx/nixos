@@ -19,6 +19,12 @@
         blacklistedKernelModules = [ "nouveau" ];
     };
 
+    security = {
+        rtkit.enable = true;
+        polkit.enable = true;
+        pam.services.hyprlock = {};
+    };
+
     networking.hostName = "main";
     networking.firewall.enable = true;
     # networking.wireless.enable = true;
@@ -40,16 +46,16 @@
         };
     };
 
+    services.devmon.enable = true;
     services.gvfs.enable = true;
     services.udisks2.enable = true;
 
-    services.printing.enable = true;
-
-    security = {
-        rtkit.enable = true;
-        polkit.enable = true;
-        pam.services.hyprlock = {};
+    services.udev = {
+        packages = [ pkgs-unstable.qmk-udev-rules ];
     };
+
+    services.power-profiles-daemon.enable = true;
+    services.printing.enable = true;
 
     services.pulseaudio.enable = false;
     services.pipewire = {
@@ -58,24 +64,12 @@
         alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
-        # use the example session manager (no others are packaged yet so this is enabled by default,
-        # no need to redefine it in your config for now)
-        # media-session.enable = true;
+        # media-session.enable = true;  # might be needed in the future
     };
 
-    services.power-profiles-daemon.enable = true;
-
-    # users.users.aeraglyx = {
-    #     isNormalUser = true;
-    #     description = "aeraglyx";
-    #     extraGroups = [ "networkmanager" "wheel" ];
-    # };
-
     nixpkgs.config.allowUnfree = true;
-    # nixpkgs.config.nvidia.acceptLicense = true;
 
     environment.sessionVariables = {
-        WLR_NO_HARDWARE_CURSORS = "1";
         NIXOS_OXONE_WL = "1";
     };
 
@@ -112,11 +106,18 @@
         package = pkgs-unstable.firefox;
     };
 
-
     environment.systemPackages = with pkgs-unstable; [
         usbutils
         udiskie
         udisks2
+        # dfu-util
+
+        clang-tools
+        gcc13
+        gcc-arm-embedded-13
+        gnumake
+        pyright
+        basedpyright
 
         hyprpaper
         hyprlock
@@ -127,42 +128,63 @@
 
         waybar
         rofi-wayland
-        catppuccin-cursors.mochaLight
+
+        bibata-cursors
+        phinger-cursors
+        # catppuccin-cursors.mochaLight
 
         libnotify
-        swaynotificationcenter
         dunst
-        mako
+        # mako
+        # swaynotificationcenter
 
         wl-clipboard
-        cliphist
-        playerctl
+        # cliphist
+        # ydotool
         nautilus
-        vlc
+
+        hyprshot
         (flameshot.override { enableWlrSupport = true; })
         gpu-screen-recorder
+
+        playerctl
         ffmpeg
+        mpv
+        vlc
+
+        # zathura
+        # libreoffice
 
         blender_4_5
         # (blender.override { cudaSupport = true; })
         # davinci-resolve
-
-        clang-tools
-        gcc13
-        gcc-arm-embedded-13
-        gnumake
-        pyright
-        basedpyright
+        # gimp3
+        # djv
 
         spotify
         discord
         vesktop
         parsec-bin
+        obsidian
+        pass
+
+        qutebrowser
         tor-browser-bundle-bin
         chromium
+        google-chrome
 
-        # qmk
+        qmk
         # inputs.vesc_tool
+    ];
+
+    fonts.packages = with pkgs-unstable; [
+        nerd-fonts.caskaydia-cove  # -cove or -mono
+        nerd-fonts.recursive-mono
+        # nerd-fonts._0xproto
+        # nerd-fonts.fira-code
+        # nerd-fonts.noto
+        # nerd-fonts.iosevka
+        font-awesome
     ];
 
     system.stateVersion = "24.11";

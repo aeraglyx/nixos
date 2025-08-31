@@ -16,23 +16,14 @@
 
     time.timeZone = "Europe/Prague";
     i18n.defaultLocale = "en_US.UTF-8";
-    # i18n.extraLocaleSettings = {
-    #     LC_ADDRESS = "en_US.UTF-8";
-    #     LC_IDENTIFICATION = "en_US.UTF-8";
-    #     LC_MEASUREMENT = "en_US.UTF-8";
-    #     LC_MONETARY = "en_US.UTF-8";
-    #     LC_NAME = "en_US.UTF-8";
-    #     LC_NUMERIC = "en_US.UTF-8";
-    #     LC_PAPER = "en_US.UTF-8";
-    #     LC_TELEPHONE = "en_US.UTF-8";
-    #     LC_TIME = "en_US.UTF-8";
-    # };
 
     users.users.aeraglyx = {
         isNormalUser = true;
         description = "aeraglyx";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" ];  # storage
     };
+
+    programs.yazi.enable = true;
 
     environment.systemPackages = with pkgs-unstable; [
         git
@@ -41,12 +32,14 @@
         unzip
         fzf
         ripgrep
+        zoxide
         python313
+        killall
 
         alacritty
         ghostty
-        tmux
         neovim
+        tmux
         lazygit
         starship
         fastfetch
@@ -55,15 +48,11 @@
         lua-language-server
     ];
 
-    environment.variables.SUDO_EDITOR = "nvim";
-    environment.variables.EDITOR = "nvim";
-    environment.variables.VISUAL = "nvim";
-
-    fonts.packages = with pkgs; [
-        nerd-fonts.fira-code
-        nerd-fonts.caskaydia-cove  # -cove or -mono
-        # nerd-fonts._0xproto
-        # nerd-fonts.iosevka
-        font-awesome
-    ];
+    environment = {
+        variables = {
+            SUDO_EDITOR = "nvim";
+            EDITOR = "nvim";
+            VISUAL = "nvim";
+        };
+    };
 }
