@@ -46,6 +46,7 @@
 
         nixd
         lua-language-server
+        gcc13
     ];
 
     environment = {

@@ -113,7 +113,7 @@
         # dfu-util
 
         clang-tools
-        gcc13
+        # gcc13
         gcc-arm-embedded-13
         gnumake
         pyright

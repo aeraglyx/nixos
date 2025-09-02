@@ -4,6 +4,10 @@
     inputs = {
         nixpkgs.url = "nixpkgs/nixos-25.05";
         nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+        nixos-wsl = {
+            url = "github:nix-community/NixOS-WSL";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
         blender-bin = {
             url = "github:edolstra/nix-warez?dir=blender";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -42,15 +46,16 @@
                     ./hosts/main/configuration.nix
                 ];
             };
-            # work = lib.nixosSystem {
-            #     specialArgs = {
-            #         inherit pkgs-unstable;
-            #     };
-            #     modules = [
-            #         ./hosts/common.nix
-            #         ./hosts/work/configuration.nix
-            #     ];
-            # };
+            work = lib.nixosSystem {
+                specialArgs = {
+                    inherit pkgs-unstable;
+                };
+                modules = [
+                    ./hosts/common.nix
+                    ./hosts/work/configuration.nix
+                    "${inputs.nixos-wsl}/modules"
+                ];
+            };
         };
         devShells.${system} = {
             blender = pkgs.mkShell {
