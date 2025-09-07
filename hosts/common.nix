@@ -4,13 +4,11 @@
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
-        cores = 8;
-        max-jobs = 12;
     };
 
     nix.gc = {
         automatic = true;
-        dates = "daily";
+        dates = "weekly";
         options = "--delete-older-than 7d";
     };
 
@@ -20,9 +18,10 @@
     users.users.aeraglyx = {
         isNormalUser = true;
         description = "aeraglyx";
-        extraGroups = [ "networkmanager" "wheel" ];  # storage
+        extraGroups = [ "networkmanager" "wheel" ];
     };
 
+    programs.zsh.enable = true;
     programs.yazi.enable = true;
 
     environment.systemPackages = with pkgs-unstable; [
@@ -33,6 +32,7 @@
         fzf
         ripgrep
         zoxide
+        bat
         python313
         killall
 
@@ -43,6 +43,9 @@
         lazygit
         starship
         fastfetch
+        cmatrix
+        qrencode
+        tree
 
         nixd
         lua-language-server

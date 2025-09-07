@@ -8,6 +8,7 @@
     swapDevices = [{
         device = "/swapfile";
         size = 16 * 1024;  # MB
+        randomEncryption.enable = true;
     }];
 
     boot = {
@@ -19,6 +20,11 @@
         blacklistedKernelModules = [ "nouveau" ];
     };
 
+    nix.settings = {
+        cores = 8;
+        max-jobs = 12;
+    };
+
     security = {
         rtkit.enable = true;
         polkit.enable = true;
@@ -27,11 +33,26 @@
 
     networking.hostName = "main";
     networking.firewall.enable = true;
-    # networking.wireless.enable = true;
-    # networking.networkmanager.enable = true;
+
+    networking.useDHCP = false;
+    services.resolved.enable = true;
+    systemd.network = {
+        enable = true;
+        networks."40-enp0s31f6" = {
+            matchConfig = { Name = "enp0s31f6"; };
+            networkConfig = { DHCP = "yes"; };
+        };
+    };
 
     # services.mullvad-vpn.enable = true;
     # services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
+
+    services.clamav = {
+        daemon.enable = true;
+        updater.enable = true;
+    };
+
+    systemd.coredump.enable = false;
 
     services.xserver.videoDrivers = ["nvidia"];
 
@@ -54,8 +75,8 @@
         packages = [ pkgs-unstable.qmk-udev-rules ];
     };
 
-    services.power-profiles-daemon.enable = true;
-    services.printing.enable = true;
+    # services.power-profiles-daemon.enable = true;
+    # services.printing.enable = true;
 
     services.pulseaudio.enable = false;
     services.pipewire = {
@@ -71,6 +92,7 @@
 
     environment.sessionVariables = {
         NIXOS_OXONE_WL = "1";
+        DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
     };
 
     hardware = {
@@ -88,17 +110,25 @@
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+    xdg.mime.enable = true;
     xdg.mime.defaultApplications = {
-        "inode/directory" = "nautilus.desktop";
-        "x-scheme-handler/discord" = "vesktop.desktop";
+        "inode/directory"           = [ "nautilus.desktop" ];
+        "default-web-browser"       = [ "firefox.desktop" ];
+        "text/html"                 = [ "firefox.desktop" ];
+        "x-scheme-handler/ftp"      = [ "firefox.desktop" ];
+        "x-scheme-handler/http"     = [ "firefox.desktop" ];
+        "x-scheme-handler/https"    = [ "firefox.desktop" ];
+        "x-scheme-handler/about"    = [ "firefox.desktop" ];
+        "x-scheme-handler/unknown"  = [ "firefox.desktop" ];
+        "x-scheme-handler/discord"  = [ "vesktop.desktop" ];
     };
 
     programs.hyprland = {
         enable = true;
         xwayland.enable = true;
-        # withUWSM = true;
         package = pkgs-unstable.hyprland;
         portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
+        # withUWSM = true;
     };
 
     programs.firefox = {
@@ -113,7 +143,6 @@
         # dfu-util
 
         clang-tools
-        # gcc13
         gcc-arm-embedded-13
         gnumake
         pyright
@@ -130,8 +159,7 @@
         rofi-wayland
 
         bibata-cursors
-        phinger-cursors
-        # catppuccin-cursors.mochaLight
+        # phinger-cursors
 
         libnotify
         dunst
@@ -152,7 +180,7 @@
         mpv
         vlc
 
-        # zathura
+        zathura
         # libreoffice
 
         blender_4_5
@@ -167,6 +195,7 @@
         parsec-bin
         obsidian
         pass
+        clamav
 
         qutebrowser
         tor-browser-bundle-bin
