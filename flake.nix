@@ -42,8 +42,8 @@
                     # inherit custom-pkgs;
                 };
                 modules = [
-                    ./hosts/common.nix
                     ./hosts/main/configuration.nix
+                    ./modules/common.nix
                 ];
             };
             work = lib.nixosSystem {
@@ -51,9 +51,9 @@
                     inherit pkgs-unstable;
                 };
                 modules = [
-                    ./hosts/common.nix
                     ./hosts/work/configuration.nix
                     "${inputs.nixos-wsl}/modules"
+                    ./modules/common.nix
                 ];
             };
         };
