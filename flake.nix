@@ -44,6 +44,7 @@
                 modules = [
                     ./hosts/main/configuration.nix
                     ./modules/common.nix
+                    ./modules/desktop.nix
                 ];
             };
             work = lib.nixosSystem {
