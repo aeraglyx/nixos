@@ -21,8 +21,15 @@
         extraGroups = [ "networkmanager" "wheel" ];
     };
 
+    documentation = {
+        doc.enable = false;
+        info.enable = false;
+    };
+
     programs.zsh.enable = true;
     programs.yazi.enable = true;
+
+    # environment.defaultPackages = [ ];
 
     environment.systemPackages = with pkgs-unstable; [
         git
@@ -32,31 +39,39 @@
         fzf
         ripgrep
         zoxide
-        bat
         python313
         killall
+        bat
 
         alacritty
         ghostty
         neovim
-        tmux
+        # tmux
         lazygit
         starship
         fastfetch
         cmatrix
         qrencode
         tree
+        nix-tree
 
         nixd
         lua-language-server
         gcc13
     ];
 
-    environment = {
-        variables = {
-            SUDO_EDITOR = "nvim";
-            EDITOR = "nvim";
-            VISUAL = "nvim";
-        };
+    environment.variables = {
+        SUDO_EDITOR = "nvim";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+
+        XDG_CACHE_HOME  = "$HOME/.cache";
+        XDG_CONFIG_HOME = "$HOME/.config";
+        XDG_DATA_HOME   = "$HOME/.local/share";
+        XDG_STATE_HOME  = "$HOME/.local/state";
+
+        ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
+        _Z_DATA = "$XDG_CONFIG_HOME/z";
+        PYTHON_HISTORY = "$XDG_STATE_HOME/python_history";
     };
 }

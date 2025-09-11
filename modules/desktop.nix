@@ -13,19 +13,10 @@
         pam.services.hyprlock = {};
     };
 
-    nixpkgs.config.allowUnfree = true;
-
     networking.firewall.enable = true;
 
-    # services.mullvad-vpn.enable = true;
-    # services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
-
-    services.clamav = {
-        daemon.enable = true;
-        updater.enable = true;
-    };
-
     systemd.coredump.enable = false;
+    services.speechd.enable = false;
 
     services.greetd = {
         enable = true;
@@ -37,6 +28,8 @@
             default_session = initial_session;
         };
     };
+
+    nixpkgs.config.allowUnfree = true;
 
     services.devmon.enable = true;
     services.gvfs.enable = true;
@@ -67,12 +60,19 @@
         "x-scheme-handler/discord"  = [ "vesktop.desktop" ];
     };
 
+    # services.mullvad-vpn.enable = true;
+    # services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
+
+    services.clamav = {
+        daemon.enable = true;
+        updater.enable = true;
+    };
+
     programs.hyprland = {
         enable = true;
         xwayland.enable = true;
         package = pkgs-unstable.hyprland;
         portalPackage = pkgs-unstable.xdg-desktop-portal-hyprland;
-        # withUWSM = true;
     };
 
     programs.firefox = {
@@ -84,7 +84,6 @@
         usbutils
         udiskie
         udisks2
-        # dfu-util
 
         clang-tools
         gcc-arm-embedded-13
@@ -103,7 +102,6 @@
         rofi-wayland
 
         bibata-cursors
-        # phinger-cursors
 
         libnotify
         dunst
@@ -112,7 +110,6 @@
 
         wl-clipboard
         # cliphist
-        # ydotool
         nautilus
 
         hyprshot
@@ -151,13 +148,16 @@
     ];
 
     fonts.packages = with pkgs-unstable; [
-        nerd-fonts.caskaydia-cove  # -cove or -mono
-        nerd-fonts.recursive-mono
-        # nerd-fonts._0xproto
-        # nerd-fonts.fira-code
-        # nerd-fonts.noto
-        # nerd-fonts.iosevka
+        nerd-fonts.caskaydia-cove
+        nerd-fonts.caskaydia-mono
+        # nerd-fonts.recursive-mono
         font-awesome
     ];
-}
 
+    environment.variables = {
+        # USERXSESSION = "$XDG_CACHE_HOME/X11/xsession";
+        # USERXSESSIONRC = "$XDG_CACHE_HOME/X11/xsessionrc";
+        # ALTUSERXSESSION = "$XDG_CACHE_HOME/X11/Xsession";
+        ERRFILE = "$XDG_CACHE_HOME/X11/xsession-errors";
+    };
+}
