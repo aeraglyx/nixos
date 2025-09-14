@@ -27,7 +27,6 @@
     };
 
     programs.zsh.enable = true;
-    programs.yazi.enable = true;
 
     # environment.defaultPackages = [ ];
 
@@ -42,6 +41,7 @@
         python313
         killall
         bat
+        yazi
 
         alacritty
         ghostty
