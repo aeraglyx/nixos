@@ -24,6 +24,7 @@
     services.resolved.enable = true;
     systemd.network = {
         enable = true;
+        wait-online.anyInterface = true;
         networks."40-enp0s31f6" = {
             matchConfig = { Name = "enp0s31f6"; };
             networkConfig = { DHCP = "yes"; };

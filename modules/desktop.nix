@@ -1,9 +1,11 @@
 { config, pkgs, pkgs-unstable, ... } @ inputs:
 
 {
+    boot.kernelParams = [ "quiet" ];
     boot.loader = {
         systemd-boot.enable = true;
         systemd-boot.configurationLimit = 3;
+        timeout = 1;
         efi.canTouchEfiVariables = true;
     };
 
@@ -17,6 +19,7 @@
 
     systemd.coredump.enable = false;
     services.speechd.enable = false;
+    services.journald.extraConfig = "SystemMaxUse=50M";
 
     services.greetd = {
         enable = true;
@@ -99,7 +102,7 @@
         hyprcursor
 
         waybar
-        rofi-wayland
+        rofi
 
         bibata-cursors
 
