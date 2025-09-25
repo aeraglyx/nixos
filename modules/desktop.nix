@@ -91,8 +91,6 @@
         clang-tools
         gcc-arm-embedded-13
         gnumake
-        pyright
-        basedpyright
 
         hyprpaper
         hyprlock

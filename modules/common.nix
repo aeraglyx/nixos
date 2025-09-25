@@ -6,11 +6,11 @@
         warn-dirty = false;
     };
 
-    nix.gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-    };
+    # nix.gc = {
+    #     automatic = true;
+    #     dates = "weekly";
+    #     options = "--delete-older-than 7d";
+    # };
 
     time.timeZone = "Europe/Prague";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -38,15 +38,14 @@
         fzf
         ripgrep
         zoxide
-        python313
         killall
         bat
-        yazi
 
         alacritty
         ghostty
         neovim
-        # tmux
+        yazi
+        tmux
         lazygit
         starship
         fastfetch
@@ -55,9 +54,16 @@
         tree
         nix-tree
 
+        # languages
+        gcc13
+        python313
+
+        # language servers
         nixd
         lua-language-server
-        gcc13
+        basedpyright
+        bash-language-server
+        rust-analyzer
     ];
 
     environment.variables = {
