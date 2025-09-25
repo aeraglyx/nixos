@@ -42,7 +42,7 @@
                     # inherit custom-pkgs;
                 };
                 modules = [
-                    ./hosts/main/configuration.nix
+                    ./hosts/main/config.nix
                     ./modules/common.nix
                     ./modules/desktop.nix
                 ];
@@ -52,7 +52,7 @@
                     inherit pkgs-unstable;
                 };
                 modules = [
-                    ./hosts/work/configuration.nix
+                    ./hosts/work/config.nix
                     "${inputs.nixos-wsl}/modules"
                     ./modules/common.nix
                 ];
