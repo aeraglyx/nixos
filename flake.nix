@@ -32,7 +32,7 @@
                 overlays = [ inputs.blender-bin.overlays.default ];
             };
             vesc_tool = inputs.vesc_tool-flake.packages.${system}.default;
-            custom-pkgs = import ./custom-pkgs.nix { inherit pkgs; };
+            custom-pkgs = import ./modules/custom-pkgs.nix { inherit pkgs; };
         in {
         nixosConfigurations = {
             main = lib.nixosSystem {
