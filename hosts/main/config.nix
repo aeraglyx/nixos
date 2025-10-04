@@ -31,8 +31,8 @@
         };
     };
 
-    # services.power-profiles-daemon.enable = true;
-    # services.printing.enable = true;
+    services.avahi.enable = true;
+    services.avahi.nssmdns4 = true;
 
     services.pulseaudio.enable = false;
     services.pipewire = {

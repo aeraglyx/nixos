@@ -42,6 +42,13 @@
         packages = [ pkgs-unstable.qmk-udev-rules ];
     };
 
+    environment.variables = {
+        # USERXSESSION = "$XDG_CACHE_HOME/X11/xsession";
+        # USERXSESSIONRC = "$XDG_CACHE_HOME/X11/xsessionrc";
+        # ALTUSERXSESSION = "$XDG_CACHE_HOME/X11/Xsession";
+        ERRFILE = "$XDG_CACHE_HOME/X11/xsession-errors";
+    };
+
     environment.sessionVariables = {
         NIXOS_OXONE_WL = "1";
         DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
@@ -131,6 +138,7 @@
         # davinci-resolve
         # gimp3
         # djv
+        # exiftool
 
         spotify
         discord
@@ -155,11 +163,4 @@
         # nerd-fonts.recursive-mono
         font-awesome
     ];
-
-    environment.variables = {
-        # USERXSESSION = "$XDG_CACHE_HOME/X11/xsession";
-        # USERXSESSIONRC = "$XDG_CACHE_HOME/X11/xsessionrc";
-        # ALTUSERXSESSION = "$XDG_CACHE_HOME/X11/Xsession";
-        ERRFILE = "$XDG_CACHE_HOME/X11/xsession-errors";
-    };
 }

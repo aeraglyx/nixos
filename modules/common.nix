@@ -53,6 +53,9 @@
         qrencode
         tree
         nix-tree
+        translate-shell
+        libqalculate
+        # pandoc
 
         # languages
         gcc13
@@ -78,6 +81,7 @@
 
         ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
         _Z_DATA = "$XDG_CONFIG_HOME/z";
+        HISTFILE = "$XDG_STATE_HOME/bash_history";
         PYTHON_HISTORY = "$XDG_STATE_HOME/python_history";
     };
 }
