@@ -154,7 +154,7 @@
         google-chrome
 
         qmk
-        # inputs.vesc_tool
+        # vesc_tool
     ];
 
     fonts.packages = with pkgs-unstable; [

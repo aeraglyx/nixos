@@ -14,7 +14,7 @@
         };
         vesc_tool-flake = {
             url = "github:lukash/vesc_tool-flake";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
     };
 
@@ -22,6 +22,10 @@
         let
             system = "x86_64-linux";
             lib = nixpkgs.lib;
+            overlays = [
+                inputs.blender-bin.overlays.default
+                (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
+            ];
             pkgs = import nixpkgs {
                 system = system;
                 config.allowUnfree = true;
@@ -29,16 +33,13 @@
             pkgs-unstable = import nixpkgs-unstable {
                 system = system;
                 config.allowUnfree = true;
-                overlays = [ inputs.blender-bin.overlays.default ];
+                overlays = overlays;
             };
-            vesc_tool = inputs.vesc_tool-flake.packages.${system}.default;
-            custom-pkgs = import ./modules/custom-pkgs.nix { inherit pkgs; };
         in {
         nixosConfigurations = {
             main = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;
-                    inherit vesc_tool;
                     # inherit custom-pkgs;
                 };
                 modules = [
