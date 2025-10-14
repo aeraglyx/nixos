@@ -24,6 +24,7 @@
             lib = nixpkgs.lib;
             overlays = [
                 inputs.blender-bin.overlays.default
+                (import ./overlays/blender.nix)
                 (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
             ];
             pkgs = import nixpkgs {

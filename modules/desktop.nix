@@ -134,6 +134,7 @@
         # libreoffice
 
         blender_4_5
+        blender_5_0
         # (blender.override { cudaSupport = true; })
         # davinci-resolve
         # gimp3
