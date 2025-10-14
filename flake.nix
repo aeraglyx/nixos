@@ -65,8 +65,7 @@
                 packages = [
                     (pkgs.python311.withPackages (ps: with ps; [
                         custom-pkgs.fake-bpy-module
-                        pyside6
-                        pip
+                        # pyside6
                     ]))
                 ];
             };
