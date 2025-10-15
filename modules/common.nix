@@ -4,6 +4,7 @@
     nix.settings = {
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
+        download-buffer-size = 524288000;
     };
 
     # nix.gc = {
@@ -55,6 +56,8 @@
         nix-tree
         translate-shell
         libqalculate
+        dos2unix
+        tealdeer
         # pandoc
 
         # languages
@@ -73,6 +76,7 @@
         SUDO_EDITOR = "nvim";
         EDITOR = "nvim";
         VISUAL = "nvim";
+        MANPAGER = "nvim +Man!";
 
         XDG_CACHE_HOME  = "$HOME/.cache";
         XDG_CONFIG_HOME = "$HOME/.config";

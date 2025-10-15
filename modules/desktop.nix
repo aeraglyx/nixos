@@ -145,14 +145,15 @@
         discord
         vesktop
         parsec-bin
-        obsidian
         pass
-        clamav
+        # obsidian
+        # clamav
 
         qutebrowser
-        tor-browser-bundle-bin
         chromium
         google-chrome
+        # tor-browser-bundle-bin
+        zola
 
         qmk
         # vesc_tool
