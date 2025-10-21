@@ -70,13 +70,13 @@
         "x-scheme-handler/discord"  = [ "vesktop.desktop" ];
     };
 
-    # services.mullvad-vpn.enable = true;
-    # services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
+    services.mullvad-vpn.enable = true;
+    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
-    services.clamav = {
-        daemon.enable = true;
-        updater.enable = false;
-    };
+    # services.clamav = {
+    #     daemon.enable = true;
+    #     updater.enable = false;
+    # };
 
     programs.hyprland = {
         enable = true;
@@ -102,9 +102,9 @@
         hyprpaper
         hyprlock
         hypridle
-        hyprsunset
         hyprpicker
         hyprcursor
+        hyprsunset
         sunsetr
 
         waybar
@@ -134,7 +134,7 @@
         # libreoffice
 
         blender_4_5
-        blender_5_0
+        # blender_5_0
         # (blender.override { cudaSupport = true; })
         # davinci-resolve
         # gimp3
@@ -152,10 +152,10 @@
         qutebrowser
         chromium
         google-chrome
-        # tor-browser-bundle-bin
-        zola
+        tor-browser-bundle-bin
 
         qmk
+        zola
         # vesc_tool
     ];
 

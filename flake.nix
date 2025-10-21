@@ -24,7 +24,7 @@
             lib = nixpkgs.lib;
             overlays = [
                 inputs.blender-bin.overlays.default
-                (import ./overlays/blender.nix)
+                # (import ./overlays/blender.nix)
                 (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
             ];
             pkgs = import nixpkgs {
@@ -61,9 +61,9 @@
             };
         };
         devShells.${system} = {
-            blender = pkgs.mkShell {
+            blender = pkgs-unstable.mkShell {
                 packages = [
-                    (pkgs.python311.withPackages (ps: with ps; [
+                    (pkgs-unstable.python311.withPackages (ps: with ps; [
                         custom-pkgs.fake-bpy-module
                         # pyside6
                     ]))
