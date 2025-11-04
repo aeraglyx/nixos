@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... } @ inputs:
+{ config, pkgs, pkgs-unstable, parsecgaming, ... }:
 
 {
     boot.kernelParams = [ "quiet" ];
@@ -144,7 +144,9 @@
         spotify
         discord
         vesktop
-        parsec-bin
+        # pkgs.parsec-bin
+        parsecgaming.packages.x86_64-linux.parsecgaming
+
         pass
         # obsidian
         # clamav

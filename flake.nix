@@ -16,9 +16,13 @@
             url = "github:lukash/vesc_tool-flake";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+        parsecgaming = {
+            url = "github:DarthPJB/parsec-gaming-nix";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
     };
 
-    outputs = { nixpkgs, nixpkgs-unstable, ... } @ inputs:
+    outputs = { nixpkgs, nixpkgs-unstable, parsecgaming, ... } @ inputs:
         let
             system = "x86_64-linux";
             lib = nixpkgs.lib;
@@ -41,6 +45,7 @@
             main = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;
+                    inherit parsecgaming;
                     # inherit custom-pkgs;
                 };
                 modules = [

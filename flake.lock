@@ -107,12 +107,59 @@
         "type": "indirect"
       }
     },
+    "parsecDeb": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-+sNEGgb2wARM8JDf3Gdzk+N/IFNERlEQJFROGQGP8XE=",
+        "type": "file",
+        "url": "https://builds.parsecgaming.com/package/parsec-linux.deb"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://builds.parsecgaming.com/package/parsec-linux.deb"
+      }
+    },
+    "parsecMeta": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-WJpGY0sPzJDodhjtvDsZcsVF78w1mzKIFdOeNaUwCKw=",
+        "type": "file",
+        "url": "https://builds.parsecgaming.com/channel/release/appdata/linux/latest"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://builds.parsecgaming.com/channel/release/appdata/linux/latest"
+      }
+    },
+    "parsecgaming": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "parsecDeb": "parsecDeb",
+        "parsecMeta": "parsecMeta"
+      },
+      "locked": {
+        "lastModified": 1754784172,
+        "narHash": "sha256-ZjFIpFOdAqGh5oV0c03hcvqTxZO5Z7VMru45phqRJmA=",
+        "owner": "DarthPJB",
+        "repo": "parsec-gaming-nix",
+        "rev": "37d3a5e2ef005d05bc47b59ed39f168238c9c58a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DarthPJB",
+        "repo": "parsec-gaming-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "blender-bin": "blender-bin",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "parsecgaming": "parsecgaming",
         "vesc_tool-flake": "vesc_tool-flake"
       }
     },
