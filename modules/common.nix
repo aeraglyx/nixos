@@ -70,6 +70,7 @@
         basedpyright
         bash-language-server
         rust-analyzer
+        vscode-langservers-extracted
     ];
 
     environment.variables = {
