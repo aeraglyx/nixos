@@ -154,7 +154,7 @@
         qutebrowser
         chromium
         google-chrome
-        tor-browser-bundle-bin
+        tor-browser
 
         qmk
         zola
