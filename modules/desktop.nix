@@ -106,6 +106,7 @@
         hyprcursor
         hyprsunset
         sunsetr
+        xdg-terminal-exec
 
         waybar
         rofi
