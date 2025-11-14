@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... } @ inputs:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 
 {
     nix.settings = {
@@ -25,6 +25,13 @@
     documentation = {
         doc.enable = false;
         info.enable = false;
+    };
+
+    system.activationScripts = {
+        diffGens = ''
+            PATH=$PATH:${lib.makeBinPath [ pkgs.nix ]}
+            ${pkgs.nvd}/bin/nvd diff /run/current-system "$systemConfig"
+        '';
     };
 
     programs.zsh.enable = true;
@@ -54,6 +61,7 @@
         qrencode
         tree
         nix-tree
+        nvd
         translate-shell
         libqalculate
         dos2unix
