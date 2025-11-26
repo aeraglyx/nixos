@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... } @ inputs:
+{ config, pkgs, pkgs-unstable, lib, ... } @ inputs:
 
 {
     imports = [
@@ -17,6 +17,10 @@
         cores = 8;
         max-jobs = 12;
     };
+
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "nvidia-x11"
+    ];
 
     networking.hostName = "main";
 

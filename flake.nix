@@ -37,7 +37,11 @@
             };
             pkgs-unstable = import nixpkgs-unstable {
                 system = system;
-                config.allowUnfree = true;
+                config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+                    "spotify"
+                    "discord"
+                    "google-chrome"
+                ];
                 overlays = overlays;
             };
         in {
