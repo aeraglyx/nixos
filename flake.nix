@@ -31,10 +31,6 @@
                 (import ./overlays/blender.nix)
                 (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
             ];
-            pkgs = import nixpkgs {
-                system = system;
-                config.allowUnfree = true;
-            };
             pkgs-unstable = import nixpkgs-unstable {
                 system = system;
                 config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
