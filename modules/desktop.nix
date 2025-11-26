@@ -71,11 +71,6 @@
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
-    # services.clamav = {
-    #     daemon.enable = true;
-    #     updater.enable = false;
-    # };
-
     programs.hyprland = {
         enable = true;
         xwayland.enable = true;
