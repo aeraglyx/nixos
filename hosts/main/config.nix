@@ -57,5 +57,9 @@
         };
     };
 
+    environment.systemPackages = with pkgs-unstable; [
+        liquidctl
+    ];
+
     system.stateVersion = "24.11";
 }
