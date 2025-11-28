@@ -49,8 +49,6 @@
         killall
         bat
 
-        alacritty
-        ghostty
         neovim
         yazi
         tmux

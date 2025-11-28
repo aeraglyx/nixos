@@ -99,7 +99,11 @@
         hyprcursor
         hyprsunset
         sunsetr
+
         xdg-terminal-exec
+        alacritty
+        ghostty
+        kitty
 
         waybar
         rofi
