@@ -116,7 +116,8 @@
         # swaynotificationcenter
 
         wl-clipboard
-        # cliphist
+        cliphist
+        wtype
         nautilus
 
         hyprshot
