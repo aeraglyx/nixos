@@ -128,6 +128,7 @@
         ffmpeg
         mpv
         vlc
+        imagemagick
 
         zathura
         # libreoffice
