@@ -11,6 +11,11 @@
         randomEncryption.enable = true;
     }];
 
+    zramSwap = {
+        enable = true;
+        algorithm = "lz4";
+    };
+
     boot.blacklistedKernelModules = [ "nouveau" ];
 
     nix.settings = {
