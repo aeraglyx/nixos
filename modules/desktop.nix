@@ -112,8 +112,6 @@
 
         libnotify
         dunst
-        # mako
-        # swaynotificationcenter
 
         wl-clipboard
         cliphist
@@ -129,6 +127,7 @@
         mpv
         vlc
         imagemagick
+        exiftool
 
         zathura
         # libreoffice
@@ -139,17 +138,19 @@
         # davinci-resolve
         # gimp3
         # djv
-        # exiftool
 
-        spotify
+        # mpd
+        # rmpc
+        # spotify
+
         discord
         vesktop
+        signal-desktop
+
         # pkgs.parsec-bin
         parsecgaming.packages.x86_64-linux.parsecgaming
 
         pass
-        # obsidian
-        # clamav
 
         qutebrowser
         chromium
@@ -157,14 +158,12 @@
         tor-browser
 
         qmk
-        zola
         # vesc_tool
     ];
 
     fonts.packages = with pkgs-unstable; [
         nerd-fonts.caskaydia-cove
         nerd-fonts.caskaydia-mono
-        # nerd-fonts.recursive-mono
         font-awesome
     ];
 }
