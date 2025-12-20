@@ -26,14 +26,13 @@ let
                 openal
                 alsa-lib
                 pulseaudio
-            ] ++ lib.optionals (lib.versionAtLeast version "3.5") [
                 xorg.libSM
                 xorg.libICE
                 zlib
             ];
         in
 
-        stdenv.mkDerivation rec {
+        stdenv.mkDerivation {
             inherit pname version src;
 
             buildInputs = [ makeWrapper ];
@@ -50,15 +49,15 @@ let
                     mv blender-* blender
 
                     mkdir -p $out/share/applications
-                    mv ./blender/blender.desktop $out/share/applications/blender-new.desktop
+                    mv ./blender/blender.desktop $out/share/applications/blender-${version}.desktop
 
-                    substituteInPlace $out/share/applications/blender-new.desktop \
-                        --replace "Name=Blender" "Name=Blender New" \
-                        --replace "Exec=blender" "Exec=blender-new" \
-                        --replace "Icon=blender" "Icon=blender-new"
+                    substituteInPlace $out/share/applications/blender-${version}.desktop \
+                        --replace "Name=Blender" "Name=Blender ${version}" \
+                        --replace "Exec=blender" "Exec=blender-${version}" \
+                        --replace "Icon=blender" "Icon=blender-${version}"
 
                     mkdir $out/bin
-                    makeWrapper $out/libexec/blender/blender $out/bin/blender-new \
+                    makeWrapper $out/libexec/blender/blender $out/bin/blender-${version} \
                         --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib:${lib.makeLibraryPath libs}
 
                     patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
@@ -68,17 +67,17 @@ let
                         $out/libexec/blender/*/python/bin/python3*
                 '';
 
-            meta.mainProgram = "blender-new";
+            meta.mainProgram = "blender-${version}";
         };
 
 in {
 
     blender_5_0 = mkBlender {
         pname = "blender-bin";
-        version = "5.0.0";
+        version = "5.0.1";
         src = import <nix/fetchurl.nix> {
-            url = "https://cdn.builder.blender.org/download/daily/archive/blender-5.0.0-beta+v50.88d0f8820ef0-linux.x86_64-release.tar.xz";
-            hash = "sha256-fO8RaYN31OFjddouhrATT+4M5PDlmS0l3kfCVMMwnXE=";
+            url = "https://download.blender.org/release/Blender5.0/blender-5.0.1-linux-x64.tar.xz";
+            hash = "sha256-gBlYDuG3Ji5QX0GWoAI3zPdDyI0gWzjTQgFRBnbmCwk=";
         };
     };
 
