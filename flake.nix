@@ -20,15 +20,21 @@
             url = "github:DarthPJB/parsec-gaming-nix";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+        zen-browser = {
+            url = "github:youwen5/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
     };
 
-    outputs = { nixpkgs, nixpkgs-unstable, parsecgaming, ... } @ inputs:
+    outputs = { nixpkgs, nixpkgs-unstable, ... } @ inputs:
         let
             system = "x86_64-linux";
             lib = nixpkgs.lib;
             overlays = [
                 inputs.blender-bin.overlays.default
                 (import ./overlays/blender.nix)
+                (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.default; })
+                (final: prev: { parsecgaming = inputs.parsecgaming.packages.${system}.parsecgaming; })
                 (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
             ];
             pkgs-unstable = import nixpkgs-unstable {
@@ -45,7 +51,6 @@
             main = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;
-                    inherit parsecgaming;
                     # inherit custom-pkgs;
                 };
                 modules = [

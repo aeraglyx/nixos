@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, parsecgaming, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
     boot.kernelParams = [ "quiet" ];
@@ -88,11 +88,11 @@
         udiskie
         udisks2
 
-        clang-tools
-        gcc-arm-embedded-13
-        gnumake
+        # clang-tools
+        # gcc-arm-embedded-13
+        # gnumake
 
-        hyprpaper
+        # hyprpaper
         hyprlock
         hypridle
         hyprpicker
@@ -118,14 +118,14 @@
         wtype
         nautilus
 
-        hyprshot
+        # hyprshot
         (flameshot.override { enableWlrSupport = true; })
         gpu-screen-recorder
 
         playerctl
         ffmpeg
         mpv
-        vlc
+        # vlc
         imagemagick
         exiftool
 
@@ -148,7 +148,7 @@
         signal-desktop
 
         # pkgs.parsec-bin
-        parsecgaming.packages.x86_64-linux.parsecgaming
+        parsecgaming
 
         pass
 
@@ -156,8 +156,9 @@
         chromium
         google-chrome
         tor-browser
+        librewolf
+        zen-browser
 
-        qmk
         # vesc_tool
     ];
 

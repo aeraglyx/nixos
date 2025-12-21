@@ -160,7 +160,8 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "parsecgaming": "parsecgaming",
-        "vesc_tool-flake": "vesc_tool-flake"
+        "vesc_tool-flake": "vesc_tool-flake",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -196,6 +197,26 @@
       "original": {
         "owner": "lukash",
         "repo": "vesc_tool-flake",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765772419,
+        "narHash": "sha256-1mQ1K4fqebT54nz13rcRNjd6a+IbNLwLvYyR62EcyE8=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "227e836e43fe7985b4c4f8b0076446a6d66f3343",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }
