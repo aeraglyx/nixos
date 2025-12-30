@@ -39,44 +39,48 @@
     # environment.defaultPackages = [ ];
 
     environment.systemPackages = with pkgs-unstable; [
+
+        # CLI tools
         git
+        zoxide
+        ripgrep
+        tree-sitter
+        tree
         stow
         wget
         unzip
-        fzf
-        ripgrep
-        zoxide
         killall
-        bat
-
-        neovim
-        yazi
-        tmux
-        lazygit
-        starship
-        fastfetch
-        cmatrix
-        qrencode
-        tree
-        nix-tree
         nvd
+        tealdeer
         translate-shell
         libqalculate
         dos2unix
-        tealdeer
-        # pandoc
+        qrencode
+        bat
+        # direnv
+        # nix-direnv
 
-        # languages
+        # TUI apps
+        neovim
+        lazygit
+        yazi
+        tmux
+        fzf
+        nix-tree
+        starship
+        fastfetch
+        cmatrix
+
+        # Languages
         gcc13
         python313
 
-        # language servers
-        nixd
+        # LSPs
+        bash-language-server
         lua-language-server
         basedpyright
-        bash-language-server
-        rust-analyzer
         vscode-langservers-extracted
+        nixd
     ];
 
     environment.variables = {

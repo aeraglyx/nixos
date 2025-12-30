@@ -84,54 +84,58 @@
     };
 
     environment.systemPackages = with pkgs-unstable; [
-        usbutils
-        udiskie
-        udisks2
 
-        # clang-tools
-        # gcc-arm-embedded-13
-        # gnumake
-
-        # hyprpaper
+        # WM stuff
         hyprlock
         hypridle
         hyprpicker
         hyprcursor
-        hyprsunset
+        bibata-cursors
         sunsetr
+        waybar
+        rofi
+        nautilus
+        dunst
 
+        # Terminals
         xdg-terminal-exec
         alacritty
         ghostty
         kitty
 
-        waybar
-        rofi
-
-        bibata-cursors
-
+        # Utils
         libnotify
-        dunst
-
         wl-clipboard
         cliphist
         wtype
-        nautilus
 
-        # hyprshot
+        # Disc stuff
+        usbutils
+        udiskie
+        udisks2
+
+        # Capture
         (flameshot.override { enableWlrSupport = true; })
         gpu-screen-recorder
+        # hyprshot
 
+        # CLI tools
         playerctl
         ffmpeg
-        mpv
-        # vlc
         imagemagick
         exiftool
+        pass
 
+        # Viewers & players
+        mpv
         zathura
+        # vlc
+        # mpd
+        # rmpc
+        # spotify
         # libreoffice
 
+        # Media creation
         blender_4_5
         blender_5_0
         # (blender.override { cudaSupport = true; })
@@ -139,19 +143,12 @@
         # gimp3
         # djv
 
-        # mpd
-        # rmpc
-        # spotify
-
+        # Messaging
         discord
         vesktop
         signal-desktop
 
-        # pkgs.parsec-bin
-        parsecgaming
-
-        pass
-
+        # Browsers
         qutebrowser
         chromium
         google-chrome
@@ -159,6 +156,9 @@
         librewolf
         zen-browser
 
+        # Miscellaneous
+        parsecgaming
+        # pkgs.parsec-bin
         # vesc_tool
     ];
 
