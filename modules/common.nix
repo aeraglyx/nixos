@@ -36,6 +36,11 @@
 
     programs.zsh.enable = true;
 
+    programs.ssh = {
+        startAgent = true;
+        enableAskPassword = true;
+    };
+
     # environment.defaultPackages = [ ];
 
     environment.systemPackages = with pkgs-unstable; [
