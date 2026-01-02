@@ -5,6 +5,7 @@
         experimental-features = [ "nix-command" "flakes" ];
         warn-dirty = false;
         download-buffer-size = 524288000;
+        use-xdg-base-directories = true;
     };
 
     # nix.gc = {
