@@ -89,7 +89,7 @@
         nixd
     ];
 
-    environment.variables = {
+    environment.variables = rec {
         SUDO_EDITOR = "nvim";
         EDITOR = "nvim";
         VISUAL = "nvim";
@@ -100,9 +100,12 @@
         XDG_DATA_HOME   = "$HOME/.local/share";
         XDG_STATE_HOME  = "$HOME/.local/state";
 
-        ZDOTDIR = "$XDG_CONFIG_HOME/zsh";
-        _Z_DATA = "$XDG_CONFIG_HOME/z";
-        HISTFILE = "$XDG_STATE_HOME/bash_history";
-        PYTHON_HISTORY = "$XDG_STATE_HOME/python_history";
+        # ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
+        # _Z_DATA = "${XDG_CONFIG_HOME}/z";
+        HISTFILE = "${XDG_STATE_HOME}/bash/history";
+        PYTHON_HISTORY = "${XDG_STATE_HOME}/python/history";
+        CARGO_HOME = "${XDG_DATA_HOME}/cargo";
+        JULIA_DEPOT_PATH = "${XDG_DATA_HOME}/julia";
+        CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
     };
 }
