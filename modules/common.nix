@@ -63,8 +63,8 @@
         dos2unix
         qrencode
         bat
-        # direnv
-        # nix-direnv
+        direnv
+        nix-direnv
 
         # TUI apps
         neovim
