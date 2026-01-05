@@ -5,8 +5,8 @@
     boot.loader = {
         systemd-boot.enable = true;
         systemd-boot.configurationLimit = 3;
-        timeout = 1;
         efi.canTouchEfiVariables = true;
+        timeout = 0;
     };
 
     security = {
@@ -25,7 +25,7 @@
         enable = true;
         settings = rec {
             initial_session = {
-                command = "Hyprland";
+                command = "start-hyprland";
                 user = "aeraglyx";
             };
             default_session = initial_session;
@@ -41,13 +41,11 @@
     };
 
     environment.variables = {
-        # USERXSESSION = "$XDG_CACHE_HOME/X11/xsession";
-        # USERXSESSIONRC = "$XDG_CACHE_HOME/X11/xsessionrc";
-        # ALTUSERXSESSION = "$XDG_CACHE_HOME/X11/Xsession";
         ERRFILE = "$XDG_CACHE_HOME/X11/xsession-errors";
     };
 
     environment.sessionVariables = {
+        TERMINAL = "ghostty";
         NIXOS_OXONE_WL = "1";
         DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
     };
@@ -129,6 +127,7 @@
         # Viewers & players
         mpv
         zathura
+        loupe
         # vlc
         # mpd
         # rmpc
@@ -145,7 +144,6 @@
 
         # Messaging
         discord
-        vesktop
         signal-desktop
 
         # Browsers
@@ -157,7 +155,7 @@
         zen-browser
 
         # Miscellaneous
-        parsecgaming
+        # parsecgaming
         # pkgs.parsec-bin
         # vesc_tool
     ];
