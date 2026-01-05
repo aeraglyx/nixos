@@ -28,18 +28,11 @@
     ];
 
     networking.hostName = "main";
+    networking.useNetworkd = true;
 
-    networking.useDHCP = false;
+    systemd.network.wait-online.enable = false;
+
     services.resolved.enable = true;
-    systemd.network = {
-        enable = true;
-        wait-online.anyInterface = true;
-        networks."40-enp0s31f6" = {
-            matchConfig = { Name = "enp0s31f6"; };
-            networkConfig = { DHCP = "yes"; };
-        };
-    };
-
     services.avahi.enable = true;
     services.avahi.nssmdns4 = true;
 
