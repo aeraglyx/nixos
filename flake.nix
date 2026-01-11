@@ -46,6 +46,7 @@
                 ];
                 overlays = overlays;
             };
+            custom-pkgs = import ./modules/custom-pkgs.nix { inherit pkgs-unstable; };
         in {
         nixosConfigurations = {
             main = lib.nixosSystem {
@@ -73,7 +74,7 @@
         devShells.${system} = {
             blender = pkgs-unstable.mkShell {
                 packages = [
-                    (pkgs-unstable.python311.withPackages (ps: with ps; [
+                    (pkgs-unstable.python314.withPackages (ps: with ps; [
                         custom-pkgs.fake-bpy-module
                         # pyside6
                     ]))
