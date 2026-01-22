@@ -33,6 +33,7 @@
     systemd.network.wait-online.enable = false;
 
     services.resolved.enable = true;
+    services.resolved.extraConfig = "MulticastDNS=yes";
     services.avahi.enable = true;
     services.avahi.nssmdns4 = true;
 
@@ -46,7 +47,7 @@
         # media-session.enable = true;  # might be needed in the future
     };
 
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware = {
         graphics.enable = true;
@@ -57,6 +58,11 @@
             open = false;
             nvidiaSettings = false;
         };
+    };
+
+    services.syncthing = {
+        enable = true;
+        openDefaultPorts = true;
     };
 
     environment.systemPackages = with pkgs-unstable; [
