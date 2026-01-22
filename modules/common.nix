@@ -8,12 +8,6 @@
         use-xdg-base-directories = true;
     };
 
-    # nix.gc = {
-    #     automatic = true;
-    #     dates = "weekly";
-    #     options = "--delete-older-than 7d";
-    # };
-
     time.timeZone = "Europe/Prague";
     i18n.defaultLocale = "en_US.UTF-8";
 
@@ -75,6 +69,7 @@
         nix-tree
         starship
         fastfetch
+        btop
         cmatrix
 
         # Languages
