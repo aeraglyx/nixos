@@ -81,4 +81,13 @@ in {
         };
     };
 
+    blender_5_1 = mkBlender {
+        pname = "blender-bin";
+        version = "5.1.0";
+        src = import <nix/fetchurl.nix> {
+            url = "https://cdn.builder.blender.org/download/daily/blender-5.1.0-alpha+main.28e68221175f-linux.x86_64-release.tar.xz";
+            hash = "sha256-Yfda7gGJGgMQ01mj2te/ZnkPpOrBAb/vZHpVRWzipxE=";
+        };
+    };
+
 }
