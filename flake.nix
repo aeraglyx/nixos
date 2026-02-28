@@ -43,6 +43,7 @@
                     "spotify"
                     "discord"
                     "google-chrome"
+                    "parsec-bin"
                 ];
                 overlays = overlays;
             };

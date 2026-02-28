@@ -157,7 +157,7 @@
 
         # Miscellaneous
         # parsecgaming
-        # pkgs.parsec-bin
+        parsec-bin
         # vesc_tool
     ];
 
