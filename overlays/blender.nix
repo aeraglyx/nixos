@@ -10,11 +10,16 @@ let
             libs = [
                 wayland
                 libdecor
-                xorg.libX11
-                xorg.libXi
-                xorg.libXxf86vm
-                xorg.libXfixes
-                xorg.libXrender
+
+                # xorg
+                libx11
+                libxi
+                libxxf86vm
+                libxfixes
+                libxrender
+                libsm
+                libice
+
                 libxkbcommon
                 libGLU
                 libglvnd
@@ -26,8 +31,6 @@ let
                 openal
                 alsa-lib
                 pulseaudio
-                xorg.libSM
-                xorg.libICE
                 zlib
             ];
         in
@@ -85,8 +88,8 @@ in {
         pname = "blender-bin";
         version = "5.1.0";
         src = import <nix/fetchurl.nix> {
-            url = "https://cdn.builder.blender.org/download/daily/blender-5.1.0-alpha+main.28e68221175f-linux.x86_64-release.tar.xz";
-            hash = "sha256-Yfda7gGJGgMQ01mj2te/ZnkPpOrBAb/vZHpVRWzipxE=";
+            url = "https://cdn.builder.blender.org/download/daily/blender-5.1.0-beta+v51.79ee6b5f9ffe-linux.x86_64-release.tar.xz";
+            hash = "sha256-rrKHD1lmGV6aLEV+5hQ4VFOUENj5XSXeI32OigBKEKc=";
         };
     };
 
