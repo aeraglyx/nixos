@@ -23,10 +23,17 @@
     };
 
     system.activationScripts = {
-        diffGens = ''
-            PATH=$PATH:${lib.makeBinPath [ pkgs.nix ]}
-            ${pkgs.nvd}/bin/nvd diff /run/current-system "$systemConfig"
-        '';
+        diff = {
+            supportsDryActivation = true;
+            text = ''
+                if [ -e /run/current-system ]; then
+                    echo
+                    PATH=$PATH:${lib.makeBinPath [ pkgs.nix pkgs.nvd ]}
+                    nvd diff /run/current-system "$systemConfig" | tail -n +3
+                    echo
+                fi
+            '';
+        };
     };
 
     programs.zsh.enable = true;
