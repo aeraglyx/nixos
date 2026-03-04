@@ -94,12 +94,12 @@
         rofi
         nautilus
         dunst
+        showmethekey
 
         # Terminals
         xdg-terminal-exec
-        alacritty
         ghostty
-        kitty
+        alacritty
 
         # Utils
         libnotify
@@ -127,7 +127,11 @@
         # Viewers & players
         mpv
         zathura
-        loupe
+        feh
+        # loupe
+        # nsxiv
+        # qimgv
+        # nomacs
         # vlc
         # mpd
         # rmpc
@@ -135,7 +139,6 @@
         # libreoffice
 
         # Media creation
-        blender_4_5
         blender_5_0
         blender_5_1
         # (blender.override { cudaSupport = true; })
