@@ -69,6 +69,22 @@
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
+    services.mpd = {
+        enable = true;
+        user = "aeraglyx";
+        musicDirectory = "/home/aeraglyx/moosic";
+        extraConfig = ''
+            audio_output {
+                type "pipewire"
+                name "PipeWire Output"
+            }
+        '';
+    };
+
+    systemd.services.mpd.environment = {
+        XDG_RUNTIME_DIR = "/run/user/1000";
+    };
+
     programs.hyprland = {
         enable = true;
         xwayland.enable = true;
@@ -133,10 +149,14 @@
         # qimgv
         # nomacs
         # vlc
-        # mpd
-        # rmpc
-        # spotify
         # libreoffice
+
+        # Music
+        mpc
+        mpd-mpris
+        rmpc
+        inori
+        # spotify
 
         # Media creation
         blender_5_0
