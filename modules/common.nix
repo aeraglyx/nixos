@@ -36,6 +36,8 @@
         };
     };
 
+    security.sudo.extraConfig = "Defaults pwfeedback";
+
     programs.zsh.enable = true;
 
     programs.ssh = {
