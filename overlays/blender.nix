@@ -88,8 +88,8 @@ in {
         pname = "blender-bin";
         version = "5.1.0";
         src = import <nix/fetchurl.nix> {
-            url = "https://cdn.builder.blender.org/download/daily/blender-5.1.0-beta+v51.79ee6b5f9ffe-linux.x86_64-release.tar.xz";
-            hash = "sha256-rrKHD1lmGV6aLEV+5hQ4VFOUENj5XSXeI32OigBKEKc=";
+            url = "https://download.blender.org/release/Blender5.1/blender-5.1.0-linux-x64.tar.xz";
+            hash = "sha256-fyR1mQYTyNTHrFaXgD/PQNCVQcH9jCOTb0sHoWmpIMc=";
         };
     };
 
