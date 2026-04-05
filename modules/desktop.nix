@@ -154,15 +154,17 @@
         # Music
         mpc
         mpd-mpris
+        beets
         rmpc
         inori
-        # spotify
+        ncmpcpp
+        # musikcube  # not using mpd
+        # euphonica  # gui
 
         # Media creation
         blender_5_0
         blender_5_1
         # (blender.override { cudaSupport = true; })
-        # davinci-resolve
         # gimp3
         # djv
 
