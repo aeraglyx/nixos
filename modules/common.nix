@@ -68,6 +68,7 @@
         bat
         direnv
         nix-direnv
+        eza
 
         # TUI apps
         neovim
