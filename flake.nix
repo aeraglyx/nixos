@@ -8,22 +8,22 @@
             url = "github:nix-community/NixOS-WSL";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
-        blender-bin = {
-            url = "github:edolstra/nix-warez?dir=blender";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
-        vesc_tool-flake = {
-            url = "github:lukash/vesc_tool-flake";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
-        parsecgaming = {
-            url = "github:DarthPJB/parsec-gaming-nix";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
-        zen-browser = {
-            url = "github:youwen5/zen-browser-flake";
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
-        };
+        # blender-bin = {
+        #     url = "github:edolstra/nix-warez?dir=blender";
+        #     inputs.nixpkgs.follows = "nixpkgs-unstable";
+        # };
+        # parsecgaming = {
+        #     url = "github:DarthPJB/parsec-gaming-nix";
+        #     inputs.nixpkgs.follows = "nixpkgs-unstable";
+        # };
+        # zen-browser = {
+        #     url = "github:youwen5/zen-browser-flake";
+        #     inputs.nixpkgs.follows = "nixpkgs-unstable";
+        # };
+        # vesc_tool-flake = {
+        #     url = "github:lukash/vesc_tool-flake";
+        #     inputs.nixpkgs.follows = "nixpkgs-unstable";
+        # };
     };
 
     outputs = { nixpkgs, nixpkgs-unstable, ... } @ inputs:
@@ -31,16 +31,15 @@
             system = "x86_64-linux";
             lib = nixpkgs.lib;
             overlays = [
-                inputs.blender-bin.overlays.default
+                # inputs.blender-bin.overlays.default
                 (import ./overlays/blender.nix)
-                (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.default; })
-                (final: prev: { parsecgaming = inputs.parsecgaming.packages.${system}.parsecgaming; })
-                (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
+                # (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.default; })
+                # (final: prev: { parsecgaming = inputs.parsecgaming.packages.${system}.parsecgaming; })
+                # (final: prev: { vesc_tool = inputs.vesc_tool-flake.packages.${system}.default; })
             ];
             pkgs-unstable = import nixpkgs-unstable {
                 system = system;
                 config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-                    "spotify"
                     "discord"
                     "google-chrome"
                     "parsec-bin"

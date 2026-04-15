@@ -157,7 +157,6 @@
         beets
         rmpc
         inori
-        ncmpcpp
         # musikcube  # not using mpd
         # euphonica  # gui
 
@@ -178,11 +177,11 @@
         google-chrome
         tor-browser
         librewolf
-        zen-browser
+        # zen-browser
 
         # Miscellaneous
-        # parsecgaming
         parsec-bin
+        # parsecgaming
         # vesc_tool
     ];
 
