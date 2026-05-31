@@ -1,0 +1,12 @@
+[user]
+    name = aeraglyx
+    email = 48166821+aeraglyx@users.noreply.github.com
+
+[pull]
+    rebase = true
+
+[core]
+    editor = nvim
+
+[init]
+    defaultBranch = main

@@ -1,0 +1,200 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top",
+    // "position": "bottom", // top | bottom | left | right
+    // "height": 30,
+    "spacing": 12,
+    "margin": "12 12 0 12",
+    "modules-left": [
+        "custom/os",
+        "hyprland/workspaces",
+        "mpris"
+        // "hyprland/windowcount"
+        // "hyprland/window"
+        // "custom/song"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/screen-recorder",
+        "custom/time-tracker",
+        "custom/vpn",
+        "network",
+        "pulseaudio",
+        "group/hardware"
+        // "custom/notification"
+        // "custom/nightlight",
+    ],
+    "custom/os": {
+        "format": "",
+        "tooltip-format": "nixos, btw"
+    },
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+        // "ignore-workspaces": ["7", "9"]
+    },
+    "hyprland/windowcount": {
+        "format": "[{}]",
+        // "format-empty": "",
+        // "format-windowed": "[T]",
+        // "format-fullscreen": "[{}]",
+        "hide-empty-text": true,
+        "separate-outputs": true
+    },
+    "hyprland/window": {
+        "format": "{title}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "$1",
+            "Mozilla Firefox": "New Tab",
+            "(.*) - Blender .*": "$1",
+            "(.*) — Tor Browser": "$1"
+        },
+        "max-length": 64,
+        "separate-outputs": true
+    },
+    "custom/song": {
+        "format": "  {}",
+        "tooltip": false,
+        "exec": "python ~/.config/waybar/scripts/song.py",
+        "interval": 1,
+        "on-click": "hyprctl dispatch workspace 7"
+    },
+    "mpris": {
+        "format": "{player_icon} {artist} | {title}",
+        "format-paused": "{player_icon} PAUSED",
+        "format-stopped": "{player_icon} STOPPED",
+        "artist-len": 18,
+        "title-len": 36,
+        "ellipsis": "...",
+        "player-icons": {
+            "default": " ",
+            "firefox": " ",
+            "spotify": " "
+        }
+    },
+    "custom/nightlight": {
+        "format": " {}",
+        // "tooltip": false,
+        "exec": "python ~/.config/waybar/scripts/night_light.py",
+        "return-type": "json",
+        "interval": 300
+        // "hide-empty-text": true,
+        // "on-click": ""
+    },
+    "custom/vpn": {
+        "format": " {}",
+        "exec": "echo VPN",
+        "exec-if": "[[ $(mullvad status | head -n 1) != Connected ]]",
+        "interval": 5,
+        "on-click": "mullvad-vpn"
+    },
+    "custom/time-tracker": {
+        "format": "󱎫 {}",
+        "exec": "cat ~/.local/share/time/status | sed 's/.*/\\U&/'",
+        "interval": 2
+    },
+    "custom/screen-recorder": {
+        "format": " REC",
+        "exec": "pgrep -f gpu-screen-recorder",
+        "interval": 2,
+        "on-click": "pkill -SIGINT -f gpu-screen-recorder"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%A %Y-%m-%d}"
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "custom/gpu",
+            "memory",
+            "disk"
+        ]
+    },
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 5,
+        "states": {
+            "critical": 80
+        }
+    },
+    "custom/gpu": {
+        "format": "GPU {text}%",
+        "interval": 5,
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+        "states": {
+            // TODO: why no worky
+            "critical": 80
+        }
+    },
+    "memory": {
+        "format": "RAM {percentage}%",
+        "interval": 5,
+        "states": {
+            "critical": 80
+        }
+    },
+    "disk": {
+        "format": " {percentage_used}%",
+        "tooltip-format": "{used} / {total}",
+        "interval": 30,
+        "path": "/",
+        "states": {
+            "critical": 80
+        }
+    },
+    "network": {
+        "format": "",
+        "format-disconnected": "touch some grass bro",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        // FIXME: works every other scroll
+        "scroll-step": 2.5, // percentage, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "states": {
+            "normal": 35,
+            "critical": 5
+        },
+        "on-click": "pavucontrol"
+    }
+    // "custom/notification": {
+    //     "tooltip": false,
+    //     "format": "{icon} {}",
+    //     "format-icons": {
+    //         "notification": " ",
+    //         "none": " ",
+    //         "dnd-notification": " ",
+    //         "dnd-none": " ",
+    //         "inhibited-notification": " ",
+    //         "inhibited-none": " ",
+    //         "dnd-inhibited-notification": " ",
+    //         "dnd-inhibited-none": " "
+    //     },
+    //     "return-type": "json",
+    //     "exec-if": "which swaync-client",
+    //     "exec": "swaync-client -swb",
+    //     "on-click": "swaync-client -t -sw",
+    //     "on-click-right": "swaync-client -d -sw",
+    //     "escape": true
+    // }
+}

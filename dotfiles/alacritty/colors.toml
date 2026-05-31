@@ -1,0 +1,31 @@
+[colors.primary]
+foreground = "#c8c8c8"
+background = "#202020"
+
+[colors.cursor]
+text = "#202020"
+cursor = "#ffffff"
+
+[colors.normal]
+black = "#525252"
+red = "#fd7eaa"
+green = "#97cbb8"
+yellow = "#deb39c"
+blue = "#96c6dd"
+magenta = "#bcb8e2"
+cyan = "#b2c4d0"
+white = "#cccccc"
+
+[colors.bright]
+black = "#888888"
+red = "#fd7eaa"
+green = "#97cbb8"
+yellow = "#deb39c"
+blue = "#96c6dd"
+magenta = "#bcb8e2"
+cyan = "#b2c4d0"
+white = "#ffffff"
+
+# TODO:
+[colors.dim]
+white = "#888888"

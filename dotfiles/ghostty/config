@@ -1,0 +1,22 @@
+theme = onyx
+custom-shader = shaders/cursor_smear.glsl
+
+font-family = Caskaydia Mono Nerd Font
+font-size = 14
+
+window-padding-x = 16
+window-padding-y = 16
+window-padding-balance = true
+
+adjust-cell-height = 1
+adjust-cell-width = -1
+adjust-box-thickness = 1
+adjust-cursor-thickness = 1
+adjust-underline-thickness = 1
+adjust-underline-position = 1
+
+confirm-close-surface = false
+selection-clear-on-typing = true
+resize-overlay = never
+gtk-single-instance = false
+scrollbar = never

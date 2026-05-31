@@ -1,0 +1,160 @@
+@import "colors"
+
+* {
+    font: "Caskaydia Mono Nerd Font SemiBold 14";
+    background-color: transparent;
+    text-color: @text;
+    highlight: none;
+}
+
+window {
+    width: 800px;
+    padding: 12;
+    background-color: @base;
+    border: 2;
+    border-color: @meh;
+    border-radius: 10px;
+}
+
+mainbox {
+    padding: 0;
+    border: 0;
+    spacing: 0;
+}
+
+inputbar {
+    padding: 20px;
+    spacing: 0px;
+    text-color: @text;
+    children: [
+        "prompt",
+        "textbox-prompt-colon",
+        "entry",
+        "num-filtered-rows",
+        "textbox-num-sep",
+        "num-rows"
+    ];
+}
+
+prompt {
+    spacing: 0;
+    text-color: @dim;
+}
+
+textbox-prompt-colon {
+    margin: 0px 15px 0px 0px;
+    expand: false;
+    str: ":";
+    text-color: @dim;
+}
+
+entry {
+    text-color: @text;
+    cursor: text;
+    spacing: 0;
+    placeholder-color: @dim;
+    // placeholder: "...";
+}
+
+listview {
+    // padding: 2px 0px 0px ;
+    scrollbar: false;
+    spacing: 4px;
+    fixed-height: 0;
+    lines: 6;
+}
+
+element {
+    padding: 14px 20px;
+    spacing: 20px;
+    cursor: pointer;
+    border: 0;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @text;
+}
+
+element selected {
+    background-color: #292929;
+    border: 2;
+    border-color: @smol;
+    // background-color: @blue;
+    // text-color: @base;
+}
+
+// element normal.urgent {
+//     background-color: @urgent-background;
+//     text-color:       @urgent-foreground;
+// }
+// element selected.urgent {
+//     background-color: @selected-urgent-background;
+//     text-color:       @selected-urgent-foreground;
+// }
+
+element-icon {
+    background-color: transparent;
+    size: 1.0em;
+    cursor: inherit;
+    text-color: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    cursor: inherit;
+    highlight: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+message {
+    padding: 10px;
+    border: 0;
+}
+
+textbox {
+    text-color: @text;
+}
+
+scrollbar {
+    width: 4px;
+    padding: 0;
+    handle-width: 8px;
+    border: 0;
+    handle-color: @text;
+}
+
+sidebar {
+    border-color: @text;
+}
+
+button {
+    cursor: pointer;
+    spacing: 0;
+    text-color: @text;
+}
+
+button selected {
+    background-color: @text;
+    text-color: @base;
+}
+
+num-filtered-rows {
+    expand: false;
+    text-color: @dim;
+}
+
+num-rows {
+    expand: false;
+    text-color: @dim;
+}
+
+textbox-num-sep {
+    expand: false;
+    str: "/";
+    text-color: @dim;
+}
+
+case-indicator {
+    spacing: 0;
+    text-color: @text;
+}

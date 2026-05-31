@@ -1,0 +1,36 @@
+disableStartupPopups: true
+
+gui:
+
+  theme:
+    defaultFgColor:
+      - "#c8c8c8"
+    activeBorderColor:
+      - "#c8c8c8"
+      - bold
+    inactiveBorderColor:
+      - "#525252"
+    searchingActiveBorderColor:
+      - green
+      - bold
+    optionsTextColor:
+      - "#525252"
+    selectedLineBgColor:
+      - "#383838"
+    inactiveViewSelectedLineBgColor:
+      - "#383838"
+    # cherryPickedCommitBgColor:
+    #   - "#45475a"
+    # cherryPickedCommitFgColor:
+    #   - "#89b4fa"
+    # unstagedChangesColor:
+    #   - red
+
+  authorColors:
+    "*": "#8b8b8b"
+
+  scrollHeight: 1
+  nerdFontsVersion: "3"
+  showFileIcons: false
+  showBottomLine: false
+  showRootItemInFileTree: false

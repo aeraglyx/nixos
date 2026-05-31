@@ -1,0 +1,56 @@
+theme[main_bg]="20"
+theme[main_fg]="#c8"
+theme[title]="#c8"
+theme[hi_fg]="#96c6dd"
+
+theme[selected_bg]="#c8"
+theme[selected_fg]="#20"
+theme[inactive_fg]="#52"
+
+theme[cpu_box]="#8b"
+theme[mem_box]="#8b"
+theme[net_box]="#8b"
+theme[proc_box]="#8b"
+
+theme[div_line]="#36"
+
+theme[proc_misc]="#8b"
+# theme[proc_pause_bg]=""
+# theme[proc_follow_bg]=""
+# theme[proc_banner_bg]=""
+# theme[proc_banner_fg]=""
+
+# theme[followed_bg]=""
+# theme[followed_fg]=""
+
+theme[temp_start]="#52"
+theme[temp_mid]=""
+theme[temp_end]="#c8"
+
+theme[cpu_start]="#52"
+theme[cpu_mid]=""
+theme[cpu_end]="#c8"
+
+theme[free_start]="#52"
+theme[free_mid]=""
+theme[free_end]="#c8"
+
+theme[cached_start]="#52"
+theme[cached_mid]=""
+theme[cached_end]="#c8"
+
+theme[available_start]="#52"
+theme[available_mid]=""
+theme[available_end]="#c8"
+
+theme[used_start]="#52"
+theme[used_mid]=""
+theme[used_end]="#c8"
+
+theme[download_start]="#52"
+theme[download_mid]=""
+theme[download_end]="#c8"
+
+theme[upload_start]="#52"
+theme[upload_mid]=""
+theme[upload_end]="#c8"

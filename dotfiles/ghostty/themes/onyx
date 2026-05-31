@@ -1,0 +1,26 @@
+background = #202020
+foreground = #c8c8c8
+
+cursor-color = #c8c8c8
+cursor-text = #202020
+
+selection-background = #96c6dd
+selection-foreground = #202020
+
+palette = 0=#525252
+palette = 1=#fd7eaa
+palette = 2=#97cbb8
+palette = 3=#deb39c
+palette = 4=#96c6dd
+palette = 5=#bcb8e2
+palette = 6=#b2c4d0
+palette = 7=#c8c8c8
+
+palette = 8=#8b8b8b
+palette = 9=#fd7eaa
+palette = 10=#97cbb8
+palette = 11=#deb39c
+palette = 12=#96c6dd
+palette = 13=#bcb8e2
+palette = 14=#b2c4d0
+palette = 15=#ffffff

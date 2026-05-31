@@ -1,0 +1,114 @@
+@import url("colors.css");
+
+* {
+    font-family: "Caskaydia Cove Nerd Font", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    min-height: 10px;
+}
+
+window#waybar {
+    color: @text;
+    background: transparent;
+    /* background: @base; */
+    /* transition-property: background-color; */
+    /* transitionduration: .5s; */
+    /* border-radius: 16px; */
+}
+
+#waybar.empty #window {
+    color: transparent;
+    background: none;
+}
+
+.modules-left > *:not(:first-child),
+.modules-center > *,
+.modules-right > * {
+    background: @base;
+    border: 2px solid @smol;
+    border-radius: 8px;
+}
+
+#custom-song,
+#window,
+#mpris,
+.modules-center > * > *,
+.modules-right > * > * {
+    padding: 3px 12px 2px;
+    color: inherit;
+}
+
+/* group spacing */
+.modules-right > * > * > *:not(:last-child) > * {
+    margin-right: 18;
+}
+
+tooltip {
+    background: @base;
+    border: 2px solid @smol;
+    border-radius: 8px;
+}
+tooltip label {
+    color: @text;
+}
+
+button {
+    background: transparent;
+    color: @text;
+    padding: 0 8px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    transition: none;
+    padding-top: 1px;
+}
+
+button:not(:last-child) {
+    margin-right: 0px;
+}
+
+button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: @smol;
+}
+
+button.active {
+    background: @blue;
+    color: @base;
+}
+
+#taskbar button.active {
+    background: @smol;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#custom-os {
+    font-size: 22px;
+    margin-left: 4px;
+    margin-right: 8px;
+}
+
+#custom-time-tracker {
+    color: @green;
+}
+
+#mpris.paused {
+    color: @dim;
+}
+
+#pulseaudio.muted,
+#pulseaudio:not(.normal),
+#pulseaudio.critical,
+#network.disconnected,
+#cpu.critical,
+#custom-gpu.critical,
+#memory.critical,
+#disk.critical,
+#custom-screen-recorder,
+#custom-vpn {
+    color: @red;
+}

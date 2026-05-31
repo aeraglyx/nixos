@@ -1,0 +1,12 @@
+[general]
+import = [ "~/.config/alacritty/colors.toml" ]
+
+[window]
+padding = {x = 20, y = 20}
+dynamic_padding = true
+
+[font]
+size = 14.0
+normal = { family = "Caskaydia Cove Nerd Font" }
+builtin_box_drawing = false
+offset = {x = -1, y = 1}

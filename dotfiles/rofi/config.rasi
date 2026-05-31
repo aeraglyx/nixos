@@ -1,0 +1,6 @@
+configuration {
+    sidebar-mode: false;
+    fixed-num-lines: true;
+}
+
+@theme "theme"

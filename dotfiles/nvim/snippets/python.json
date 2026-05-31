@@ -1,0 +1,34 @@
+{
+    "import_bpy": {
+        "prefix": "ibp",
+        "body": [
+            "import bpy"
+        ]
+    },
+    "blender_debug": {
+        "prefix": "blde",
+        "body": [
+            "self.report({'DEBUG'}, f\"{${1:variable}}\")"
+        ]
+    },
+    "blender_operator": {
+        "prefix": "blop",
+        "body": [
+            "class ${1:ADDON}_OT_${2:operator}(bpy.types.Operator):",
+            "    bl_idname = \"${3:addon}.${2}\"",
+            "    bl_label = \"${4:TODO}\"",
+            "    bl_description = \"${5:TODO}\"",
+            "    bl_options = {'UNDO'}",
+            "",
+            "    @classmethod",
+            "    def poll(cls, context):",
+            "        return True",
+            "",
+            "    def execute(self, context):",
+            "",
+            "        $0",
+            "",
+            "        return {'FINISHED'}"
+        ]
+    }
+}

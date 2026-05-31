@@ -1,0 +1,15 @@
+--color=bg:#202020
+--color=bg+:#202020
+--color=spinner:blue
+--color=hl:blue
+--color=hl+:blue
+--color=fg:#525252
+--color=fg+:#c8c8c8
+--color=header:blue
+--color=info:#525252
+--color=pointer:blue
+--color=marker:#B7BDF8
+--color=prompt:#525252
+--color=selected-bg:#494D64
+--color=border:#383838
+--color=label:cyan
