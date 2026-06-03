@@ -1,7 +1,7 @@
 theme = onyx
 custom-shader = shaders/cursor_smear.glsl
 
-font-family = Caskaydia Mono Nerd Font
+font-family = Caskaydia Mono Nerd Font Mono
 font-size = 14
 
 window-padding-x = 16
