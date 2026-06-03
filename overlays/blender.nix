@@ -75,21 +75,12 @@ let
 
 in {
 
-    blender_5_0 = mkBlender {
-        pname = "blender-bin";
-        version = "5.0.1";
-        src = import <nix/fetchurl.nix> {
-            url = "https://download.blender.org/release/Blender5.0/blender-5.0.1-linux-x64.tar.xz";
-            hash = "sha256-gBlYDuG3Ji5QX0GWoAI3zPdDyI0gWzjTQgFRBnbmCwk=";
-        };
-    };
-
     blender_5_1 = mkBlender {
         pname = "blender-bin";
-        version = "5.1.0";
+        version = "5.1.2";
         src = import <nix/fetchurl.nix> {
-            url = "https://download.blender.org/release/Blender5.1/blender-5.1.0-linux-x64.tar.xz";
-            hash = "sha256-fyR1mQYTyNTHrFaXgD/PQNCVQcH9jCOTb0sHoWmpIMc=";
+            url = "https://download.blender.org/release/Blender5.1/blender-5.1.2-linux-x64.tar.xz";
+            hash = "sha256-qsyzVfUBg5ebaYvM50ZxA6diYbX6WfSXIpWEJmKihfs=";
         };
     };
 
