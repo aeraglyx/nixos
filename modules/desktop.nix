@@ -69,6 +69,9 @@
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
 
+    services.tailscale.enable = true;
+    services.tailscale.package = pkgs-unstable.tailscale;
+
     services.mpd = {
         enable = true;
         user = "aeraglyx";
@@ -122,6 +125,9 @@
         wl-clipboard
         cliphist
         wtype
+        grim
+        slurp
+        tesseract
 
         # Disc stuff
         usbutils
@@ -161,9 +167,7 @@
         # euphonica  # gui
 
         # Media creation
-        blender_5_0
         blender_5_1
-        # (blender.override { cudaSupport = true; })
         # gimp3
         # djv
 
@@ -180,11 +184,11 @@
         # zen-browser
 
         # Miscellaneous
-        parsec-bin
-        # parsecgaming
-        # vesc_tool
+        moonlight-qt
+        # parsec-bin
     ];
 
+    fonts.fontDir.enable = true;
     fonts.packages = with pkgs-unstable; [
         nerd-fonts.caskaydia-cove
         nerd-fonts.caskaydia-mono

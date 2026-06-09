@@ -55,7 +55,6 @@
         ripgrep
         tree-sitter
         tree
-        stow
         wget
         unzip
         killall
