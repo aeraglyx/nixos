@@ -34,3 +34,4 @@ gui:
   showFileIcons: false
   showBottomLine: false
   showRootItemInFileTree: false
+  sidePanelWidth: 0.4
