@@ -75,13 +75,15 @@
     services.mpd = {
         enable = true;
         user = "aeraglyx";
-        musicDirectory = "/home/aeraglyx/moosic";
-        extraConfig = ''
-            audio_output {
-                type "pipewire"
-                name "PipeWire Output"
-            }
-        '';
+        settings = {
+            music_directory = "/home/aeraglyx/moosic";
+            audio_output = [
+                {
+                    type = "pipewire";
+                    name = "PipeWire Output";
+                }
+            ];
+        };
     };
 
     systemd.services.mpd.environment = {

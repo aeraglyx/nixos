@@ -25,6 +25,7 @@
 
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "nvidia-x11"
+        "nvidia-kernel-modules"
     ];
 
     networking.hostName = "main";
@@ -33,7 +34,7 @@
     systemd.network.wait-online.enable = false;
 
     services.resolved.enable = true;
-    services.resolved.extraConfig = "MulticastDNS=yes";
+    services.resolved.settings.Resolve.MulticastDNS = true;
     services.avahi.enable = true;
     services.avahi.nssmdns4 = true;
 
@@ -57,6 +58,7 @@
             powerManagement.finegrained = false;
             open = false;
             nvidiaSettings = false;
+            package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
         };
     };
 
