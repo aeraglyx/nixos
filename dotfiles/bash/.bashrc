@@ -9,13 +9,13 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 alias res="$SHELL"
 
-flake="--flake path:/home/aeraglyx/nixos#${HOSTNAME}"
+flake="--flake path:${HOME}/nixos#${HOSTNAME}"
 alias nrs="sudo nixos-rebuild switch $flake"
 alias nrt="sudo nixos-rebuild test $flake"
 alias nrd="sudo nixos-rebuild dry-activate $flake"
 alias nfu="sudo nix flake update --flake ~/nixos"
 alias ncg="sudo nix-collect-garbage"
-alias ntr="nix-tree /home/aeraglyx/nixos#nixosConfigurations.${HOSTNAME}.config.system.build.toplevel"
+alias ntr="nix-tree ${HOME}/nixos#nixosConfigurations.${HOSTNAME}.config.system.build.toplevel"
 alias nso="sudo nix-store --optimize"
 alias nd="nix develop"
 alias ns="nix-shell"
@@ -39,14 +39,18 @@ alias ser="sh scripts/serve.sh"
 alias sun="sunsetr --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00:00' '2026-01-01 21:00:00' 1440"
 alias sunc="cargo run -- --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00:00' '2026-01-01 21:00:00' 1440"
 
+dots="$HOME/nixos"
+proj="$HOME/projects"
 cmd="-c 'Telescope find_files'"
-alias en="cd ~/nixos/ && nvim $cmd ."
-alias ed="cd ~/dotfiles/ && nvim $cmd ."
-alias eb="cd ~/dotfiles/bash/ && nvim .bashrc"
-alias eh="cd ~/dotfiles/hypr/.config/hypr/ && nvim $cmd ."
-alias ev="cd ~/dotfiles/nvim/.config/nvim/ && nvim $cmd ."
-alias ec="cd ~/projects/onyx.nvim/ && nvim $cmd ."
-alias kb="cd ~/projects/qmk_userspace/ && nvim $cmd ."
+
+alias en="cd $dots/ && nvim $cmd ."
+alias ed="cd $dots/dotfiles/ && nvim $cmd ."
+alias eb="cd $dots/dotfiles/bash/ && nvim .bashrc"
+alias eh="cd $dots/dotfiles/hypr/ && nvim $cmd ."
+alias ev="cd $dots/dotfiles/nvim/ && nvim $cmd ."
+
+alias ec="cd $proj/onyx.nvim/ && nvim $cmd ."
+alias kb="cd $proj/qmk_userspace/ && nvim $cmd ."
 
 dir() {
     mkdir -p "$1"
