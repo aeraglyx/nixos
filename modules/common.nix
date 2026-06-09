@@ -84,6 +84,7 @@
         # Languages
         gcc13
         python313
+        gnumake  # for fzf in nvim
 
         # LSPs
         bash-language-server
