@@ -40,7 +40,7 @@ window#waybar {
 
 /* group spacing */
 .modules-right > * > * > *:not(:last-child) > * {
-    margin-right: 18;
+    margin-right: 18px;
 }
 
 tooltip {
