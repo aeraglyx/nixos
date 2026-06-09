@@ -24,15 +24,14 @@ return {
         },
     },
     opts = {
-        open_for_directories = false,
+        open_for_directories = true,
         floating_window_scaling_factor = 0.8,
         keymaps = {
             show_help = "<f1>",
         },
     },
     init = function()
-        -- mark netrw as loaded so it's not loaded at all.
-        -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
+        -- https://github.com/mikavilpas/yazi.nvim/issues/802
         vim.g.loaded_netrwPlugin = 1
     end,
 }
