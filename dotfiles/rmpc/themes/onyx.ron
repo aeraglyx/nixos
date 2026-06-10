@@ -12,10 +12,10 @@
     modal_backdrop: false,
     preview_label_style: (fg: "yellow"),
     preview_metadata_group_style: (fg: "yellow", modifiers: "Bold"),
-    highlighted_item_style: (fg: "blue", modifiers: "Bold"),
-    current_item_style: (fg: "black", bg: "blue", modifiers: "Bold"),
-    borders_style: (fg: "blue"),
-    highlight_border_style: (fg: "blue"),
+    highlighted_item_style: (fg: "blue", bg: "#383838", modifiers: "Bold"),
+    current_item_style: (fg: "#202020", bg: "blue", modifiers: "Bold"),
+    borders_style: (fg: "black"),
+    highlight_border_style: (fg: "black"),
     symbols: (
         song: "S",
         dir: "D",
@@ -34,7 +34,7 @@
         trace: (fg: "magenta", bg: "black"),
     ),
     progress_bar: (
-        symbols: ["█", "█", "█", " ", "█"],
+        symbols: ["■", "■", "█", " ", "■"],
         track_style: None,
         elapsed_style: (fg: "blue"),
         thumb_style: (fg: "blue"),
@@ -42,9 +42,9 @@
     ),
     scrollbar: (
         symbols: ["│", "█", "▲", "▼"],
-        track_style: (),
-        ends_style: (),
-        thumb_style: (fg: "blue"),
+        track_style: (fg: "black"),
+        ends_style: (fg: "black"),
+        thumb_style: (fg: "black"),
     ),
     tab_bar: (
         active_style: (fg: "black", bg: "blue", modifiers: "Bold"),
@@ -74,30 +74,30 @@
             prop: (kind: Property(Artist),
                 default: (kind: Text("Unknown"))
             ),
-            label_prop: (kind: Text("Artist")),
+            label_prop: (kind: Text("Artist"), style: (fg: "cyan", modifiers: "Bold")),
             width: "20%",
         ),
         (
-            prop: (kind: Property(Title),
+            prop: (kind: Property(Filename),
                 default: (kind: Text("Unknown"))
             ),
-            label_prop: (kind: Text("Title")),
-            width: "35%",
+            label_prop: (kind: Text("Title"), style: (fg: "cyan", modifiers: "Bold")),
+            width: "45%",
         ),
         (
-            prop: (kind: Property(Album), style: (fg: "white"),
-                default: (kind: Text("Unknown Album"), style: (fg: "white"))
+            prop: (kind: Property(Album),
+                default: (kind: Text("Unknown Album"))
             ),
-            label_prop: (kind: Text("Album")),
-            width: "30%",
+            label_prop: (kind: Text("Album"), style: (fg: "cyan", modifiers: "Bold")),
+            width: "25%",
         ),
         (
             prop: (kind: Property(Duration),
                 default: (kind: Text("-"))
             ),
-            label_prop: (kind: Text("Duration")),
-            width: "15%",
-            alignment: Right,
+            label_prop: (kind: Text("Duration"), style: (fg: "cyan", modifiers: "Bold")),
+            width: "10%",
+            alignment: Center,
         ),
     ],
     layout: Split(
@@ -109,22 +109,10 @@
                     direction: Horizontal,
                     panes: [
                         (
-                            size: "35",
-                            borders: "LEFT | TOP | BOTTOM",
-                            border_symbols: Inherited(parent: Rounded, bottom_left: "├"),
-                            pane: Component("header_left")
-                        ),
-                        (
                             size: "100%",
                             borders: "ALL",
-                            border_symbols: Inherited(parent: Rounded, top_left: "┬", top_right: "┬", bottom_left: "┴", bottom_right: "┴"),
+                            border_symbols: Inherited(parent: Rounded, bottom_left: "├", bottom_right: "┤"),
                             pane: Component("header_center")
-                        ),
-                        (
-                            size: "35",
-                            borders: "RIGHT | TOP | BOTTOM",
-                            border_symbols: Inherited(parent: Rounded, bottom_right: "┤"),
-                            pane: Component("header_right")
                         ),
                     ]
                 )
@@ -201,8 +189,8 @@
         )),
         "artist_and_album": Pane(Property(
             content: [
-                (kind: Property(Song(Artist)), style: (fg: "yellow", modifiers: "Bold"),
-                    default: (kind: Text("Unknown"), style: (fg: "yellow", modifiers: "Bold"))),
+                (kind: Property(Song(Artist)), style: (fg: "cyan", modifiers: "Bold"),
+                    default: (kind: Text("Unknown"), style: (fg: "cyan", modifiers: "Bold"))),
                 (kind: Text(" - ")),
                 (kind: Property(Song(Album)), default: (kind: Text("Unknown Album"))),
             ], align: Center, scroll_speed: 1
@@ -260,8 +248,8 @@
         "input_mode": Pane(Property(
             content: [
                 (kind: Transform(Replace(content: (kind: Property(Status(InputMode()))), replacements: [
-                    (match: "Normal", replace: (kind: Text(" NORMAL "), style: (fg: "black", bg: "blue"))),
-                    (match: "Insert", replace: (kind: Text(" INSERT "), style: (fg: "black", bg: "green"))),
+                    (match: "Normal", replace: (kind: Text(" NORMAL "), style: (fg: "default"))),
+                    (match: "Insert", replace: (kind: Text(" INSERT "), style: (fg: "green"))),
                 ])))
             ], align: Center
         )),
