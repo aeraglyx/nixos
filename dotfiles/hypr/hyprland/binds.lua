@@ -22,16 +22,21 @@ hl.bind(main_mod .. " + Q", hl.dsp.window.close())
 hl.bind(main_mod .. " + M", hl.dsp.window.fullscreen())
 hl.bind(main_mod .. " + C", hl.dsp.exec_cmd("hyprlock"))
 
+local function run_script(script)
+    local scripts_dir = "~/nixos/scripts/"
+    return hl.dsp.exec_cmd("sh " .. scripts_dir .. script)
+end
+
 -- scripts and stuff
 hl.bind(main_mod .. " + P", hl.dsp.exec_cmd("flameshot gui --clipboard --path ~/pictures/screenshots"))
 hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("flameshot gui --clipboard --last-region --accept-on-select --path ~/pictures/screenshots"))
-hl.bind(main_mod .. " + Z", hl.dsp.exec_cmd("sh ~/scripts/toggle_screen_recording.sh"))
+hl.bind(main_mod .. " + Z", run_script("screen_recording.sh"))
 hl.bind(main_mod .. " + SHIFT + Z", hl.dsp.exec_cmd(file_manager .. " ~/videos", tmp_win_wide))
-hl.bind(main_mod .. " + ALT + L", hl.dsp.exec_cmd("pkill waybar ; waybar ; swaync-client -rs ; pkill dunst ; dunst &"))
-hl.bind(main_mod .. " + B", hl.dsp.exec_cmd("sh ~/scripts/bookmarks/menu.sh"))
-hl.bind(main_mod .. " + SHIFT + B", hl.dsp.exec_cmd("sh ~/scripts/bookmarks/add.sh"))
-hl.bind(main_mod .. " + ALT + T", hl.dsp.exec_cmd("sh ~/scripts/time/time.sh"))
-hl.bind(main_mod .. " + Period", hl.dsp.exec_cmd("sh ~/scripts/stuff.sh"))
+hl.bind(main_mod .. " + ALT + L", run_script("reload_stuff.sh"))
+hl.bind(main_mod .. " + B", run_script("bookmarks/menu.sh"))
+hl.bind(main_mod .. " + SHIFT + B", run_script("bookmarks/add.sh"))
+hl.bind(main_mod .. " + ALT + T", run_script("time/time.sh"))
+hl.bind(main_mod .. " + Period", run_script("menu.sh"))
 hl.bind(main_mod .. " + Comma", hl.dsp.exec_cmd(terminal .. " -e bash -c \"cd ~/notes && nvim ./notes.md\"", tmp_win_high))
 hl.bind(main_mod .. " + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wtype -"))
 
