@@ -10,8 +10,8 @@
     header_background_color: None,
     modal_background_color: None,
     modal_backdrop: false,
-    preview_label_style: (fg: "yellow"),
-    preview_metadata_group_style: (fg: "yellow", modifiers: "Bold"),
+    preview_label_style: (fg: "cyan"),
+    preview_metadata_group_style: (fg: "black", modifiers: "Bold"),
     highlighted_item_style: (fg: "blue", bg: "#383838", modifiers: "Bold"),
     current_item_style: (fg: "#202020", bg: "blue", modifiers: "Bold"),
     borders_style: (fg: "black"),
@@ -27,11 +27,11 @@
         playlist_style: None,
     ),
     level_styles: (
-        info: (fg: "blue", bg: "black"),
-        warn: (fg: "yellow", bg: "black"),
-        error: (fg: "red", bg: "black"),
-        debug: (fg: "light_green", bg: "black"),
-        trace: (fg: "magenta", bg: "black"),
+        info: (fg: "blue"),
+        warn: (fg: "yellow"),
+        error: (fg: "red"),
+        debug: (fg: "green"),
+        trace: (fg: "magenta"),
     ),
     progress_bar: (
         symbols: ["■", "■", "█", " ", "■"],
@@ -47,7 +47,7 @@
         thumb_style: (fg: "black"),
     ),
     tab_bar: (
-        active_style: (fg: "black", bg: "blue", modifiers: "Bold"),
+        active_style: (fg: "#202020", bg: "blue", modifiers: "Bold"),
         inactive_style: (),
     ),
     lyrics: (
@@ -133,14 +133,8 @@
                     direction: Horizontal,
                     panes: [
                         (
-                            size: "12",
-                            borders: "ALL",
-                            border_symbols: Inherited(parent: Rounded, top_right: "┬", bottom_right: "┴"),
-                            pane: Component("input_mode")
-                        ),
-                        (
                             size: "100%",
-                            borders: "TOP | BOTTOM | RIGHT",
+                            borders: "ALL",
                             border_symbols: Rounded,
                             border_title: [(kind: Text(" ")), (kind: Property(Status(QueueLength()))), (kind: Text(" songs / ")), (kind: Property(Status(QueueTimeTotal()))), (kind: Text(" total time "))],
                             border_title_alignment: Right,
@@ -245,33 +239,11 @@
                 ),
             ]
         ),
-        "input_mode": Pane(Property(
-            content: [
-                (kind: Transform(Replace(content: (kind: Property(Status(InputMode()))), replacements: [
-                    (match: "Normal", replace: (kind: Text(" NORMAL "), style: (fg: "default"))),
-                    (match: "Insert", replace: (kind: Text(" INSERT "), style: (fg: "green"))),
-                ])))
-            ], align: Center
-        )),
-        "header_left": Split(
-            direction: Vertical,
-            panes: [
-                (size: "1", pane: Component("state")),
-                (size: "1", pane: Component("elapsed_and_bitrate")),
-            ]
-        ),
         "header_center": Split(
             direction: Vertical,
             panes: [
                 (size: "1", pane: Component("title")),
                 (size: "1", pane: Component("artist_and_album")),
-            ]
-        ),
-        "header_right": Split(
-            direction: Vertical,
-            panes: [
-                (size: "1", pane: Component("volume")),
-                (size: "1", pane: Component("states")),
             ]
         ),
         "progress_bar": Split(
