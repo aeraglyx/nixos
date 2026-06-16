@@ -48,6 +48,7 @@ tooltip {
     border: 2px solid @smol;
     border-radius: 8px;
 }
+
 tooltip label {
     color: @text;
 }
