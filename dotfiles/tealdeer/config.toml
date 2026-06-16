@@ -8,7 +8,7 @@ foreground = "blue"
 foreground = "blue"
 
 [style.example_text]
-foreground = "white"
+foreground = "black"
 
 [style.example_code]
 foreground = "white"
