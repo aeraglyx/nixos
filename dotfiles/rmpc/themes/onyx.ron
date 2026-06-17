@@ -17,9 +17,9 @@
     borders_style: (fg: "black"),
     highlight_border_style: (fg: "black"),
     symbols: (
-        song: "S",
-        dir: "D",
-        playlist: "P",
+        song: "",
+        dir: "",
+        playlist: "",
         marker: "M",
         ellipsis: "...",
         song_style: None,
