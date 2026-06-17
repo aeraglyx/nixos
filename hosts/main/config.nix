@@ -17,6 +17,9 @@
     };
 
     boot.blacklistedKernelModules = [ "nouveau" ];
+    boot.supportedFilesystems = [ "zfs" ];
+    boot.zfs.forceImportRoot = false;
+    boot.zfs.extraPools = [ "data" ];
 
     nix.settings = {
         cores = 8;
@@ -29,6 +32,7 @@
     ];
 
     networking.hostName = "main";
+    networking.hostId = "1a0f47f2";
     networking.useNetworkd = true;
 
     systemd.network.wait-online.enable = false;
