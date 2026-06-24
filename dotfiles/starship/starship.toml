@@ -1,6 +1,7 @@
 format = """
 [╭── ](bold meh)\
 $jobs\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -22,7 +23,7 @@ style = "text"
 [git_branch]
 symbol = " "
 style = "text"
-format = '[on ](meh)[$symbol$branch]($style) '
+format = '[on](meh) [$symbol$branch]($style) '
 
 [git_status]
 disabled = true
@@ -31,11 +32,15 @@ style = "meh"
 [nix_shell]
 symbol = "󱄅 "
 style = "text"
-format = '[via ](meh)[$symbol$name]($style) '
+format = '[via](meh) [$symbol$name]($style) '
 
 [character]
 success_symbol = "[λ](bold blue)"
 error_symbol = "[λ](bold red)"
+
+[hostname]
+style = "blue"
+format = '[$hostname]($style) [in](meh) '
 
 [palettes.onyx]
 deep = "#1a1a1a"
