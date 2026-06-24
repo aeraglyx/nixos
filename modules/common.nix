@@ -38,14 +38,10 @@
 
     security.sudo.extraConfig = "Defaults pwfeedback";
 
-    programs.zsh.enable = true;
-
     programs.ssh = {
         startAgent = true;
         enableAskPassword = true;
     };
-
-    # environment.defaultPackages = [ ];
 
     environment.systemPackages = with pkgs-unstable; [
 
@@ -82,9 +78,9 @@
         cmatrix
 
         # Languages
-        gcc13
-        python313
+        gcc13 # for nvim-treesitter
         gnumake  # for fzf in nvim
+        python313
 
         # LSPs
         bash-language-server
@@ -105,12 +101,9 @@
         XDG_DATA_HOME   = "$HOME/.local/share";
         XDG_STATE_HOME  = "$HOME/.local/state";
 
-        # ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
-        # _Z_DATA = "${XDG_CONFIG_HOME}/z";
         HISTFILE = "${XDG_STATE_HOME}/bash/history";
         PYTHON_HISTORY = "${XDG_STATE_HOME}/python/history";
         CARGO_HOME = "${XDG_DATA_HOME}/cargo";
         JULIA_DEPOT_PATH = "${XDG_DATA_HOME}/julia";
-        CUDA_CACHE_PATH = "${XDG_CACHE_HOME}/nv";
     };
 }

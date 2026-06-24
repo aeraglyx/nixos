@@ -42,6 +42,7 @@
 
     environment.variables = {
         ERRFILE = "$XDG_CACHE_HOME/X11/xsession-errors";
+        CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     };
 
     environment.sessionVariables = {
@@ -63,7 +64,6 @@
         "x-scheme-handler/https"    = [ "firefox.desktop" ];
         "x-scheme-handler/about"    = [ "firefox.desktop" ];
         "x-scheme-handler/unknown"  = [ "firefox.desktop" ];
-        "x-scheme-handler/discord"  = [ "vesktop.desktop" ];
     };
 
     services.mullvad-vpn.enable = true;
