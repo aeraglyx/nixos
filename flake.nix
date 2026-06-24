@@ -54,6 +54,15 @@
                     ./modules/common.nix
                 ];
             };
+            server = lib.nixosSystem {
+                specialArgs = {
+                    inherit pkgs-unstable;
+                };
+                modules = [
+                    ./hosts/server/config.nix
+                    ./modules/common.nix
+                ];
+            };
         };
         devShells.${system} = {
             blender = pkgs-unstable.mkShell {
