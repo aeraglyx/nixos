@@ -5,8 +5,7 @@
     origin = top-right
     width = (0, 500)
     height = (0, 300)
-    offset = 42x42
-    # scale = 0
+    offset = 48x48
 
     background = "#202020"
     transparency = 0
