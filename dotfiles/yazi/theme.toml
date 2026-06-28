@@ -16,12 +16,20 @@ active = { bg = "blue", fg = "#202020", bold = true }
 inactive = { bg = "#363636", fg = "#c8c8c8" }
 
 [mode]
-normal_main = { fg = "#202020", bg = "blue", bold = true }
-normal_alt = { fg = "#c8c8c8", bg = "#363636", bold = false }
-select_main = { fg = "#202020", bg = "green", bold = true }
+normal_main = { fg = "#8b8b8b", bg = "#202020", bold = false }
+normal_alt = { fg = "#525252", bg = "#202020", bold = false }
+select_main = { fg = "#202020", bg = "green", bold = false }
 select_alt = { fg = "#c8c8c8", bg = "#363636", bold = false }
-unset_main = { fg = "#202020", bg = "magenta", bold = true }
+unset_main = { fg = "#202020", bg = "magenta", bold = false }
 unset_alt = { fg = "#c8c8c8", bg = "#363636", bold = false }
+
+[status]
+overall    = { fg = "#8b8b8b" }
+perm_type  = { fg = "#525252" }
+perm_read  = { fg = "#525252" }
+perm_write = { fg = "#525252" }
+perm_exec  = { fg = "#525252" }
+perm_sep   = { fg = "#383838" }
 
 [confirm]
 border = { fg = "#8b8b8b", bold = true }
@@ -37,6 +45,12 @@ tbl_col = { fg = "#c8c8c8" }
 [input]
 border = { fg = "#c8c8c8", bold = true }
 title = { fg = "#c8c8c8", bold = true }
+
+[which]
+mask = { bg = "#383838", fg = "#c8c8c8" }
+cand = { fg = "blue" }  # left side
+desc = { fg = "#c8c8c8" }  # right side
+separator_style = { fg = "#8b8b8b" }
 
 [filetype]
 rules = [
