@@ -56,7 +56,7 @@ end)
 
 hl.bind(main_mod .. " + W", function()
     hl.dispatch(hl.dsp.focus({ workspace = 9 }))
-    hl.dispatch(hl.dsp.exec_cmd("pgrep moonlight || mullvad-exclude moonlight"))
+    hl.dispatch(hl.dsp.exec_cmd("pgrep moonlight || moonlight"))
 end)
 
 hl.bind(main_mod .. " + S", hl.dsp.exec_cmd(terminal .. " -e rmpc", tmp_win_wide))

@@ -1,5 +1,5 @@
 return {
-    deep = "#1a1a1a",
+    deep = "#161616",
     base = "#202020",
 
     smol = "#383838",

@@ -55,6 +55,9 @@ hl.window_rule({
     size = { 600, 80 }
 })
 
+hl.window_rule({ match = { class = "firefox" }, scrolling_width = 0.7})
+hl.window_rule({ match = { class = "blender" }, scrolling_width = 0.8})
+
 -- matplotlib
 hl.window_rule({ match = { class = "Matplotlib" }, float = true, center = true })
 
