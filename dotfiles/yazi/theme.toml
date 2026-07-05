@@ -1,35 +1,49 @@
 [mgr]
 cwd = { fg = "#8b8b8b" }
-border_style = { fg = "#363636" }
-find_keyword = { fg = "green", bg = "#363636", bold = true }
-find_position = { fg = "#202020", bg = "blue", bold = true }
+border_style = { fg = "#383838" }
 syntect_theme = "~/.config/yazi/onyx.tmTheme"
 
+find_keyword = { fg = "green", bg = "#383838", bold = true }
+find_position = { fg = "#202020", bg = "blue", bold = true }
+
+marker_copied = { bg = "#202020", fg = "green" }
+marker_cut = { bg = "#202020", fg = "red" }
+marker_marked = { bg = "#202020", fg = "#c8c8c8" }
+marker_selected = { bg = "#202020", fg = "yellow" }
+
+count_copied = { bg = "#383838", fg = "green" }
+count_cut = { bg = "#383838", fg = "red" }
+count_selected = { bg = "#383838", fg = "yellow" }
+
 [indicator]
-parent = { bg = "#363636", bold = true }
+parent = { bg = "#383838", bold = true }
 current = { fg = "#202020", bg = "blue", bold = true }
-preview = { bg = "#363636", bold = true }
+preview = { bg = "#383838", bold = true }
 padding = { open = "█", close = "█" }
 
 [tabs]
 active = { bg = "blue", fg = "#202020", bold = true }
-inactive = { bg = "#363636", fg = "#c8c8c8" }
+inactive = { bg = "#383838", fg = "#c8c8c8" }
 
 [mode]
 normal_main = { fg = "#8b8b8b", bg = "#202020", bold = false }
-normal_alt = { fg = "#525252", bg = "#202020", bold = false }
-select_main = { fg = "#202020", bg = "green", bold = false }
-select_alt = { fg = "#c8c8c8", bg = "#363636", bold = false }
-unset_main = { fg = "#202020", bg = "magenta", bold = false }
-unset_alt = { fg = "#c8c8c8", bg = "#363636", bold = false }
+normal_alt  = { fg = "#525252", bg = "#202020", bold = false }
+select_main = { fg = "cyan",    bg = "#202020", bold = false }
+select_alt  = { fg = "#525252", bg = "#202020", bold = false }
+unset_main  = { fg = "magenta", bg = "#202020", bold = false }
+unset_alt   = { fg = "#525252", bg = "#202020", bold = false }
 
 [status]
-overall    = { fg = "#8b8b8b" }
+overall    = { fg = "#525252" }
 perm_type  = { fg = "#525252" }
 perm_read  = { fg = "#525252" }
 perm_write = { fg = "#525252" }
 perm_exec  = { fg = "#525252" }
 perm_sep   = { fg = "#383838" }
+
+progress_label  = { fg = "#c8c8c8" }
+progress_normal = { fg = "blue", bg = "#383838" }
+progress_error  = { fg = "red", bg = "#383838" }
 
 [confirm]
 border = { fg = "#8b8b8b", bold = true }
