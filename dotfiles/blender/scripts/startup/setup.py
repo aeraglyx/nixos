@@ -2,6 +2,10 @@ import bpy
 from bpy.app.handlers import persistent
 
 import os
+import io
+import shutil
+import zipfile
+import requests
 
 
 def get_font_path():
@@ -140,11 +144,43 @@ def setup_keymaps():
         kmi.new(idname="node.options_toggle", type='H', value='PRESS', alt=True)
 
 
+def get_ext_from_gh(repo, branch="main"):
+    archive_link = f"https://github.com/{repo}/archive/refs/heads/{branch}.zip"
+    extension_name = repo.split("/")[-1]
+    extensions_path = bpy.utils.user_resource('EXTENSIONS')
+    extension_path = os.path.join(extensions_path, "user_default", extension_name)
+
+    if not os.path.isdir(extension_path):
+        os.makedirs(extension_path, exist_ok=True)
+        nested_path = os.path.join(extension_path, f"{extension_name}-{branch}")
+        shutil.rmtree(extension_path, ignore_errors=True)
+
+        r = requests.get(archive_link)
+        z = zipfile.ZipFile(io.BytesIO(r.content))
+        z.extractall(extension_path)
+
+        for filename in os.listdir(nested_path):
+            src = os.path.join(nested_path, filename)
+            dst = os.path.join(extension_path, filename)
+            shutil.move(src, dst)
+
+        os.rmdir(nested_path)
+
+    bpy.ops.preferences.addon_enable(module=f"bl_ext.user_default.{extension_name}")
+
+
+def setup_extensions():
+    bpy.ops.preferences.addon_enable(module="node_wrangler")
+    get_ext_from_gh(repo="aeraglyx/fulcrum", branch="master")
+    get_ext_from_gh(repo="aeraglyx/blueshift")
+
+
 @persistent
 def load_handler_preferences(_):
     setup_preferences()
     setup_theme()
     setup_keymaps()
+    setup_extensions()
 
 
 @persistent
