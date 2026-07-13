@@ -34,10 +34,10 @@
         trace: (fg: "magenta"),
     ),
     progress_bar: (
-        symbols: ["■", "■", "█", " ", "■"],
+        symbols: ["━", "━", "█", " ", "━"],
         track_style: None,
         elapsed_style: (fg: "blue"),
-        thumb_style: (fg: "blue"),
+        thumb_style: (fg: "#c8c8c8"),
         use_track_when_empty: true,
     ),
     scrollbar: (
@@ -47,8 +47,8 @@
         thumb_style: (fg: "black"),
     ),
     tab_bar: (
-        active_style: (fg: "#202020", bg: "blue", modifiers: "Bold"),
-        inactive_style: (),
+        active_style: (fg: "cyan", bg: "#202020", modifiers: "Bold"),
+        inactive_style: (fg: "#525252", modifiers: "Bold"),
     ),
     lyrics: (
         timestamp: false
@@ -56,40 +56,32 @@
     browser_song_format: [
         (
             kind: Group([
-                (kind: Property(Track)),
-                (kind: Text(" ")),
-            ])
-        ),
-        (
-            kind: Group([
-                (kind: Property(Artist)),
-                (kind: Text(" - ")),
                 (kind: Property(Title)),
             ]),
             default: (kind: Property(Filename))
-        ),
+        )
     ],
     song_table_format: [
         (
             prop: (kind: Property(Artist),
-                default: (kind: Text("Unknown"))
+                default: (kind: Text("-"))
             ),
             label_prop: (kind: Text("Artist"), style: (fg: "cyan", modifiers: "Bold")),
-            width: "20%",
+            width: "25%",
         ),
         (
-            prop: (kind: Property(Filename),
-                default: (kind: Text("Unknown"))
+            prop: (kind: Property(Title),
+                default: (kind: Text("-"))
             ),
             label_prop: (kind: Text("Title"), style: (fg: "cyan", modifiers: "Bold")),
-            width: "45%",
+            width: "35%",
         ),
         (
             prop: (kind: Property(Album),
-                default: (kind: Text("Unknown Album"))
+                default: (kind: Text("-"))
             ),
             label_prop: (kind: Text("Album"), style: (fg: "cyan", modifiers: "Bold")),
-            width: "25%",
+            width: "30%",
         ),
         (
             prop: (kind: Property(Duration),
@@ -104,7 +96,7 @@
         direction: Vertical,
         panes: [
             (
-                size: "4",
+                size: "3",
                 pane: Split(
                     direction: Horizontal,
                     panes: [
@@ -168,25 +160,13 @@
                 (size: "2", pane: Pane(Property(content: [(kind: Text("%"), style: (fg: "blue"))]))),
             ]
         ),
-        "elapsed_and_bitrate": Pane(Property(
+        "artist_and_title": Pane(Property(
             content: [
-                (kind: Property(Status(Elapsed))), 
-                (kind: Text(" / ")), 
-                (kind: Property(Status(Duration))), 
-                (kind: Group([
-                    (kind: Text(" (")), 
-                    (kind: Property(Status(Bitrate))), 
-                    (kind: Text(" kbps)")),
-                ])),
-            ],
-            align: Left,
-        )),
-        "artist_and_album": Pane(Property(
-            content: [
-                (kind: Property(Song(Artist)), style: (fg: "cyan", modifiers: "Bold"),
-                    default: (kind: Text("Unknown"), style: (fg: "cyan", modifiers: "Bold"))),
-                (kind: Text(" - ")),
-                (kind: Property(Song(Album)), default: (kind: Text("Unknown Album"))),
+                (kind: Property(Song(Artist)), style: (modifiers: "Bold"),
+                    default: (kind: Text("Unknown Artist"), style: (modifiers: "Bold"))),
+                (kind: Text(" | "), style: (fg: "black")),
+                (kind: Property(Song(Title)), style: (modifiers: "Bold"),
+                    default: (kind: Text("Unknown Title"), style: (modifiers: "Bold"))),
             ], align: Center, scroll_speed: 1
         )),
         "states": Split(
@@ -242,8 +222,7 @@
         "header_center": Split(
             direction: Vertical,
             panes: [
-                (size: "1", pane: Component("title")),
-                (size: "1", pane: Component("artist_and_album")),
+                (size: "1", pane: Component("artist_and_title")),
             ]
         ),
         "progress_bar": Split(

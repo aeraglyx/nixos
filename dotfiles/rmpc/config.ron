@@ -149,7 +149,33 @@
                 direction: Horizontal,
                 panes: [
                     (
-                        size: "100%",
+                        size: "39%",
+                        borders: "ALL",
+                        border_symbols: Rounded,
+                        pane: Split(
+                            direction: Horizontal,
+                            panes: [
+                                (
+                                    size: "1",
+                                    pane: Pane(Empty()),
+                                ),
+                                (
+                                    size: "100%",
+                                    pane: Pane(AlbumArt),
+                                ),
+                                (
+                                    size: "1",
+                                    pane: Pane(Empty()),
+                                ),
+                            ]
+                        )
+                    ),
+                    (
+                        size: "1",
+                        pane: Pane(Empty())
+                    ),
+                    (
+                        size: "61%",
                         pane: Split(
                             direction: Vertical,
                             panes: [
@@ -213,16 +239,6 @@
                 size: "100%",
                 direction: Vertical,
                 panes: [(pane: Pane(Artists), size: "100%", borders: "ALL", border_symbols: Rounded)],
-            )
-        ),
-        (
-            name: "Album Artists",
-            borders: "ALL",
-            border_symbols: Rounded,
-            pane: Split(
-                size: "100%",
-                direction: Vertical,
-                panes: [(pane: Pane(AlbumArtists), size: "100%", borders: "ALL", border_symbols: Rounded)],
             )
         ),
         (
