@@ -10,3 +10,6 @@
 
 [init]
     defaultBranch = main
+
+[color "diff"]
+    new = blue
