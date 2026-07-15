@@ -7,7 +7,7 @@
     "margin": "12 12 0 12",
     "modules-left": [
         "custom/os",
-        "hyprland/workspaces",
+        "ext/workspaces",
         "mpris"
         // "hyprland/windowcount"
         // "hyprland/window"
@@ -30,12 +30,9 @@
         "format": "",
         "tooltip-format": "nixos, btw"
     },
-    "hyprland/workspaces": {
+    "ext/workspaces": {
         "format": "{name}",
-        "on-click": "activate",
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1"
-        // "ignore-workspaces": ["7", "9"]
+        "on-click": "activate"
     },
     "hyprland/windowcount": {
         "format": "[{}]",
