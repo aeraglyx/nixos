@@ -11,7 +11,6 @@
         "mpris"
         // "hyprland/windowcount"
         // "hyprland/window"
-        // "custom/song"
     ],
     "modules-center": [
         "clock"
@@ -19,12 +18,12 @@
     "modules-right": [
         "custom/screen-recorder",
         "custom/time-tracker",
-        "custom/vpn",
+        // "custom/vpn",
+        // "custom/nightlight",
         "network",
         "pulseaudio",
         "group/hardware"
         // "custom/notification"
-        // "custom/nightlight",
     ],
     "custom/os": {
         "format": "",
@@ -75,12 +74,8 @@
     },
     "custom/nightlight": {
         "format": " {}",
-        // "tooltip": false,
-        "exec": "python ~/.config/waybar/scripts/night_light.py",
-        "return-type": "json",
+        "exec": "sunsetr status | grep 'Temperature' | awk '{print $NF}'",
         "interval": 300
-        // "hide-empty-text": true,
-        // "on-click": ""
     },
     "custom/vpn": {
         "format": " {}",
@@ -171,8 +166,7 @@
         "states": {
             "normal": 35,
             "critical": 5
-        },
-        "on-click": "pavucontrol"
+        }
     }
     // "custom/notification": {
     //     "tooltip": false,
