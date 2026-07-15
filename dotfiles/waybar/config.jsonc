@@ -151,8 +151,8 @@
         "tooltip": false
     },
     "pulseaudio": {
-        // FIXME: works every other scroll
-        "scroll-step": 2.5, // percentage, can be a float
+        "scroll-step": 2.5,
+        "tooltip": false,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
