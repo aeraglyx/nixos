@@ -84,4 +84,13 @@ in {
         };
     };
 
+    blender_5_2 = mkBlender {
+        pname = "blender-bin";
+        version = "5.2.0";
+        src = import <nix/fetchurl.nix> {
+            url = "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz";
+            hash = "sha256-lvbBgaMPSVBgeDnchNQqNUslDYoCMbCYtZt7xpw1HEg=";
+        };
+    };
+
 }

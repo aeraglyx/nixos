@@ -170,6 +170,7 @@
 
         # Media creation
         blender_5_1
+        blender_5_2
         # gimp3
         # djv
 
