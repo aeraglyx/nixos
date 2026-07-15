@@ -10,17 +10,18 @@
         timeout = 0;
     };
 
+    networking.firewall.enable = true;
+
+    systemd.coredump.enable = false;
+
+    services.speechd.enable = false;
+    services.journald.extraConfig = "SystemMaxUse=100M";
+
     security = {
         rtkit.enable = true;
         polkit.enable = true;
         pam.services.hyprlock = {};
     };
-
-    networking.firewall.enable = true;
-
-    systemd.coredump.enable = false;
-    services.speechd.enable = false;
-    services.journald.extraConfig = "SystemMaxUse=50M";
 
     services.greetd = {
         enable = true;
@@ -78,12 +79,10 @@
         user = "aeraglyx";
         settings = {
             music_directory = "/home/aeraglyx/moosic";
-            audio_output = [
-                {
-                    type = "pipewire";
-                    name = "PipeWire Output";
-                }
-            ];
+            audio_output = [{
+                type = "pipewire";
+                name = "pipewire output";
+            }];
         };
     };
 
