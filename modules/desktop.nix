@@ -135,6 +135,7 @@
         usbutils
         udiskie
         udisks2
+        smartmontools
 
         # Capture
         (flameshot.override { enableWlrSupport = true; })
@@ -162,11 +163,9 @@
         # Music
         mpc
         mpd-mpris
-        beets
         rmpc
-        inori
-        # musikcube  # not using mpd
-        # euphonica  # gui
+        puddletag
+        beets
 
         # Media creation
         blender_5_1
@@ -183,7 +182,6 @@
         chromium
         google-chrome
         tor-browser
-        librewolf
         # zen-browser
 
         # Miscellaneous
