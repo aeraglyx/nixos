@@ -47,7 +47,7 @@
         thumb_style: (fg: "black"),
     ),
     tab_bar: (
-        active_style: (fg: "cyan", bg: "#202020", modifiers: "Bold"),
+        active_style: (fg: "#c8c8c8", bg: "#202020", modifiers: "Bold"),
         inactive_style: (fg: "#525252", modifiers: "Bold"),
     ),
     lyrics: (
@@ -66,28 +66,28 @@
             prop: (kind: Property(Artist),
                 default: (kind: Text("-"))
             ),
-            label_prop: (kind: Text("Artist"), style: (fg: "cyan", modifiers: "Bold")),
+            label_prop: (kind: Text("Artist"), style: (fg: "black", modifiers: "Bold")),
             width: "25%",
         ),
         (
             prop: (kind: Property(Title),
                 default: (kind: Text("-"))
             ),
-            label_prop: (kind: Text("Title"), style: (fg: "cyan", modifiers: "Bold")),
+            label_prop: (kind: Text("Title"), style: (fg: "black", modifiers: "Bold")),
             width: "35%",
         ),
         (
             prop: (kind: Property(Album),
                 default: (kind: Text("-"))
             ),
-            label_prop: (kind: Text("Album"), style: (fg: "cyan", modifiers: "Bold")),
+            label_prop: (kind: Text("Album"), style: (fg: "black", modifiers: "Bold")),
             width: "30%",
         ),
         (
             prop: (kind: Property(Duration),
                 default: (kind: Text("-"))
             ),
-            label_prop: (kind: Text("Duration"), style: (fg: "cyan", modifiers: "Bold")),
+            label_prop: (kind: Text("Duration"), style: (fg: "black", modifiers: "Bold")),
             width: "10%",
             alignment: Center,
         ),
