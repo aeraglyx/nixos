@@ -10,10 +10,6 @@
 window#waybar {
     color: @text;
     background: transparent;
-    /* background: @base; */
-    /* transition-property: background-color; */
-    /* transitionduration: .5s; */
-    /* border-radius: 16px; */
 }
 
 #waybar.empty #window {
@@ -94,7 +90,7 @@ button.active {
 }
 
 #custom-time-tracker {
-    color: @green;
+    color: @blue;
 }
 
 #mpris.paused {
