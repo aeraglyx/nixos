@@ -104,7 +104,57 @@
                             size: "100%",
                             borders: "ALL",
                             border_symbols: Inherited(parent: Rounded, bottom_left: "├", bottom_right: "┤"),
-                            pane: Component("header_center")
+                            pane: Split(
+                                direction: Horizontal,
+                                panes: [
+                                    (
+                                        size: "7",
+                                        pane: Pane(Empty())
+                                    ),
+                                    (
+                                        size: "100%",
+                                        pane: Component("header_center")
+                                    ),
+                                    (
+                                        size: "7",
+                                        pane: Pane(Property(
+                                            align: Right,
+                                            content: [
+                                                (kind: Text("["), style: (fg: "black")),
+                                                (kind: Property(Status(RepeatV2(
+                                                    on_label: "z",
+                                                    off_label: "z",
+                                                    on_style: (fg: "blue"),
+                                                    off_style: (fg: "black"),
+                                                )))),
+                                                (kind: Property(Status(RandomV2(
+                                                    on_label: "x",
+                                                    off_label: "x",
+                                                    on_style: (fg: "blue"),
+                                                    off_style: (fg: "black"),
+                                                )))),
+                                                (kind: Property(Status(ConsumeV2(
+                                                    on_label: "c",
+                                                    off_label: "c",
+                                                    oneshot_label: "c",
+                                                    on_style: (fg: "blue"),
+                                                    off_style: (fg: "black"),
+                                                    oneshot_style: (fg: "magenta"),
+                                                )))),
+                                                (kind: Property(Status(SingleV2(
+                                                    on_label: "v",
+                                                    off_label: "v",
+                                                    oneshot_label: "v",
+                                                    on_style: (fg: "blue"),
+                                                    off_style: (fg: "black"),
+                                                    oneshot_style: (fg: "magenta"),
+                                                )))),
+                                                (kind: Text("] "), style: (fg: "black")),
+                                            ]
+                                        ))
+                                    ),
+                                ]
+                            )
                         ),
                     ]
                 )
