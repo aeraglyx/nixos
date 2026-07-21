@@ -1,6 +1,7 @@
 -- https://wiki.hypr.land/Configuring/Basics/Variables/
 
 local colors = require("hyprland.theme")
+local utils = require("hyprland.utils")
 
 hl.config({
     general = {
@@ -70,7 +71,7 @@ hl.config({
         kb_layout  = "us",
         numlock_by_default = true,
 
-        accel_profile = "custom 0.53 0.0 0.57 1.30 2.23 3.44 4.98 6.96",
+        accel_profile = utils.accel_profile(0.94),
 
         repeat_delay = 200,
         repeat_rate = 36,
