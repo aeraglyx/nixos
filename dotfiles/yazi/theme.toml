@@ -41,7 +41,7 @@ perm_write = { fg = "#525252" }
 perm_exec  = { fg = "#525252" }
 perm_sep   = { fg = "#383838" }
 
-progress_label  = { fg = "#c8c8c8" }
+progress_label  = { fg = "#8b8b8b" }
 progress_normal = { fg = "blue", bg = "#383838" }
 progress_error  = { fg = "red", bg = "#383838" }
 
