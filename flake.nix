@@ -8,10 +8,6 @@
             url = "github:nix-community/NixOS-WSL";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
-        # zen-browser = {
-        #     url = "github:youwen5/zen-browser-flake";
-        #     inputs.nixpkgs.follows = "nixpkgs-unstable";
-        # };
     };
 
     outputs = { nixpkgs, nixpkgs-unstable, ... } @ inputs:
@@ -20,7 +16,6 @@
             lib = nixpkgs.lib;
             overlays = [
                 (import ./overlays/blender.nix)
-                # (final: prev: { zen-browser = inputs.zen-browser.packages.${system}.default; })
             ];
             pkgs-unstable = import nixpkgs-unstable {
                 system = system;
@@ -36,7 +31,6 @@
             main = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;
-                    # inherit custom-pkgs;
                 };
                 modules = [
                     ./hosts/main/config.nix
@@ -67,9 +61,8 @@
         devShells.${system} = {
             blender = pkgs-unstable.mkShell {
                 packages = [
-                    (pkgs-unstable.python314.withPackages (ps: with ps; [
+                    (pkgs-unstable.python314.withPackages (ps: [
                         custom-pkgs.fake-bpy-module
-                        # pyside6
                     ]))
                 ];
             };
