@@ -47,6 +47,9 @@ def setup_preferences():
     prefs.view.ui_scale = 1.1
     prefs.view.menu_close_leave = True
     prefs.view.use_weight_color_range = True
+    prefs.view.header_align = 'TOP'
+    prefs.view.date_format = 'BE_DASH'
+    prefs.view.use_reduce_motion = True
 
     font_path = get_font_path()
     if font_path:
