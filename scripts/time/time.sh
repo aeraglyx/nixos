@@ -1,4 +1,4 @@
-time_dir=$XDG_DATA_HOME/time
+time_dir=~/stuff/time
 status_file=$time_dir/status
 
 if [ ! -d "$time_dir" ]; then

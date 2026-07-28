@@ -1,11 +1,12 @@
-time_dir=$XDG_DATA_HOME/time
+time_dir=~/stuff/time
+scripts_dir=~/nixos/scripts
 
-if [ ! -d "$time_dir" ]; then
+if [ ! -d "${time_dir}" ]; then
     notify-send "no time dir" --urgency=low
 fi
 
 project=$(
-    find "$time_dir/data" -mindepth 1 -printf "%T@_%P\n" |
+    find "${time_dir}/data" -mindepth 1 -printf "%T@_%P\n" |
     sort -nr |
     cut -d'_' -f2- |
     rofi -sep "\n" -dmenu -p "project"
@@ -13,7 +14,7 @@ project=$(
 
 
 filter_options="total,today,yesterday,last month"
-filter_chosen=$(echo -n "$filter_options" | rofi -sep "," -dmenu -p "filter")
+filter_chosen=$(echo -n "${filter_options}" | rofi -sep "," -dmenu -p "filter")
 
 case $filter_chosen in
     "")             exit 0          ;;
@@ -23,5 +24,5 @@ case $filter_chosen in
     "last month")   args=" -m"      ;;
 esac
 
-hours=$(python ~/dotfiles/scripts/scripts/time/report.py "$project$args")
-notify-send "$hours" --urgency=low
+hours=$(python ${scripts_dir}/time/report.py "${project}${args}")
+notify-send "${hours}" --urgency=low
