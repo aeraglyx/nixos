@@ -35,7 +35,9 @@
                 modules = [
                     ./hosts/main/config.nix
                     ./modules/common.nix
+                    ./modules/physical.nix
                     ./modules/desktop.nix
+                    ./modules/extras.nix
                 ];
             };
             work = lib.nixosSystem {
@@ -55,6 +57,7 @@
                 modules = [
                     ./hosts/server/config.nix
                     ./modules/common.nix
+                    ./modules/physical.nix
                 ];
             };
         };
