@@ -68,7 +68,6 @@
 
         # Browsers
         qutebrowser
-        chromium
         google-chrome
         tor-browser
 

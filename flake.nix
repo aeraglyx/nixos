@@ -50,6 +50,17 @@
                     ./modules/common.nix
                 ];
             };
+            laptop = lib.nixosSystem {
+                specialArgs = {
+                    inherit pkgs-unstable;
+                };
+                modules = [
+                    ./hosts/laptop/config.nix
+                    ./modules/common.nix
+                    ./modules/physical.nix
+                    ./modules/desktop.nix
+                ];
+            };
             server = lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs-unstable;

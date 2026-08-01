@@ -86,6 +86,9 @@
         # Music
         mpc
         mpd-mpris
+
+        # Browsers
+        chromium
     ];
 
     fonts.fontDir.enable = true;
