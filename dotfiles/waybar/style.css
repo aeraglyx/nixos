@@ -101,6 +101,7 @@ button.active {
 #pulseaudio:not(.normal),
 #pulseaudio.critical,
 #network.disconnected,
+#battery.critical,
 #cpu.critical,
 #custom-gpu.critical,
 #memory.critical,

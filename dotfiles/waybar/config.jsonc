@@ -22,6 +22,7 @@
         // "custom/nightlight",
         "network",
         "pulseaudio",
+        "battery",
         "group/hardware"
         // "custom/notification"
     ],
@@ -98,6 +99,14 @@
     "clock": {
         "format": "{:%H:%M}",
         "tooltip-format": "{:%A %Y-%m-%d}"
+    },
+    "battery": {
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 60,
+        "states": {
+            "critical": 25
+        }
     },
     "group/hardware": {
         "orientation": "horizontal",
