@@ -7,6 +7,7 @@ import shutil
 import zipfile
 import requests
 import time
+from contextlib import contextmanager, redirect_stdout, redirect_stderr
 
 
 def log(msg: str):
@@ -14,6 +15,13 @@ def log(msg: str):
     mins = int(t // 60)
     secs = t % 60
     print(f"{mins:02d}:{secs:06.3f}  startup          | {msg}")
+
+
+@contextmanager
+def suppress_console():
+    with open(os.devnull, "w") as devnull:
+        with redirect_stdout(devnull), redirect_stderr(devnull):
+            yield
 
 
 def get_font_path():
@@ -208,7 +216,8 @@ def load_handler_startup(_):
         if ws.name not in ws_to_keep:
             bpy.data.batch_remove(ids=(ws,))
 
-    bpy.ops.outliner.orphans_purge()
+    with suppress_console():
+        bpy.ops.outliner.orphans_purge()
 
 
 def register():
