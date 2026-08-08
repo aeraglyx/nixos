@@ -6,6 +6,14 @@ import io
 import shutil
 import zipfile
 import requests
+import time
+
+
+def log(msg: str):
+    t = time.process_time()
+    mins = int(t // 60)
+    secs = t % 60
+    print(f"{mins:02d}:{secs:06.3f}  startup          | {msg}")
 
 
 def get_font_path():
@@ -29,10 +37,10 @@ def get_font_path():
     for font in fonts_to_try:
         font_path = os.path.join(fonts_base_dir, font)
         if os.path.isfile(font_path):
-            print(f"Startup: Font found - {font}")
+            log(f"Font found: {font}")
             return font_path
 
-    print("Startup: Font not found :(")
+    log("Font not found :(")
 
 
 def setup_preferences():
@@ -125,7 +133,7 @@ def setup_theme():
             bpy.ops.extensions.repo_sync_all(use_active_only=True)
             bpy.ops.extensions.package_install(repo_index=0, pkg_id="onyx")
         except:
-            print("Startup: Couldn't download onyx")
+            log("Couldn't download onyx")
 
     if os.path.isfile(onyx_path_local):
         set_theme_path(onyx_path_local)
@@ -155,21 +163,20 @@ def get_ext_from_gh(repo, branch="main"):
 
     if not os.path.isdir(extension_path):
         os.makedirs(extension_path, exist_ok=True)
-        nested_path = os.path.join(extension_path, f"{extension_name}-{branch}")
         shutil.rmtree(extension_path, ignore_errors=True)
 
         r = requests.get(archive_link)
         z = zipfile.ZipFile(io.BytesIO(r.content))
         z.extractall(extension_path)
 
+        nested_path = os.path.join(extension_path, f"{extension_name}-{branch}")
         for filename in os.listdir(nested_path):
             src = os.path.join(nested_path, filename)
             dst = os.path.join(extension_path, filename)
             shutil.move(src, dst)
 
         os.rmdir(nested_path)
-
-    bpy.ops.preferences.addon_enable(module=f"bl_ext.user_default.{extension_name}")
+        bpy.ops.preferences.addon_enable(module=f"bl_ext.user_default.{extension_name}")
 
 
 def setup_extensions():
@@ -180,6 +187,7 @@ def setup_extensions():
 
 @persistent
 def load_handler_preferences(_):
+    log("Loading preferences")
     setup_preferences()
     setup_theme()
     setup_keymaps()
@@ -188,6 +196,7 @@ def load_handler_preferences(_):
 
 @persistent
 def load_handler_startup(_):
+    log("Loading startup")
     setup_scene(bpy.context.scene)
     setup_camera()
     bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = [0, 0, 0, 1]
