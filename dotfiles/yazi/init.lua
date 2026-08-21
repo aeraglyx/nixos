@@ -1,6 +1,6 @@
 -- https://github.com/sxyazi/yazi/discussions/3664
 function Entity:icon()
-    local icon = self._file:icon()
+    local icon = th.icon:match(self._file)
     if not icon then
         return ""
     else
