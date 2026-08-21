@@ -77,7 +77,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Hightlight selection on yank",
     group = vim.api.nvim_create_augroup("highlight_yank", {}),
-    -- pattern = "*",
     callback = function()
         vim.highlight.on_yank({ higroup = "Visual", timeout = 100 })
     end,
