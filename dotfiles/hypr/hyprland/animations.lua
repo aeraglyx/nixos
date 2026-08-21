@@ -2,7 +2,7 @@
 
 hl.curve("linear",   { type = "bezier", points = { {0.0, 0.0}, {1.0, 1.0} } })
 hl.curve("ease_out", { type = "bezier", points = { {0.1, 1.0}, {0.1, 1.0} } })
-hl.curve("wiggle",   { type = "spring", mass = 1, stiffness = 120.0, dampening = 16.0 })
+hl.curve("wiggle",   { type = "spring", mass = 1, stiffness = 1500.0, dampening = 50.0 })
 
 
 hl.animation({ leaf = "global",        enabled = true, speed = 3.50, bezier = "ease_out" })
