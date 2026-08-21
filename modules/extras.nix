@@ -71,8 +71,8 @@
         google-chrome
         tor-browser
 
-        # Miscellaneous
+        # Remote Desktop
         moonlight-qt
-        # parsec-bin
+        parsec-bin
     ];
 }
