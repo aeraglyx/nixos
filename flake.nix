@@ -21,6 +21,7 @@
                 system = system;
                 config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
                     "discord"
+                    "discord-unwrapped"
                     "google-chrome"
                     "parsec-bin"
                 ];
