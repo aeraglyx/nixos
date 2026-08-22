@@ -29,14 +29,10 @@
 
     xdg.mime.enable = true;
     xdg.mime.defaultApplications = {
-        "inode/directory"           = [ "nautilus.desktop" ];
-        "default-web-browser"       = [ "firefox.desktop" ];
-        "text/html"                 = [ "firefox.desktop" ];
-        "x-scheme-handler/ftp"      = [ "firefox.desktop" ];
-        "x-scheme-handler/http"     = [ "firefox.desktop" ];
-        "x-scheme-handler/https"    = [ "firefox.desktop" ];
-        "x-scheme-handler/about"    = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown"  = [ "firefox.desktop" ];
+        "inode/directory"        = "nautilus.desktop";
+        "image/*"                = "qimgv.desktop";
+        "x-scheme-handler/http"  = "firefox.desktop";
+        "x-scheme-handler/https" = "firefox.desktop";
     };
 
     programs.hyprland = {
