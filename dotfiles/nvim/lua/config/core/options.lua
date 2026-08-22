@@ -67,6 +67,13 @@ vim.filetype.add({
     },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "ron",
+    callback = function()
+        vim.bo.commentstring = "// %s"
+    end,
+})
+
 vim.api.nvim_create_autocmd("BufEnter", {
     desc = "Disable New Line Comment",
     callback = function()
