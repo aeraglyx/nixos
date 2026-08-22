@@ -15,6 +15,8 @@ hl.config({
         },
 
         resize_on_border = true,
+        extend_border_grab_area = 4,
+
         layout = "scrolling",
 
         snap = {
@@ -55,6 +57,7 @@ hl.config({
 
     scrolling = {
         fullscreen_on_one_column = false,
+        follow_min_visible = 0.2
     },
 
     misc = {
@@ -71,7 +74,7 @@ hl.config({
         kb_layout  = "us",
         numlock_by_default = true,
 
-        accel_profile = utils.accel_profile(0.94),
+        accel_profile = utils.accel_profile(0.9),
 
         repeat_delay = 200,
         repeat_rate = 36,
