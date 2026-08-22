@@ -39,7 +39,7 @@ symlink_conf () {
     symlink "$src" "$dst"
 }
 
-programs=(alacritty beets btop direnv dunst eza fastfetch flameshot fzf ghostty git hypr kitty lazygit mpv nvim qmk qutebrowser rmpc rofi starship sunsetr tealdeer tmux waybar yazi)
+programs=(alacritty btop direnv dunst eza fastfetch flameshot fzf ghostty git hypr kitty lazygit mpv nvim qmk qutebrowser rmpc rofi starship sunsetr tealdeer tmux waybar yazi)
 
 for program in "${programs[@]}"; do
     symlink_conf "$program"
