@@ -23,7 +23,9 @@ padding = { open = "█", close = "█" }
 
 [tabs]
 active = { bg = "blue", fg = "#202020", bold = true }
-inactive = { bg = "#383838", fg = "#c8c8c8" }
+inactive = { bg = "#202020", fg = "#c8c8c8" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
 
 [mode]
 normal_main = { fg = "#8b8b8b", bg = "#202020", bold = false }
@@ -61,7 +63,7 @@ border = { fg = "#c8c8c8", bold = true }
 title = { fg = "#c8c8c8", bold = true }
 
 [which]
-mask = { bg = "#383838", fg = "#c8c8c8" }
+border = { fg = "#8b8b8b" }
 cand = { fg = "blue" }  # left side
 desc = { fg = "#c8c8c8" }  # right side
 separator_style = { fg = "#8b8b8b" }
