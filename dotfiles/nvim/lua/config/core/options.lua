@@ -8,9 +8,7 @@ vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
-vim.opt.iskeyword:append("-")
 
--- TODO: per ft (.md)
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
@@ -46,8 +44,6 @@ end)
 
 vim.diagnostic.config({
     virtual_text = { current_line = true },
-    -- virtual_lines = { current_line = true },
-    -- underline = { severity = vim.diagnostic.severity.WARN },
     float = { header = "" },
     signs = false,
 })
