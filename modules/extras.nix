@@ -1,9 +1,6 @@
 { config, pkgs, pkgs-unstable, ... }:
 
 {
-    services.mullvad-vpn.enable = true;
-    services.mullvad-vpn.package = pkgs-unstable.mullvad-vpn;
-
     services.tailscale.enable = true;
     services.tailscale.package = pkgs-unstable.tailscale;
 
@@ -33,7 +30,7 @@
         tesseract
 
         # Capture
-        (flameshot.override { enableWlrSupport = true; })
+        flameshot
         gpu-screen-recorder
         # hyprshot
 
@@ -54,10 +51,8 @@
         # Music
         rmpc
         puddletag
-        beets
 
         # Media creation
-        blender_5_1
         blender_5_2
         # gimp3
         # djv
