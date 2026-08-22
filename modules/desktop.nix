@@ -51,6 +51,16 @@
         package = pkgs-unstable.firefox;
     };
 
+    programs.dconf.enable = true;
+    programs.dconf.profiles.user.databases = [{
+        settings = {
+            "org/gnome/desktop/interface" = {
+                color-scheme = "prefer-dark";
+                gtk-theme = "adw-gtk3-dark";
+            };
+        };
+    }];
+
     environment.systemPackages = with pkgs-unstable; [
 
         # WM stuff
@@ -59,6 +69,7 @@
         hyprpicker
         hyprcursor
         bibata-cursors
+        adw-gtk3
         sunsetr
         waybar
         rofi
