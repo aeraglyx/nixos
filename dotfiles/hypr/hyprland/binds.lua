@@ -33,11 +33,12 @@ hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("flameshot gui --clipboard -
 hl.bind(main_mod .. " + Z", run_script("screen_recording.sh"))
 hl.bind(main_mod .. " + SHIFT + Z", hl.dsp.exec_cmd(file_manager .. " ~/videos", tmp_win_wide))
 hl.bind(main_mod .. " + ALT + L", run_script("reload_stuff.sh"))
+hl.bind(main_mod .. " + SHIFT + L", hl.dsp.exec_cmd("pkill waybar || waybar &"))
 hl.bind(main_mod .. " + B", run_script("bookmarks/menu.sh"))
 hl.bind(main_mod .. " + SHIFT + B", run_script("bookmarks/add.sh"))
 hl.bind(main_mod .. " + ALT + T", run_script("time/time.sh"))
 hl.bind(main_mod .. " + Period", run_script("menu.sh"))
-hl.bind(main_mod .. " + Comma", hl.dsp.exec_cmd(terminal .. " -e bash -c \"cd ~/notes && nvim ./notes.md\"", tmp_win_high))
+hl.bind(main_mod .. " + Comma", hl.dsp.exec_cmd(terminal .. " -e bash -c \"cd ~/stuff/notes && nvim ./notes.md\"", tmp_win_high))
 hl.bind(main_mod .. " + V", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wtype -"))
 
 -- workspaces and programs
