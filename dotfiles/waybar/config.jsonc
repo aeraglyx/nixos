@@ -87,7 +87,7 @@
     },
     "custom/time-tracker": {
         "format": "󱎫 {}",
-        "exec": "cat ~/.local/share/time/status | sed 's/.*/\\U&/'",
+        "exec": "cat ~/stuff/time/status | sed 's/.*/\\U&/'",
         "interval": 2
     },
     "custom/screen-recorder": {
@@ -98,7 +98,8 @@
     },
     "clock": {
         "format": "{:%H:%M}",
-        "tooltip-format": "{:%A %Y-%m-%d}"
+        "tooltip-format": "{:%A %Y-%m-%d}",
+        "on-click": "ghostty --class=popup.app.high -e bash -c 'python ~/projects/code/calendar/main.py; exec bash'"
     },
     "battery": {
         "format": "{icon}  {capacity}%",
