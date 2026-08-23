@@ -1,4 +1,4 @@
-menu_src="$(python ~/scripts/bookmarks/menu.py)"
+menu_src="$(python ~/nixos/scripts/bookmarks/menu.py)"
 bookmark=$(echo "$menu_src" | rofi -dmenu -i -p "bookmarks" -markup-rows)
 
 if [ -n "$bookmark" ]; then

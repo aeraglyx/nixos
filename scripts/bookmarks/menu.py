@@ -2,7 +2,7 @@ import os
 import json
 import html
 
-file_in = os.path.expanduser("~/.local/share/bookmarks/bookmarks.json")
+file_in = os.path.expanduser("~/stuff/bookmarks/bookmarks.json")
 
 
 def markup(text):

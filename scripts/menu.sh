@@ -34,10 +34,10 @@ case $action in
         sleep 0.12 ; hyprpicker
         ;;
     "calendar")
-        ghostty --class=popup.app.high -e bash -c "python ~/projects/calendar/list.py; exec bash"
+        ghostty --class=popup.app.high -e bash -c "python ~/projects/code/calendar/main.py; exec bash"
         ;;
     "calendar -s")
-        ghostty --class=popup.app.high -e bash -c "python ~/projects/calendar/list.py -s; exec bash"
+        ghostty --class=popup.app.high -e bash -c "python ~/projects/code/calendar/main.py -s; exec bash"
         ;;
     "translate / cz to en")
         in="$(rofi -dmenu -p "cz" -l 0)"
