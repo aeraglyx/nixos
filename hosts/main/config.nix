@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, lib, ... } @ inputs:
+{ config, pkgs, pkgs-unstable, lib, ... }:
 
 {
     imports = [
@@ -38,7 +38,6 @@
     systemd.network.wait-online.enable = false;
 
     services.resolved.enable = true;
-    services.resolved.settings.Resolve.MulticastDNS = true;
     services.avahi.enable = true;
     services.avahi.nssmdns4 = true;
 
@@ -49,7 +48,6 @@
         alsa.support32Bit = true;
         pulse.enable = true;
         jack.enable = true;
-        # media-session.enable = true;  # might be needed in the future
     };
 
     services.xserver.videoDrivers = [ "nvidia" ];
@@ -64,11 +62,6 @@
             nvidiaSettings = false;
             package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
         };
-    };
-
-    services.syncthing = {
-        enable = true;
-        openDefaultPorts = true;
     };
 
     environment.systemPackages = with pkgs-unstable; [
