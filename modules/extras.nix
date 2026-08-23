@@ -28,6 +28,7 @@
         # Utils
         showmethekey
         tesseract
+        czkawka
 
         # Capture
         flameshot
@@ -38,13 +39,17 @@
         ffmpeg
         imagemagick
         exiftool
+        yt-dlp
         pass
 
+        # feedr
+        # newsboat
+        # freshrss
+
         # Viewers & players
-        # loupe
-        # nsxiv
-        # qimgv
-        # nomacs
+        gthumb
+        qimgv
+        loupe
         # vlc
         # libreoffice
 
@@ -54,6 +59,7 @@
 
         # Media creation
         blender_5_2
+        inkscape
         # gimp3
         # djv
 
