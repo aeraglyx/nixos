@@ -43,7 +43,8 @@ alias f="yazi"
 alias kill="pkill"
 alias diff="diff --old-group-format=$'\n\e[0;31m%<\e[0m' --new-group-format=$'\e[0;34m%>\e[0m' --unchanged-group-format=''"
 alias da="direnv allow"
-alias og="sh $nix_cfg/scripts/open_github.sh"
+alias dda="direnv disallow"
+alias og="sh $nix_cfg/scripts/open_git_remote.sh"
 alias ana="systemd-analyze"
 alias anab="systemd-analyze blame | head -n 32"
 alias matrix="cmatrix -C cyan"
@@ -53,7 +54,7 @@ alias sun="sunsetr --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00
 alias sunc="cargo run -- --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00:00' '2026-01-01 21:00:00' 1440"
 
 cmd="-c 'Telescope find_files'"
-code="$HOME/projects"
+code="$HOME/projects/code"
 
 alias en="cd $nix_cfg/ && nvim $cmd ."
 alias ed="cd $nix_cfg/dotfiles/ && nvim $cmd ."
