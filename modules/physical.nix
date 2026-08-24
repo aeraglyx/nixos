@@ -10,6 +10,11 @@
         timeout = 0;
     };
 
+    zramSwap = {
+        enable = true;
+        algorithm = "lz4";
+    };
+
     networking.firewall.enable = true;
 
     systemd.coredump.enable = false;

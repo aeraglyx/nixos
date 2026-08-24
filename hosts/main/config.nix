@@ -11,11 +11,6 @@
         randomEncryption.enable = true;
     }];
 
-    zramSwap = {
-        enable = true;
-        algorithm = "lz4";
-    };
-
     boot.blacklistedKernelModules = [ "nouveau" ];
     boot.supportedFilesystems = [ "zfs" ];
     boot.zfs.forceImportRoot = false;

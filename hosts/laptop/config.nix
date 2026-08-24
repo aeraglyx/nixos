@@ -11,11 +11,6 @@
         randomEncryption.enable = true;
     }];
 
-    zramSwap = {
-        enable = true;
-        algorithm = "lz4";
-    };
-
     networking.hostName = "laptop";
     networking.networkmanager.enable = true;
     networking.wireless.enable = true;
