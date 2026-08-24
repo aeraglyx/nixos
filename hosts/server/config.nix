@@ -11,11 +11,6 @@
         randomEncryption.enable = true;
     }];
 
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.configurationLimit = 4;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.timeout = 0;
-
     networking.hostName = "server";
     networking.networkmanager.enable = true;
     networking.wireless.enable = true;
