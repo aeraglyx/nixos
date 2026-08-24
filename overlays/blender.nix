@@ -40,35 +40,33 @@ let
 
             buildInputs = [ makeWrapper ];
 
-            preUnpack =
-                ''
-                    mkdir -p $out/libexec
-                    cd $out/libexec
-                '';
+            preUnpack = ''
+                mkdir -p $out/libexec
+                cd $out/libexec
+            '';
 
-            installPhase =
-                ''
-                    cd $out/libexec
-                    mv blender-* blender
+            installPhase = ''
+                cd $out/libexec
+                mv blender-* blender
 
-                    mkdir -p $out/share/applications
-                    mv ./blender/blender.desktop $out/share/applications/blender-${version}.desktop
+                mkdir -p $out/share/applications
+                mv ./blender/blender.desktop $out/share/applications/blender-${version}.desktop
 
-                    substituteInPlace $out/share/applications/blender-${version}.desktop \
-                        --replace "Name=Blender" "Name=Blender ${version}" \
-                        --replace "Exec=blender" "Exec=blender-${version}" \
-                        --replace "Icon=blender" "Icon=blender-${version}"
+                substituteInPlace $out/share/applications/blender-${version}.desktop \
+                    --replace "Name=Blender" "Name=Blender ${version}" \
+                    --replace "Exec=blender" "Exec=blender-${version}" \
+                    --replace "Icon=blender" "Icon=blender-${version}"
 
-                    mkdir $out/bin
-                    makeWrapper $out/libexec/blender/blender $out/bin/blender-${version} \
-                        --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib:${lib.makeLibraryPath libs}
+                mkdir $out/bin
+                makeWrapper $out/libexec/blender/blender $out/bin/blender-${version} \
+                    --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib:${lib.makeLibraryPath libs}
 
-                    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-                        blender/blender
+                patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
+                    blender/blender
 
-                    patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)"  \
-                        $out/libexec/blender/*/python/bin/python3*
-                '';
+                patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)"  \
+                    $out/libexec/blender/*/python/bin/python3*
+            '';
 
             meta.mainProgram = "blender-${version}";
         };
