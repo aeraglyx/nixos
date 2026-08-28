@@ -1,0 +1,5 @@
+[mgr]
+prepend_keymap = [
+	{ on = [ "g", "d" ], run = "cd /mnt/data", desc = "Go to /mnt/data" },
+	{ on = [ "g", "n" ], run = "cd ~/nixos", desc = "Go to ~/nixos" },
+]
