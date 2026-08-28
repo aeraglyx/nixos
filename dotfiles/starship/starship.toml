@@ -19,6 +19,8 @@ style = "bold red"
 truncation_length = 3
 truncation_symbol = "../"
 style = "text"
+read_only = "  "
+read_only_style = "yellow"
 
 [git_branch]
 symbol = " "
