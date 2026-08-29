@@ -39,6 +39,11 @@ alias syn-basic="rsync -avh --info=progress2 --no-i-r"
 alias syn-force="rsync -avh --info=progress2 --no-i-r --delete-delay --checksum"
 alias syn-check="rsync -avh --dry-run --checksum --delete"
 
+snap() {
+    timestamp=$(date +%Y%m%d_%H%M%S)
+    sudo zfs snapshot "${1}@${timestamp}_manual"
+}
+
 alias f="yazi"
 alias kill="pkill"
 alias diff="diff --old-group-format=$'\n\e[0;31m%<\e[0m' --new-group-format=$'\e[0;34m%>\e[0m' --unchanged-group-format=''"
