@@ -33,11 +33,10 @@ if args.month or args.day:
         report_start = report_start.replace(hour=0)
 
 
-dir = os.path.expanduser("~/.local/share/time/data")
-file = os.path.join(dir, args.project)
+data_dir = os.path.expanduser("~/stuff/time/data")
+file = os.path.join(data_dir, args.project)
 
 def get_entry_data(file):
-
     data = []
     with open(file) as f:
         for line in f:
@@ -60,7 +59,6 @@ total_sec = 0
 data = get_entry_data(file)
 
 for entry in data:
-
     dt_start, dt_end = entry
 
     # TODO: precise splitting
@@ -82,7 +80,6 @@ print(f"{hours:.1f} h")
 
 
 if args.graph:
-
     import matplotlib.pyplot as plt
     # import math
 
