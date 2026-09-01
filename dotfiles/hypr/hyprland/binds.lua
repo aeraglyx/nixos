@@ -3,6 +3,7 @@
 local terminal = "ghostty"
 local file_manager = "nautilus"
 local browser = "firefox"
+local remote_desktop = "parsecd"
 
 local main_mod = "SUPER"
 
@@ -57,7 +58,7 @@ end)
 
 hl.bind(main_mod .. " + W", function()
     hl.dispatch(hl.dsp.focus({ workspace = 9 }))
-    hl.dispatch(hl.dsp.exec_cmd("pgrep moonlight || moonlight"))
+    hl.dispatch(hl.dsp.exec_cmd("pgrep " .. remote_desktop .. " || " .. remote_desktop))
 end)
 
 hl.bind(main_mod .. " + S", hl.dsp.exec_cmd(terminal .. " -e rmpc", tmp_win_wide))
@@ -89,7 +90,6 @@ local numpad_keys = { "KP_End", "KP_Down", "KP_Next", "KP_Left", "KP_Begin", "KP
 -- switch workspaces and move active window to a workspace
 for i = 1, 10 do
     local key = numpad_keys[i]
-    -- local key = i % 10 -- 10 maps to key 0
     hl.bind(main_mod .. " + " .. key, hl.dsp.focus({ workspace = i}))
     hl.bind(main_mod .. " + ALT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
