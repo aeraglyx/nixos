@@ -1,10 +1,5 @@
 return {
     {
-        "lewis6991/gitsigns.nvim",
-        -- TODO: keymaps
-        opts = {}
-    },
-    {
         "nguyenvukhang/nvim-toggler",
         config = function()
             require("nvim-toggler").setup({

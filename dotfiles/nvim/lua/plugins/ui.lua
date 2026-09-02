@@ -21,6 +21,16 @@ return {
         end
     },
     {
+        "nvim-mini/mini.diff",
+        version = false,
+        opts = {
+            view = {
+                style = "sign",
+                signs = { add = "┃", change = "┃", delete = "▁" },
+            },
+        },
+    },
+    {
         -- "uga-rosa/ccc.nvim"
         "norcalli/nvim-colorizer.lua",
         config = function()
