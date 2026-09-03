@@ -78,11 +78,21 @@ let
             meta.mainProgram = "blender-${version}";
         };
 
-in {
+    mkBlenderSymlink = final: blender: final.symlinkJoin {
+        name = "blender";
+        paths = [ blender ];
+        postBuild = ''
+            ln -sf ${blender}/bin/blender-${lib.getVersion blender} $out/bin/blender
+        '';
+    };
+
+in rec {
 
     blender_5_2 = mkBlender rec {
         version = "5.2.0";
         src = srcOfficial version "sha256-lvbBgaMPSVBgeDnchNQqNUslDYoCMbCYtZt7xpw1HEg=";
     };
+
+    blender = mkBlenderSymlink final blender_5_2;
 
 }
