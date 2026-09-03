@@ -1,17 +1,25 @@
-# heavily inspired by https://github.com/edolstra/nix-warez
+# inspired by https://github.com/edolstra/nix-warez
 
 final: prev:
 let
+    inherit (final) lib;
+
+    srcOfficial = version: hash: (
+        let majorMinor = lib.versions.majorMinor version; in
+        import <nix/fetchurl.nix> {
+            url = "https://download.blender.org/release/Blender${majorMinor}/blender-${version}-linux-x64.tar.xz";
+            inherit hash;
+        }
+    );
 
     mkBlender = { version, src }:
         with final;
 
         let
+            majorMinor = lib.versions.majorMinor version;
             libs = [
                 wayland
                 libdecor
-
-                # xorg
                 libx11
                 libxi
                 libxxf86vm
@@ -19,7 +27,6 @@ let
                 libxrender
                 libsm
                 libice
-
                 libxkbcommon
                 libGLU
                 libglvnd
@@ -51,12 +58,11 @@ let
                 mv blender-* blender
 
                 mkdir -p $out/share/applications
-                mv ./blender/blender.desktop $out/share/applications/blender-${version}.desktop
+                mv ./blender/blender.desktop $out/share/applications/blender-${majorMinor}.desktop
 
-                substituteInPlace $out/share/applications/blender-${version}.desktop \
+                substituteInPlace $out/share/applications/blender-${majorMinor}.desktop \
                     --replace "Name=Blender" "Name=Blender ${version}" \
-                    --replace "Exec=blender" "Exec=blender-${version}" \
-                    --replace "Icon=blender" "Icon=blender-${version}"
+                    --replace "Exec=blender" "Exec=blender-${version}"
 
                 mkdir $out/bin
                 makeWrapper $out/libexec/blender/blender $out/bin/blender-${version} \
@@ -65,7 +71,7 @@ let
                 patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
                     blender/blender
 
-                patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)"  \
+                patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
                     $out/libexec/blender/*/python/bin/python3*
             '';
 
@@ -74,12 +80,9 @@ let
 
 in {
 
-    blender_5_2 = mkBlender {
+    blender_5_2 = mkBlender rec {
         version = "5.2.0";
-        src = import <nix/fetchurl.nix> {
-            url = "https://download.blender.org/release/Blender5.2/blender-5.2.0-linux-x64.tar.xz";
-            hash = "sha256-lvbBgaMPSVBgeDnchNQqNUslDYoCMbCYtZt7xpw1HEg=";
-        };
+        src = srcOfficial version "sha256-lvbBgaMPSVBgeDnchNQqNUslDYoCMbCYtZt7xpw1HEg=";
     };
 
 }
