@@ -89,8 +89,8 @@ let
 in rec {
 
     blender_5_2 = mkBlender rec {
-        version = "5.2.0";
-        src = srcOfficial version "sha256-lvbBgaMPSVBgeDnchNQqNUslDYoCMbCYtZt7xpw1HEg=";
+        version = "5.2.1";
+        src = srcOfficial version "sha256-ox9ST6maUn09Urf1qqaMNOGhnVoclHP3nFzGEP1bEOk=";
     };
 
     blender = mkBlenderSymlink final blender_5_2;
