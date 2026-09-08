@@ -55,6 +55,8 @@ def setup_preferences():
     prefs = bpy.context.preferences
     prefs.use_preferences_save = False
 
+    prefs.system.use_online_access = True
+
     prefs.view.show_tooltips_python = True
     prefs.view.show_navigate_ui = False
     prefs.view.show_developer_ui = True
@@ -64,8 +66,8 @@ def setup_preferences():
     prefs.view.menu_close_leave = True
     prefs.view.use_weight_color_range = True
     prefs.view.header_align = 'TOP'
-    prefs.view.date_format = 'BE_DASH'
     prefs.view.use_reduce_motion = True
+    # prefs.view.date_format = 'BE_DASH'  # 5.2
 
     font_path = get_font_path()
     if font_path:
@@ -163,6 +165,11 @@ def setup_keymaps():
         kmi.new(idname="node.options_toggle", type='H', value='PRESS', alt=True)
 
 
+def get_ext_from_bl(name: str):
+    bpy.ops.extensions.package_install(repo_index=0, pkg_id=name)
+    bpy.ops.preferences.addon_enable(module=f"bl_ext.blender_org.{name}")
+
+
 def get_ext_from_gh(repo, branch="main"):
     archive_link = f"https://github.com/{repo}/archive/refs/heads/{branch}.zip"
     extension_name = repo.split("/")[-1]
@@ -184,11 +191,13 @@ def get_ext_from_gh(repo, branch="main"):
             shutil.move(src, dst)
 
         os.rmdir(nested_path)
-        bpy.ops.preferences.addon_enable(module=f"bl_ext.user_default.{extension_name}")
+
+    bpy.ops.preferences.addon_enable(module=f"bl_ext.user_default.{extension_name}")
 
 
 def setup_extensions():
     bpy.ops.preferences.addon_enable(module="node_wrangler")
+    get_ext_from_bl(name="icon_viewer")
     get_ext_from_gh(repo="aeraglyx/fulcrum", branch="master")
     get_ext_from_gh(repo="aeraglyx/blueshift")
 
@@ -210,6 +219,7 @@ def load_handler_startup(_):
     bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = [0, 0, 0, 1]
     bpy.data.objects.remove(bpy.data.objects["Light"])
     bpy.data.screens["Layout"].areas[3].spaces[0].overlay.show_face_orientation = True
+    bpy.data.screens["Compositing"].areas[3].spaces[0].show_region_asset_shelf = False
 
     ws_to_keep = ("Layout", "Compositing", "Scripting")
     for ws in bpy.data.workspaces:
