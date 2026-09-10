@@ -1,123 +1,80 @@
-return {
-    {
-        "aeraglyx/onyx.nvim",
-        dev = true,
-        priority = 1000,
-        config = function()
-            require("onyx").setup()
-            local reload_onyx = function()
-                vim.cmd("Lazy reload onyx.nvim")
-                local notify_orig = vim.notify
-                vim.notify = function(...) end
-                vim.cmd("Lazy reload lualine.nvim")
-                vim.cmd("Lazy reload todo-comments.nvim")
-                vim.cmd("Lazy reload indent-blankline.nvim")
-                vim.cmd("Lazy reload nvim-notify")
-                vim.cmd("Lazy reload gitsigns.nvim")
-                vim.cmd("Lazy reload nvim-web-devicons")
-                vim.notify = notify_orig
-            end
-            vim.keymap.set("n", "<leader>th", reload_onyx, { desc = "Reload [TH]eme" })
-        end
+vim.pack.add({ "https://github.com/nvim-mini/mini.diff" })
+local diff = require("mini.diff")
+diff.setup({
+    view = {
+        style = "sign",
+        signs = { add = "┃", change = "┃", delete = "▁" },
     },
-    {
-        "nvim-mini/mini.diff",
-        version = false,
-        opts = {
-            view = {
-                style = "sign",
-                signs = { add = "┃", change = "┃", delete = "▁" },
-            },
-        },
-    },
-    {
-        -- "uga-rosa/ccc.nvim"
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup({ "*" }, { names = false })
-        end
-    },
-    {
-        "nvim-tree/nvim-web-devicons",
-        config = function()
-            require("nvim-web-devicons").setup({ color_icons = false })
-            local colors = require("onyx.colors")
-            require("nvim-web-devicons").set_default_icon('', colors.text, 251)
-        end
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
+})
 
-            local function modified_color()
-                local colors = require("onyx.colors")
-                return { fg = vim.bo.modified and colors.aqua or colors.dim }
-            end
 
-            require("lualine").setup({
-                options = {
-                    theme = require("onyx.lualine"),
-                    section_separators = "",
-                    component_separators = "",
-                },
-                sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { },
-                    lualine_c = {
-                        { "branch", icon = "" },
-                        { "filename", color = modified_color, symbols = { modified = "" } },
-                        { "diagnostics" },
-                    },
-                    lualine_x = { "encoding", "fileformat", { "filetype", icons_enabled = false } },
-                    lualine_y = { },
-                    lualine_z = { "progress" }
-                },
-            })
-        end
-    },
-    {
-        "rcarriga/nvim-notify",
-        opts = { background_colour = "#000000" },
-    },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-        opts = {
-            presets = { lsp_doc_border = true },
-            routes = {
-                {
-                    filter = {
-                        event = "msg_show",
-                        kind = "",
-                        find = "written",
-                    },
-                    opts = { skip = true },
-                },
+
+vim.pack.add({ "https://github.com/rcarriga/nvim-notify" })
+local notify = require("notify")
+notify.setup({
+    background_colour = "#000000",
+})
+
+
+-- "uga-rosa/ccc.nvim"
+vim.pack.add({ "https://github.com/norcalli/nvim-colorizer.lua" })
+local colorizer = require("colorizer")
+colorizer.setup()
+-- require("colorizer").setup({ "*" }, { names = false })
+
+
+
+vim.pack.add({
+    "https://github.com/folke/noice.nvim",
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/rcarriga/nvim-notify",
+})
+local noice = require("noice")
+noice.setup({
+    presets = { lsp_doc_border = true },
+    routes = {
+        {
+            filter = {
+                event = "msg_show",
+                kind = "",
+                find = "written",
             },
+            opts = { skip = true },
         },
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        event = {"BufReadPre", "BufNewFile"},
-        main = "ibl",
-        opts = {
-            indent = { char = "|", tab_char = "|" },
-            scope = { enabled = false },
-        }
+})
+
+
+
+vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
+local indent = require("ibl")
+-- event = {"BufReadPre", "BufNewFile"},
+indent.setup({
+    indent = { char = "|", tab_char = "|" },
+    scope = { enabled = false },
+})
+
+
+
+vim.pack.add({ "https://github.com/folke/zen-mode.nvim" })
+local zen = require("zen-mode")
+zen.setup({
+    window = {
+        backdrop = 1,
+        width = 100,
+        height = 1,
     },
-    {
-        "folke/zen-mode.nvim",
-        opts = {
-            window = {
-                backdrop = 1,
-                width = 100,
-                height = 1,
-            },
-        }
-    },
-}
+})
+
+
+
+vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
+local icons = require("nvim-web-devicons")
+icons.setup({
+    color_icons = false,
+})
+
+local colors = require("onyx.colors")
+require("nvim-web-devicons").set_default_icon('', colors.text, 251)
+
+

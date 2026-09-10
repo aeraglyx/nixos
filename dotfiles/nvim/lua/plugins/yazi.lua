@@ -1,37 +1,21 @@
-return {
-    "mikavilpas/yazi.nvim",
-    version = "*",
-    event = "VeryLazy",
-    dependencies = {
-        { "nvim-lua/plenary.nvim", lazy = true },
+vim.pack.add({
+    "https://github.com/mikavilpas/yazi.nvim",
+    "https://github.com/nvim-lua/plenary.nvim",
+})
+
+local yazi = require("yazi")
+
+yazi.setup({
+    open_for_directories = true,
+    floating_window_scaling_factor = 0.8,
+    keymaps = {
+        show_help = "<f1>",
     },
-    keys = {
-        {
-            "<leader>fr",
-            "<cmd>Yazi cwd<cr>",
-            desc = "Open yazi in nvim's working directory",
-        },
-        {
-            "<leader>ft",
-            mode = { "n", "v" },
-            "<cmd>Yazi<cr>",
-            desc = "Open yazi at the current file",
-        },
-        {
-            "<leader>fs",
-            "<cmd>Yazi toggle<cr>",
-            desc = "Resume the last yazi session",
-        },
-    },
-    opts = {
-        open_for_directories = true,
-        floating_window_scaling_factor = 0.8,
-        keymaps = {
-            show_help = "<f1>",
-        },
-    },
-    init = function()
-        -- https://github.com/mikavilpas/yazi.nvim/issues/802
-        vim.g.loaded_netrwPlugin = 1
-    end,
-}
+})
+
+-- https://github.com/mikavilpas/yazi.nvim/issues/802
+vim.g.loaded_netrwPlugin = 1
+
+vim.keymap.set("n", "<leader>fr", "<cmd>Yazi cwd<cr>",    { desc = "Open yazi in nvim's working directory" })
+vim.keymap.set("n", "<leader>ft", "<cmd>Yazi<cr>",        { desc = "Open yazi at the current file" })
+vim.keymap.set("n", "<leader>fs", "<cmd>Yazi toggle<cr>", { desc = "Resume the last yazi session" })

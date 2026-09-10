@@ -1,11 +1,13 @@
-return {
-    {
-        "nguyenvukhang/nvim-toggler",
-        config = function()
-            require("nvim-toggler").setup({
-                remove_default_keybinds = true,
-            })
-            vim.keymap.set({"n", "v"}, "<leader>te", require("nvim-toggler").toggle, { desc = "Toggle text" })
-        end
-    },
-}
+require("plugins.onyx")
+
+require("plugins.blink")
+require("plugins.lazygit")
+require("plugins.lsp")
+require("plugins.lualine")
+require("plugins.oil")
+require("plugins.telescope")
+require("plugins.todo")
+require("plugins.toggler")
+require("plugins.treesitter")
+require("plugins.ui")
+require("plugins.yazi")
