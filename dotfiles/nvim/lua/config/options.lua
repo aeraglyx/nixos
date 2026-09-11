@@ -38,6 +38,21 @@ vim.g.have_nerd_font = true
 vim.opt.laststatus = 3
 vim.opt.winborder = "rounded"
 
+vim.o.cmdheight = 0
+
+require("vim._core.ui2").enable({
+    msg = {
+        cmd = { height = 0.5 },
+		dialog = { height = 0.5 },
+		msg = { height = 0.3, timeout = 6000 },
+		pager = { height = 0.5 },
+        targets = {
+            [""] = "msg",
+            typed_cmd = "msg",
+        },
+    }
+})
+
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus"
 end)
