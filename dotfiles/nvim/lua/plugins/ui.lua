@@ -16,11 +16,12 @@ notify.setup({
 })
 
 
--- "uga-rosa/ccc.nvim"
-vim.pack.add({ "https://github.com/norcalli/nvim-colorizer.lua" })
+
+vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
 local colorizer = require("colorizer")
-colorizer.setup()
--- require("colorizer").setup({ "*" }, { names = false })
+colorizer.setup({
+    options = { parsers = { names = { enable = false }, }, },
+})
 
 
 
