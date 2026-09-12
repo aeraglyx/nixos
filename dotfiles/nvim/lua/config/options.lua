@@ -32,19 +32,20 @@ vim.opt.splitbelow = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.iskeyword:append("-")
 
+vim.opt.winborder = "rounded"
 vim.opt.termguicolors = true
 vim.g.have_nerd_font = true
-vim.opt.laststatus = 3
-vim.opt.winborder = "rounded"
 
-vim.o.cmdheight = 0
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
 
 require("vim._core.ui2").enable({
     msg = {
         cmd = { height = 0.5 },
 		dialog = { height = 0.5 },
-		msg = { height = 0.3, timeout = 6000 },
+		msg = { height = 0.3, timeout = 5000 },
 		pager = { height = 0.5 },
         targets = {
             [""] = "msg",
