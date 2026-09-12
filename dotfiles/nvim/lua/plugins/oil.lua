@@ -1,6 +1,6 @@
 vim.pack.add({
+    "https://github.com/nvim-tree/nvim-web-devicons",
     "https://github.com/stevearc/oil.nvim",
-    "https://github.com/nvim-tree/nvim-web-devicons"
 })
 
 local oil = require("oil")
@@ -14,3 +14,5 @@ oil.setup({
         end,
     },
 })
+
+vim.keymap.set("n", "<leader>et", "<cmd>Oil<CR>", { desc = "Open parent directory" })

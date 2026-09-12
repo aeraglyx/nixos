@@ -51,6 +51,3 @@ blink.setup({
 
     fuzzy = { implementation = "lua" }
 })
-
--- blink.build():pwait()
--- opts_extend = { "sources.default" }

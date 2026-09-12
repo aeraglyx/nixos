@@ -13,7 +13,6 @@ yazi.setup({
     },
 })
 
--- https://github.com/mikavilpas/yazi.nvim/issues/802
 vim.g.loaded_netrwPlugin = 1
 
 vim.keymap.set("n", "<leader>fr", "<cmd>Yazi cwd<cr>",    { desc = "Open yazi in nvim's working directory" })

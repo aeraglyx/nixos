@@ -1,6 +1,4 @@
-vim.pack.add({
-    "https://github.com/nvim-treesitter/nvim-treesitter",
-})
+vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter" })
 
 local treesitter = require("nvim-treesitter")
 
@@ -47,10 +45,6 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end
 })
-
--- vim.api.nvim_create_autocmd("PackChanged", {
---     callback = function() nts.update() end
--- })
 
 vim.api.nvim_create_autocmd("PackChanged", {
     callback = function(ev)

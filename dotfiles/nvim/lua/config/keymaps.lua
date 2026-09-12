@@ -3,9 +3,9 @@ local keymap = vim.keymap
 vim.g.mapleader = " "
 
 keymap.set("n", "<leader>so", "<cmd>source %<CR>")
--- keymap.set("n", "<leader>e", "<cmd>Explore<CR>")
 keymap.set("n", "<esc>", "<cmd>nohlsearch<CR>")
-keymap.set("i", "<C-BC>", "<C-w>")
+keymap.set("n", "U", vim.cmd.redo, { desc = "Redo" })
+keymap.set("n", "<leader>res", "<cmd>restart<cr>", { desc = "Restart" })
 
 -- saving
 keymap.set("n", "<C-s>", "<cmd>w<CR>")
@@ -82,23 +82,6 @@ keymap.set("n", "fm", "mx:%s/\r$<CR>`x", { remap = true, desc = "Remove ^M" })
 keymap.set("n", " ", "<nop>", { desc = "Ignore space", silent = true })
 
 -- spell checking
-vim.keymap.set("n", "<leader>sp", function()
+vim.keymap.set("n", "<leader>sk", function()
     vim.cmd("setlocal spell!")
 end, { desc = "Toggle spell checking" })
-
--- lazygit.nvim
-keymap.set("n", "<leader>gg", function()
-    local file = vim.fn.expand("%:t")
-    vim.cmd("LazyGit")
-    vim.defer_fn(function()
-        vim.api.nvim_feedkeys("/" .. file, "t", true)
-        vim.api.nvim_input("<CR>")
-        vim.api.nvim_input("<ESC>")
-    end, 100) -- 40ms threshold on main pc
-end, { desc = "[g]it" })
-
--- zen mode
-keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
-
--- oil.nvim
-keymap.set("n", "<leader>et", "<cmd>Oil<CR>", { desc = "Open parent directory" })

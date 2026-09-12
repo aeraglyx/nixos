@@ -1,9 +1,4 @@
-vim.pack.add({
-    "https://github.com/neovim/nvim-lspconfig",
-    -- "https://github.com/saghen/blink.cmp",
-    -- "https://github.com/saghen/blink.lib",
-    -- "https://github.com/hrsh7th/cmp-nvim-lsp",
-})
+vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 
 local lua_ls_opts = {
     settings = {
@@ -48,8 +43,6 @@ vim.lsp.enable({
     "julials",
 })
 
--- require('lspconfig.ui.windows').default_options.border = "rounded"
-
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("attach-lsp-group", { clear = true }),
     callback = function(args)
@@ -68,7 +61,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
         map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
         map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-        map("<leader>re", vim.lsp.buf.rename, "[RE]name")
+        map("<leader>ren", vim.lsp.buf.rename, "[REN]ame")
         map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
         map("K", vim.lsp.buf.hover, "TODO")

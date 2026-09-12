@@ -9,14 +9,6 @@ diff.setup({
 
 
 
-vim.pack.add({ "https://github.com/rcarriga/nvim-notify" })
-local notify = require("notify")
-notify.setup({
-    background_colour = "#000000",
-})
-
-
-
 vim.pack.add({ "https://github.com/catgoose/nvim-colorizer.lua" })
 local colorizer = require("colorizer")
 colorizer.setup({
@@ -25,31 +17,18 @@ colorizer.setup({
 
 
 
-vim.pack.add({
-    "https://github.com/folke/noice.nvim",
-    "https://github.com/MunifTanjim/nui.nvim",
-    "https://github.com/rcarriga/nvim-notify",
-})
-local noice = require("noice")
-noice.setup({
-    presets = { lsp_doc_border = true },
-    routes = {
-        {
-            filter = {
-                event = "msg_show",
-                kind = "",
-                find = "written",
-            },
-            opts = { skip = true },
-        },
-    },
+vim.pack.add({ "https://github.com/rachartier/tiny-cmdline.nvim" })
+local tiny_cmdline = require("tiny-cmdline")
+tiny_cmdline.setup({
+    width = { value = 60 },
+    position = { y = "75%" },
+    native_types = { },
 })
 
 
 
 vim.pack.add({ "https://github.com/lukas-reineke/indent-blankline.nvim" })
 local indent = require("ibl")
--- event = {"BufReadPre", "BufNewFile"},
 indent.setup({
     indent = { char = "|", tab_char = "|" },
     scope = { enabled = false },
@@ -66,6 +45,7 @@ zen.setup({
         height = 1,
     },
 })
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>", { desc = "Zen Mode" })
 
 
 
@@ -74,7 +54,6 @@ local icons = require("nvim-web-devicons")
 icons.setup({
     color_icons = false,
 })
-
 local colors = require("onyx.colors")
 require("nvim-web-devicons").set_default_icon('', colors.text, 251)
 

@@ -7,7 +7,7 @@ local lualine = require("lualine")
 
 local function modified_color()
     local colors = require("onyx.colors")
-    return { fg = vim.bo.modified and colors.aqua or colors.dim }
+    return { fg = vim.bo.modified and colors.blue or colors.dim }
 end
 
 lualine.setup({
