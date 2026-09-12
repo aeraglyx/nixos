@@ -16,18 +16,13 @@ gui:
     optionsTextColor:
       - "#525252"
     selectedLineBgColor:
-      - "#383838"
+      - reverse
     inactiveViewSelectedLineBgColor:
       - "#383838"
-    # cherryPickedCommitBgColor:
-    #   - "#45475a"
-    # cherryPickedCommitFgColor:
-    #   - "#89b4fa"
-    # unstagedChangesColor:
-    #   - red
 
   authorColors:
-    "*": "#8b8b8b"
+    "aeraglyx": "#c8c8c8"
+    "*":        "#525252"
 
   scrollHeight: 1
   nerdFontsVersion: "3"
