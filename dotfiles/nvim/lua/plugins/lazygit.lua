@@ -1,9 +1,7 @@
-vim.pack.add({
-    "https://github.com/nvim-lua/plenary.nvim",
-    "https://github.com/kdheepak/lazygit.nvim",
-})
+vim.pack.add({ "https://github.com/kdheepak/lazygit.nvim" })
 
-vim.g.lazygit_floating_window_scaling_factor = 1.0
+vim.g.lazygit_floating_window_scaling_factor = 0.8
+vim.g.lazygit_floating_window_border_chars = ""
 
 vim.keymap.set("n", "<leader>gg", function()
     local file = vim.fn.expand("%:t")
