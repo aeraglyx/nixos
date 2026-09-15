@@ -58,17 +58,16 @@ alias ser="sh scripts/serve.sh"
 alias sun="sunsetr --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00:00' '2026-01-01 21:00:00' 1440"
 alias sunc="cargo run -- --config ~/.config/test-sunsetr/ --simulate '2026-01-01 20:00:00' '2026-01-01 21:00:00' 1440"
 
-cmd="-c 'Telescope find_files'"
 code="$HOME/projects/code"
 
-alias en="cd $nix_cfg/ && nvim $cmd ."
-alias ed="cd $nix_cfg/dotfiles/ && nvim $cmd ."
+alias en="cd $nix_cfg/ && nvim ."
+alias ed="cd $nix_cfg/dotfiles/ && nvim ."
 alias eb="cd $nix_cfg/dotfiles/bash/ && nvim .bashrc"
-alias eh="cd $nix_cfg/dotfiles/hypr/ && nvim $cmd ."
-alias ev="cd $nix_cfg/dotfiles/nvim/ && nvim $cmd ."
+alias eh="cd $nix_cfg/dotfiles/hypr/ && nvim ."
+alias ev="cd $nix_cfg/dotfiles/nvim/ && nvim ."
 
-alias ec="cd $code/onyx.nvim/ && nvim $cmd ."
-alias kb="cd $code/qmk_userspace/ && nvim $cmd ."
+alias ec="cd $code/onyx.nvim/ && nvim ."
+alias kb="cd $code/qmk_userspace/ && nvim ."
 
 dir() {
     mkdir -p "$1"
