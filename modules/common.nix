@@ -9,7 +9,6 @@
     };
 
     time.timeZone = "Europe/Prague";
-    i18n.defaultLocale = "en_US.UTF-8";
 
     users.users.aeraglyx = {
         isNormalUser = true;
@@ -43,12 +42,15 @@
         enableAskPassword = true;
     };
 
+    environment.defaultPackages = lib.mkForce [ ];
+
     environment.systemPackages = with pkgs-unstable; [
 
         # CLI tools
         git
         zoxide
         ripgrep
+        rsync
         tree-sitter
         tree
         wget
