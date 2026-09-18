@@ -117,7 +117,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
     callback = function()
         local arg = vim.fn.argv(0)
         if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
-            require("telescope.builtin").find_files()
+            vim.schedule(function()
+                require("telescope.builtin").find_files()
+            end)
         end
     end,
 })
