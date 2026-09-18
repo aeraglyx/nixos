@@ -1,6 +1,7 @@
 { config, pkgs, pkgs-unstable, ... }:
 
 {
+    boot.tmp.cleanOnBoot = true;
     boot.kernelParams = [ "quiet" ];
     boot.kernel.sysctl."kernel.core_pattern" = "/dev/null";
     boot.loader = {
