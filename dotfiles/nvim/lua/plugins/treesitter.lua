@@ -32,7 +32,7 @@ local parsers = {
     "ron",
 }
 
-treesitter.install(parsers)
+treesitter.install(parsers):wait(60000)
 
 local filetypes = vim.iter(parsers)
     :map(function(lang) return vim.treesitter.language.get_filetypes(lang) end)
