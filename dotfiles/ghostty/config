@@ -20,3 +20,6 @@ selection-clear-on-typing = true
 resize-overlay = never
 gtk-single-instance = false
 scrollbar = never
+
+keybind = ctrl+shift+equal=increase_font_size:2
+keybind = ctrl+minus=decrease_font_size:2
