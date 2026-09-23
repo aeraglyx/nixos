@@ -4,15 +4,23 @@ vim.pack.add({
 })
 
 local lualine = require("lualine")
+local colors = require("onyx.colors")
+
+local theme = {
+    normal = {
+        a = { fg = colors.meh },
+        b = { fg = colors.dim },
+        c = { fg = colors.dim },
+    },
+}
 
 local function modified_color()
-    local colors = require("onyx.colors")
     return { fg = vim.bo.modified and colors.blue or colors.dim }
 end
 
 lualine.setup({
     options = {
-        theme = require("onyx.lualine"),
+        theme = theme,
         section_separators = "",
         component_separators = "",
     },
@@ -24,8 +32,15 @@ lualine.setup({
             { "filename", color = modified_color, symbols = { modified = "" } },
             { "diagnostics" },
         },
-        lualine_x = { "encoding", "fileformat", { "filetype", icons_enabled = false } },
+        lualine_x = {
+            "selectioncount",
+            "encoding",
+            "fileformat",
+            { "filetype", icons_enabled = false },
+            "location",
+            "progress",
+        },
         lualine_y = { },
-        lualine_z = { "progress" }
+        lualine_z = { }
     },
 })
