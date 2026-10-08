@@ -1,9 +1,6 @@
 { config, pkgs, pkgs-unstable, ... }:
 
 {
-    services.tailscale.enable = true;
-    services.tailscale.package = pkgs-unstable.tailscale;
-
     services.mpd = {
         enable = true;
         user = "aeraglyx";
@@ -22,9 +19,6 @@
 
     environment.systemPackages = with pkgs-unstable; [
 
-        # Terminals
-        alacritty
-
         # Utils
         showmethekey
         tesseract
@@ -32,36 +26,26 @@
 
         # Capture
         flameshot
-        gpu-screen-recorder
-        # hyprshot
+        pkgs.gpu-screen-recorder
 
         # CLI tools
         ffmpeg
         imagemagick
         exiftool
         yt-dlp
-        pass
-
-        # feedr
-        # newsboat
-        # freshrss
 
         # Viewers & players
         gthumb
         qimgv
         loupe
-        # vlc
-        # libreoffice
 
         # Music
         rmpc
         puddletag
 
         # Media creation
+        blender
         blender_5_2
-        inkscape
-        # gimp3
-        # djv
 
         # Messaging
         discord
@@ -73,7 +57,6 @@
         tor-browser
 
         # Remote Desktop
-        moonlight-qt
         parsec-bin
     ];
 }
