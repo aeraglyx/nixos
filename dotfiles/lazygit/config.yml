@@ -1,7 +1,5 @@
 disableStartupPopups: true
-
 gui:
-
   theme:
     defaultFgColor:
       - "#c8c8c8"
@@ -19,11 +17,9 @@ gui:
       - reverse
     inactiveViewSelectedLineBgColor:
       - "#383838"
-
-  authorColors:
-    "aeraglyx": "#c8c8c8"
-    "*":        "#525252"
-
+    authorColors:
+      "aeraglyx": "#c8c8c8"
+      "*": "#525252"
   scrollHeight: 1
   nerdFontsVersion: "3"
   showFileIcons: false
