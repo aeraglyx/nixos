@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ pkgs-unstable, ... }:
 
 {
     boot.tmp.cleanOnBoot = true;

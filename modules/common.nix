@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 
 {
     nix.settings = {

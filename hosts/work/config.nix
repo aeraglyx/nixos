@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ ... }:
 
 {
     nixpkgs.hostPlatform = "x86_64-linux";
