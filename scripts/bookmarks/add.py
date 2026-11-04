@@ -7,7 +7,7 @@ parser.add_argument("-n", "--name", type=str)
 parser.add_argument("-u", "--url", type=str, required=True)
 args = parser.parse_args()
 
-file = os.path.expanduser("~/.local/share/bookmarks/bookmarks.json")
+file = os.path.expanduser("~/stuff/bookmarks/bookmarks.json")
 
 with open(file) as f:
     data = json.load(f)
