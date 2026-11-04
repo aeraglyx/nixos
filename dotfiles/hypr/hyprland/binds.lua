@@ -11,7 +11,7 @@ local tmp_win_wide = { float = true, center = true, size = { "monitor_w * 0.5", 
 local tmp_win_high = { float = true, center = true, size = { "monitor_w * 0.3", "monitor_h * 0.8" }}
 
 -- power
-hl.bind(main_mod .. " + X", hl.dsp.exec_cmd("systemctl suspend"))
+hl.bind(main_mod .. " + X", hl.dsp.exec_cmd("pkill parsecd ; systemctl suspend"))
 hl.bind(main_mod .. " + ALT + X", hl.dsp.exec_cmd("shutdown now"))
 hl.bind(main_mod .. " + SHIFT + X", hl.dsp.exec_cmd("reboot"))
 
@@ -30,7 +30,7 @@ end
 
 -- scripts and stuff
 hl.bind(main_mod .. " + P", hl.dsp.exec_cmd("flameshot gui --clipboard --path ~/pictures/screenshots"))
-hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("flameshot gui --clipboard --last-region --accept-on-select --path ~/pictures/screenshots"))
+hl.bind(main_mod .. " + SHIFT + P", hl.dsp.exec_cmd("flameshot gui --clipboard --last-region --accept-on-select --path ~/pictures/screenshots ; notify-send 'last region saved' --urgency=low"))
 hl.bind(main_mod .. " + Z", run_script("screen_recording.sh"))
 hl.bind(main_mod .. " + SHIFT + Z", hl.dsp.exec_cmd(file_manager .. " ~/videos", tmp_win_wide))
 hl.bind(main_mod .. " + ALT + L", run_script("reload_stuff.sh"))
