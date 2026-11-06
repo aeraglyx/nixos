@@ -82,6 +82,6 @@ keymap.set("n", "fm", "mx:%s/\r$<CR>`x", { remap = true, desc = "Remove ^M" })
 keymap.set("n", " ", "<nop>", { desc = "Ignore space", silent = true })
 
 -- spell checking
-vim.keymap.set("n", "<leader>sk", function()
+vim.keymap.set("n", "<leader>sl", function()
     vim.cmd("setlocal spell!")
 end, { desc = "Toggle spell checking" })
