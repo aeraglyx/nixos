@@ -13,7 +13,7 @@
     preview_label_style: (fg: "cyan"),
     preview_metadata_group_style: (fg: "black", modifiers: "Bold"),
     highlighted_item_style: (fg: "blue", bg: "#383838", modifiers: "Bold"),
-    current_item_style: (fg: "#202020", bg: "blue", modifiers: "Bold"),
+    current_item_style: (fg: "#1f1f1f", bg: "blue", modifiers: "Bold"),
     borders_style: (fg: "black"),
     highlight_border_style: (fg: "black"),
     symbols: (
@@ -47,7 +47,7 @@
         thumb_style: (fg: "black"),
     ),
     tab_bar: (
-        active_style: (fg: "#c8c8c8", bg: "#202020", modifiers: "Bold"),
+        active_style: (fg: "#c8c8c8", bg: "#1f1f1f", modifiers: "Bold"),
         inactive_style: (fg: "#525252", modifiers: "Bold"),
     ),
     lyrics: (
