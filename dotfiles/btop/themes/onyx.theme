@@ -1,10 +1,10 @@
-theme[main_bg]="20"
+theme[main_bg]="1f"
 theme[main_fg]="#c8"
 theme[title]="#c8"
-theme[hi_fg]="#96c6dd"
+theme[hi_fg]="#a2c3d6"
 
 theme[selected_bg]="#c8"
-theme[selected_fg]="#20"
+theme[selected_fg]="#1f"
 theme[inactive_fg]="#52"
 
 theme[cpu_box]="#52"
@@ -15,13 +15,13 @@ theme[proc_box]="#52"
 theme[div_line]="#38"
 
 theme[proc_misc]="#8b"
-theme[proc_pause_bg]="#deb39c"
-theme[proc_follow_bg]="#bcb8e2"
+theme[proc_pause_bg]="#d6b6a4"
+theme[proc_follow_bg]="#beb9d9"
 theme[proc_banner_bg]="#c8"
-theme[proc_banner_fg]="#20"
+theme[proc_banner_fg]="#1f"
 
-theme[followed_bg]="#bcb8e2"
-theme[followed_fg]="#20"
+theme[followed_bg]="#beb9d9"
+theme[followed_fg]="#1f"
 
 theme[temp_start]="#52"
 theme[temp_mid]=""
