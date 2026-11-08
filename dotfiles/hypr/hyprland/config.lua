@@ -65,7 +65,7 @@ hl.config({
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
         focus_on_activate = true,
-        background_color = colors.deep,
+        background_color = colors.void,
         mouse_move_enables_dpms = true,
         key_press_enables_dpms = true,
     },
