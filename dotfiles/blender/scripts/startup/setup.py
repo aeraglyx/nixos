@@ -67,7 +67,7 @@ def setup_preferences():
     prefs.view.use_weight_color_range = True
     prefs.view.header_align = 'TOP'
     prefs.view.use_reduce_motion = True
-    # prefs.view.date_format = 'BE_DASH'  # 5.2
+    prefs.view.date_format = 'BE_DASH'
 
     font_path = get_font_path()
     if font_path:
