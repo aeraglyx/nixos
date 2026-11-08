@@ -1,30 +1,30 @@
 [colors.primary]
 foreground = "#c8c8c8"
-background = "#202020"
+background = "#1f1f1f"
 
 [colors.cursor]
-text = "#202020"
+text   = "#1f1f1f"
 cursor = "#ffffff"
 
 [colors.normal]
-black = "#525252"
-red = "#fd7eaa"
-green = "#97cbb8"
-yellow = "#deb39c"
-blue = "#96c6dd"
-magenta = "#bcb8e2"
-cyan = "#b2c4d0"
-white = "#cccccc"
+black   = "#525252"
+red     = "#f99dc5"
+yellow  = "#d6b6a4"
+green   = "#bec1a0"
+cyan    = "#a1c8bb"
+blue    = "#a2c3d6"
+magenta = "#beb9d9"
+white   = "#c8c8c8"
 
 [colors.bright]
-black = "#888888"
-red = "#fd7eaa"
-green = "#97cbb8"
-yellow = "#deb39c"
-blue = "#96c6dd"
-magenta = "#bcb8e2"
-cyan = "#b2c4d0"
-white = "#ffffff"
+black   = "#888888"
+red     = "#f99dc5"
+yellow  = "#d6b6a4"
+green   = "#bec1a0"
+cyan    = "#a1c8bb"
+blue    = "#a2c3d6"
+magenta = "#beb9d9"
+white   = "#ffffff"
 
 # TODO:
 [colors.dim]
