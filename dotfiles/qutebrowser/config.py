@@ -47,21 +47,22 @@ c.completion.cmd_history_max_items = 64
 c.completion.height = '40%'
 
 class colors():
-    deep = "#1c1c1c"
-    base = "#202020"
-    surf = "#292929"
+    void = "#141414"
+    deep = "#191919"
+    base = "#1f1f1f"
+    surf = "#252525"
+
     smol = "#383838"
-    dim = "#525252"
-    meh = "#888888"
-    uhm = "#b0b0b0"
+    dim  = "#525252"
+    meh  = "#8b8b8b"
     text = "#c8c8c8"
-    red = "#fd7eaa"
-    peach = "#deb39c"
-    mire = "#c0c295"
-    green = "#97cbb8"
-    blue = "#96c6dd"
-    purp = "#bcb8e2"
-    aqua = "#b2c4d0"
+
+    red   = "#f99dc5"
+    peach = "#d6b6a4"
+    mire  = "#bec1a0"
+    green = "#a1c8bb"
+    blue  = "#a2c3d6"
+    purp  = "#beb9d9"
 
 c.colors.completion.fg = [colors.text, colors.text, colors.text]
 c.colors.completion.odd.bg = colors.base
