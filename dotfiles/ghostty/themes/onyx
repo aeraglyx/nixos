@@ -1,26 +1,26 @@
-background = #202020
+background = #1f1f1f
 foreground = #c8c8c8
 
 cursor-color = #c8c8c8
-cursor-text = #202020
+cursor-text  = #1f1f1f
 
-selection-background = #96c6dd
-selection-foreground = #202020
+selection-background = #a2c3d6
+selection-foreground = #1f1f1f
 
-palette = 0=#525252
-palette = 1=#fd7eaa
-palette = 2=#97cbb8
-palette = 3=#deb39c
-palette = 4=#96c6dd
-palette = 5=#bcb8e2
-palette = 6=#b2c4d0
-palette = 7=#c8c8c8
+palette =  0=#525252
+palette =  1=#f99dc5
+palette =  2=#bec1a0
+palette =  3=#d6b6a4
+palette =  4=#a2c3d6
+palette =  5=#beb9d9
+palette =  6=#a1c8bb
+palette =  7=#c8c8c8
 
-palette = 8=#8b8b8b
-palette = 9=#fd7eaa
-palette = 10=#97cbb8
-palette = 11=#deb39c
-palette = 12=#96c6dd
-palette = 13=#bcb8e2
-palette = 14=#b2c4d0
+palette =  8=#8b8b8b
+palette =  9=#f99dc5
+palette = 10=#bec1a0
+palette = 11=#d6b6a4
+palette = 12=#a2c3d6
+palette = 13=#beb9d9
+palette = 14=#a1c8bb
 palette = 15=#ffffff
