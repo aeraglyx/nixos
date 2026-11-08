@@ -11,7 +11,7 @@
             <key>settings</key>
             <dict>
                 <key>background</key>
-                <string>#202020</string>
+                <string>#1f1f1f</string>
                 <key>foreground</key>
                 <string>#c8c8c8</string>
                 <key>caret</key>
@@ -38,7 +38,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#b2c4d0</string>
+                <string>#a2c3d6</string>
             </dict>
         </dict>
         <dict>
@@ -49,7 +49,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#b2c4d0</string>
+                <string>#a2c3d6</string>
             </dict>
         </dict>
     </array>
