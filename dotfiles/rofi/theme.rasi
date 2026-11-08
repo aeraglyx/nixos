@@ -12,7 +12,7 @@ window {
     padding: 12;
     background-color: @base;
     border: 2;
-    border-color: @meh;
+    border-color: @smol;
     border-radius: 10px;
 }
 
@@ -75,11 +75,9 @@ element {
 }
 
 element selected {
-    background-color: #292929;
+    background-color: @surf;
     border: 2;
     border-color: @smol;
-    // background-color: @blue;
-    // text-color: @base;
 }
 
 // element normal.urgent {
