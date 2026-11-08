@@ -31,7 +31,7 @@ case $action in
         run_script countdown.sh
         ;;
     "color picker")
-        sleep 0.12 ; hyprpicker
+        sleep 0.15 ; hyprpicker
         ;;
     "calendar")
         ghostty --class=popup.app.high -e bash -c "python ~/projects/code/calendar/main.py; exec bash"
