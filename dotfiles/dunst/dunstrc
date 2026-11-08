@@ -7,7 +7,7 @@
     height = (0, 300)
     offset = 48x48
 
-    background = "#202020"
+    background = "#1f1f1f"
     transparency = 0
     padding = 12
     horizontal_padding = 15
@@ -54,6 +54,6 @@
     timeout = 6
 
 [urgency_critical]
-    foreground = "#fd7eaa"
-    frame_color = "#fd7eaa"
+    foreground = "#f99dc5"
+    frame_color = "#f99dc5"
     timeout = 0
