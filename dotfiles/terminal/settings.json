@@ -1,7 +1,7 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "defaultProfile": "{5f358025-d964-506e-a7d2-c6dae17bc2da}",
+    "defaultProfile": "{495a5cea-4f9e-5a78-8a4b-817df6b2f657}",
     "profiles": {
         "defaults": {
             "colorScheme": "Onyx",
@@ -18,8 +18,18 @@
         },
         "list": [
             {
-                "guid": "{5f358025-d964-506e-a7d2-c6dae17bc2da}",
-                "hidden": false
+                "guid": "{495a5cea-4f9e-5a78-8a4b-817df6b2f657}",
+                "source": "Microsoft.WSL",
+                "name": "NixOS"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "name": "PowerShell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": true
             }
         ]
     },
