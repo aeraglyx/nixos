@@ -1,0 +1,54 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "{5f358025-d964-506e-a7d2-c6dae17bc2da}",
+    "profiles": {
+        "defaults": {
+            "colorScheme": "Onyx",
+            "cursorShape": "filledBox",
+            "scrollbarState": "hidden",
+            "intenseTextStyle": "bold",
+            "padding": "20",
+            "font": {
+                "cellHeight": "1.3",
+                "cellWidth": "0.55",
+                "face": "CaskaydiaCove Nerd Font Mono",
+                "size": 14
+            }
+        },
+        "list": [
+            {
+                "guid": "{5f358025-d964-506e-a7d2-c6dae17bc2da}",
+                "hidden": false
+            }
+        ]
+    },
+    "schemes": [
+        {
+            "name": "Onyx",
+
+            "background": "#1f1f1f",
+            "cursorColor": "#ffffff",
+            "foreground": "#c8c8c8",
+            "selectionBackground": "#c8c8c8",
+
+            "black":  "#525252",
+            "red":    "#f99dc5",
+            "yellow": "#d6b6a4",
+            "green":  "#bec1a0",
+            "cyan":   "#a1c8bb",
+            "blue":   "#a2c3d6",
+            "purple": "#beb9d9",
+            "white":  "#c8c8c8",
+
+            "brightBlack":  "#888888",
+            "brightRed":    "#f99dc5",
+            "brightYellow": "#d6b6a4",
+            "brightGreen":  "#bec1a0",
+            "brightCyan":   "#a1c8bb",
+            "brightBlue":   "#a2c3d6",
+            "brightPurple": "#beb9d9",
+            "brightWhite":  "#ffffff"
+        }
+    ]
+}
