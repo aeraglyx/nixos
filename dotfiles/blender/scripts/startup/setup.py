@@ -26,12 +26,11 @@ def suppress_console():
 
 def get_font_path():
     fonts_to_try = [
-        "CaskaydiaCoveNerdFont-Regular.ttf",
+        "CaskaydiaCoveNerdFontMono-Regular.ttf",
         "CaskaydiaMonoNerdFont-Regular.ttf",
-        "CaskaydiaCove-Regular.ttf",
         "CaskaydiaMono-Regular.ttf",
-        "CascadiaCode-Regular.ttf",
         "CascadiaMono-Regular.ttf",
+        "CascadiaMono.ttf",
     ]
 
     fonts_base_dir = None
@@ -62,6 +61,7 @@ def setup_preferences():
     prefs.view.show_developer_ui = True
     prefs.view.show_statusbar_memory = True
     prefs.view.show_statusbar_vram = True
+    prefs.view.show_view_name = False
     prefs.view.ui_scale = 1.1
     prefs.view.menu_close_leave = True
     prefs.view.use_weight_color_range = True
@@ -80,6 +80,7 @@ def setup_preferences():
 
     prefs.filepaths.save_version = 0
     prefs.filepaths.recent_files = 128
+    prefs.filepaths.asset_libraries["User Library"].import_method = 'APPEND'
 
     prefs.addons['cycles'].preferences.compute_device_type = 'OPTIX'
 
@@ -218,6 +219,7 @@ def load_handler_startup(_):
     setup_camera()
     bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = [0, 0, 0, 1]
     bpy.data.objects.remove(bpy.data.objects["Light"])
+    bpy.data.screens['Layout'].areas[3].spaces[0].show_region_toolbar = False
     bpy.data.screens["Layout"].areas[3].spaces[0].overlay.show_face_orientation = True
     bpy.data.screens["Compositing"].areas[3].spaces[0].show_region_asset_shelf = False
 
