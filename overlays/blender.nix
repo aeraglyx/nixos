@@ -93,6 +93,11 @@ in rec {
         src = srcOfficial version "sha256-ox9ST6maUn09Urf1qqaMNOGhnVoclHP3nFzGEP1bEOk=";
     };
 
+    blender_5_3 = mkBlender rec {
+        version = "5.3.0";
+        src = srcOfficial version "sha256-2suCZBl6P3/aYAEoWlpQb8l+6UOIEmHCw71jyILyLgU=";
+    };
+
     blender = mkBlenderSymlink final blender_5_2;
 
 }

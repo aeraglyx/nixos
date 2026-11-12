@@ -46,6 +46,7 @@
         # Media creation
         blender
         blender_5_2
+        blender_5_3
 
         # Messaging
         discord
