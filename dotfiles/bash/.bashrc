@@ -34,9 +34,9 @@ alias x="chmod +755"
 alias pt="python"
 
 eza_base="eza --icons --all"
-alias ls="$eza_base"
-alias lsa="$eza_base --long --group-directories-first"
-alias tre="$eza_base --tree --git-ignore"
+alias l="$eza_base"
+alias ll="$eza_base --long --group-directories-first"
+alias tre="$eza_base --tree --ignore-glob '.git|.direnv|__pycache__' --git-ignore"
 alias tree="$eza_base --tree --ignore-glob '.git'"
 
 alias syn-basic="rsync -avh --info=progress2 --no-i-r"
