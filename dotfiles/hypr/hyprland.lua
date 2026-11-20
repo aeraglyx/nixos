@@ -2,6 +2,7 @@ require("hyprland.config")
 require("hyprland.binds")
 require("hyprland.rules")
 require("hyprland.animations")
+require("hyprland.devices")
 
 
 hl.monitor({
