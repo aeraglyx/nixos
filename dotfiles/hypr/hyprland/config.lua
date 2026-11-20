@@ -1,4 +1,4 @@
--- https://wiki.hypr.land/Configuring/Basics/Variables/
+-- https://wiki.hypr.land/configuring/core/config-options/
 
 local colors = require("hyprland.theme")
 local utils = require("hyprland.utils")

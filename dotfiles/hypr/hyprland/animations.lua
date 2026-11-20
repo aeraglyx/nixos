@@ -1,4 +1,4 @@
--- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+-- https://wiki.hypr.land/configuring/core/animations/
 
 hl.curve("linear",   { type = "bezier", points = { {0.0, 0.0}, {1.0, 1.0} } })
 hl.curve("ease_out", { type = "bezier", points = { {0.1, 1.0}, {0.1, 1.0} } })

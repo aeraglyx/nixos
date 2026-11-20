@@ -1,5 +1,4 @@
--- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+-- https://wiki.hypr.land/configuring/core/rules/
 
 local colors = require("hyprland.theme")
 

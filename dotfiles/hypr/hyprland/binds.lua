@@ -1,4 +1,4 @@
--- https://wiki.hypr.land/Configuring/Basics/Binds/
+-- https://wiki.hypr.land/configuring/core/binds/
 
 local terminal = "ghostty"
 local file_manager = "nautilus"
