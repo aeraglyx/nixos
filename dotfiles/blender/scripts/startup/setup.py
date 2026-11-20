@@ -82,7 +82,10 @@ def setup_preferences():
 
     prefs.filepaths.save_version = 0
     prefs.filepaths.recent_files = 128
-    prefs.filepaths.asset_libraries["User Library"].import_method = 'APPEND'
+
+    user_lib = prefs.filepaths.asset_libraries.get("User Library")
+    if user_lib:
+        user_lib.import_method = 'APPEND'
 
     prefs.addons['cycles'].preferences.compute_device_type = 'OPTIX'
 
