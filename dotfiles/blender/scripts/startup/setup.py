@@ -76,7 +76,9 @@ def setup_preferences():
 
     prefs.edit.node_use_insert_offset = False
     prefs.edit.undo_steps = 64
-    prefs.edit.grease_pencil_default_color = [0.588, 0.776, 0.867, 0.900]
+
+    theme_blue = prefs.themes[0].user_interface.axis_z
+    prefs.edit.grease_pencil_default_color = [*theme_blue, 0.9]
 
     prefs.filepaths.save_version = 0
     prefs.filepaths.recent_files = 128
@@ -206,8 +208,8 @@ def setup_extensions():
 @persistent
 def load_handler_preferences(_):
     log("Loading preferences")
-    setup_preferences()
     setup_theme()
+    setup_preferences()
     setup_keymaps()
     setup_extensions()
 
