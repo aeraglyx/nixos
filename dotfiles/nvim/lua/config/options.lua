@@ -16,7 +16,9 @@ vim.opt.breakindent = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.cursorline = true
+
 vim.opt.scrolloff = 4
+vim.opt.smoothscroll = true
 vim.opt.mousescroll = "ver:1,hor:1"
 
 vim.opt.inccommand = "split"
