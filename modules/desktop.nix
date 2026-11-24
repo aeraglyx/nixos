@@ -96,6 +96,12 @@
 
         # Browsers
         chromium
+
+        # Messaging
+        discord
+
+        # Remote Desktop
+        parsec-bin
     ];
 
     fonts.fontDir.enable = true;

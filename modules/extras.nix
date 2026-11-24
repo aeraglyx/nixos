@@ -49,15 +49,11 @@
         blender_5_3
 
         # Messaging
-        discord
         signal-desktop
 
         # Browsers
         qutebrowser
         google-chrome
         tor-browser
-
-        # Remote Desktop
-        parsec-bin
     ];
 }
