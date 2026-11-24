@@ -113,8 +113,10 @@ hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_
 hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true })
 
 -- brightness
-hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp",         hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 4%+"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown",       hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 4%-"), { locked = true, repeating = true })
+hl.bind(main_mod .. " + ALT + Period", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 4%-"), { locked = true, repeating = true })
+hl.bind(main_mod .. " + ALT + V",      hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 4%+"), { locked = true, repeating = true })
 
 -- multimedia
 hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })
